@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tables>
+	<table name="dc_role" cnname="系统角色" poolname="datacenter">
+		<field fieldname="rolecode" fieldlabel="角色编码" fieldtype="1"
+			fieldlength="50" ispk="1" cannull="0" showpos="1"/>
+		<field fieldname="rolename" fieldlabel="角色名称" fieldtype="1"
+			fieldlength="25" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="updatetime" fieldlabel="更新时间" fieldtype="2"
+			fieldlength="20" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="operator" fieldlabel="操作人" fieldtype="1"
+			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="memo" fieldlabel="备注" fieldtype="1"
+			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
+	</table>
+	<table name="dc_sys_param" cnname="系统参数"  poolname="datacenter">
+		<field fieldname="paramcode" fieldlabel="参数编码" fieldtype="1"
+			fieldlength="50" ispk="1" cannull="0" showpos="1"/>
+		<field fieldname="paramname" fieldlabel="参数名称" fieldtype="1"
+			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="paramtype" fieldlabel="参数类型" fieldtype="3"
+			fieldlength="20" ispk="0" cannull="0" showpos="1"/>
+		<field fieldname="parentparam" fieldlabel="上级参数" fieldtype="1"
+			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="updatetime" fieldlabel="更新时间" fieldtype="2"
+			fieldlength="20" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="operator" fieldlabel="操作人" fieldtype="1"
+			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="memo" fieldlabel="备注" fieldtype="1"
+			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
+	</table>
+	<table name="dc_user" cnname="系统用户"  poolname="datacenter">
+		<field fieldname="loginname" fieldlabel="登录名" fieldtype="1"
+			fieldlength="50" ispk="1" cannull="0" showpos="1"/>
+		<field fieldname="loginpsw" fieldlabel="密码" fieldtype="1"
+			fieldlength="50" ispk="0" cannull="0" showpos="1"/>
+		<field fieldname="username" fieldlabel="姓名" fieldtype="1"
+			fieldlength="25" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="gender" fieldlabel="性别" fieldtype="1"
+			fieldlength="1" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="birthday" fieldlabel="出生日期" fieldtype="2"
+			fieldlength="20" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="organisation" fieldlabel="所在单位" fieldtype="1"
+			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="department" fieldlabel="部门" fieldtype="1"
+			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="inuse" fieldlabel="是否可用" fieldtype="1"
+			fieldlength="1" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="updatetime" fieldlabel="更新时间" fieldtype="2"
+			fieldlength="20" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="operator" fieldlabel="操作人" fieldtype="1"
+			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="memo" fieldlabel="备注" fieldtype="1"
+			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
+	</table>
+	<table name="dc_content_control" cnname="内容控制"  poolname="datacenter">
+		<field fieldname="controlcode" fieldlabel="控制编码" fieldtype="1"
+			fieldlength="50" ispk="1" cannull="0" showpos="1"/>
+		<field fieldname="tablename" fieldlabel="表名" fieldtype="1"
+			fieldlength="50" ispk="0" cannull="0" showpos="1"/>
+		<field fieldname="controldesc" fieldlabel="条件描述" fieldtype="1"
+			fieldlength="200" ispk="0" cannull="0" showpos="1"/>
+		<field fieldname="conditionsql" fieldlabel="条件SQL" fieldtype="1"
+			fieldlength="500" ispk="0" cannull="0" showpos="0"/>
+		<field fieldname="updatetime" fieldlabel="更新时间" fieldtype="2"
+			fieldlength="20" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="operator" fieldlabel="操作人" fieldtype="1"
+			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="memo" fieldlabel="备注" fieldtype="1"
+			fieldlength="200" ispk="0" cannull="1" showpos="1"/>
+	</table>
+<!--	<table name="dc_uploadlog" cnname="上传日志" poolname="datacenter">-->
+<!--		<field fieldname="UploadName" fieldlabel="项目名称" fieldtype="1"-->
+<!--			fieldlength="50" ispk="0" cannull="0" showpos="1"/>-->
+<!--		<field fieldname="UserName" fieldlabel="操作人" fieldtype="1"-->
+<!--			fieldlength="50" ispk="0" cannull="0" showpos="1"/>-->
+<!--		<field fieldname="UploadTime" fieldlabel="上传时间" fieldtype="2"-->
+<!--			fieldlength="20" ispk="0" cannull="0" showpos="1"/>-->
+<!--		<field fieldname="Organazation" fieldlabel="单位" fieldtype="1"-->
+<!--			fieldlength="50" ispk="0" cannull="1" showpos="1"/>-->
+<!--	</table>-->
+	<table name="dc_uploadrule" cnname="上传计划" poolname="datacenter">
+<!--		<field fieldname="RuleId" fieldlabel="计划编码" fieldtype="3"-->
+<!--			fieldlength="50" ispk="1" cannull="0" showpos="1"/>-->
+		<field fieldname="UploadName" fieldlabel="项目名称" fieldtype="1"
+			fieldlength="50" ispk="0" cannull="0" showpos="1"/>
+		<field fieldname="RuleType" fieldlabel="计划类型" fieldtype="3"
+			fieldlength="50" ispk="0" cannull="0" showpos="1"/>
+		<field fieldname="Cycle" fieldlabel="计划周期" fieldtype="3"
+			fieldlength="20" ispk="0" cannull="0" showpos="1"/>
+		<field fieldname="StartTime" fieldlabel="开始时间" fieldtype="2"
+			fieldlength="50" ispk="0" cannull="0" showpos="1"/>
+	</table>
+	<table name="dc_fyd" cnname="付印单" poolname="datacenter">
+		<field fieldname="FydNo" fieldlabel="付印单编码" fieldtype="1"
+			fieldlength="20" ispk="0" cannull="0" showpos="1"/>
+		<field fieldname="ZzId" fieldlabel="纸张编码" fieldtype="1"
+			fieldlength="10" ispk="0" cannull="0" showpos="1"/>
+		<field fieldname="ZzCount" fieldlabel="纸张数量" fieldtype="4"
+			fieldlength="50" ispk="0" cannull="0" showpos="1"/>
+		<field fieldname="BookName" fieldlabel="书名" fieldtype="1"
+			fieldlength="50" ispk="0" cannull="0" showpos="1"/>
+		<field fieldname="YscId" fieldlabel="印刷厂编码" fieldtype="1"
+			fieldlength="50" ispk="0" cannull="0" showpos="1"/>
+		<field fieldname="CreateDate" fieldlabel="制单时间" fieldtype="2"
+			fieldlength="50" ispk="0" cannull="0" showpos="1"/>
+		<field fieldname="OperaName" fieldlabel="制单人" fieldtype="1"
+			fieldlength="50" ispk="0" cannull="0" showpos="1"/>
+		<field fieldname="UserName" fieldlabel="上传人" fieldtype="1"
+			fieldlength="50" ispk="0" cannull="0" showpos="1"/>
+		<field fieldname="organization" fieldlabel="所在单位" fieldtype="1"
+			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="department" fieldlabel="部门" fieldtype="1"
+			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="logno" fieldlabel="上传批次" fieldtype="1"
+			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
+	</table>
+	
+</tables>

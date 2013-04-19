@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+<!--	<constant name="struts.multipart.saveDir" value="/upload"/>-->
+
+    <package name="tms.datacenter.upload.action" namespace = "/upload" extends="struts-default">
+    
+    	<!-- 配置自定义拦截器LoginedCheckInterceptor -->
+        
+        <interceptors>
+            <interceptor-stack name="myStack">
+                <interceptor-ref name="fileUpload">
+                  	<param name="allowedTypes">
+                     	application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,text/plain
+                  	</param>
+                </interceptor-ref>
+                <interceptor-ref name="defaultStack" />
+
+            </interceptor-stack>
+        </interceptors>
+        
+        <default-interceptor-ref name="myStack"/>
+        
+    	<global-results>
+            <result name="nopower">/sysframe/nopower.jsp</result>
+            <result name="error">/sysframe/error.jsp</result>
+            <result name="success">/sysframe/success.jsp</result>
+            <result name="login">/index.jsp</result>
+            <result name="detail">/common/detail.jsp</result>
+        </global-results>
+		<action name="uploadManageAction" class="tms.datacenter.upload.action.UploadManageAction">
+            <result name="uploadlist">/upload/uploadlist.jsp</result>
+            <result name="uploadlog">/upload/uploadlog.jsp</result>
+            <result name="upload">/upload/upload.jsp</result>
+            <result name="detail">/upload/uploaddetail.jsp</result>
+        </action>
+        <action name="uploadAction" class="tms.datacenter.upload.action.UploadAction">
+            <result name="uploadshow">/upload/uploadshow.jsp</result>
+        </action>
+        <action name="ruleManageAction" class="tms.datacenter.upload.action.RuleManageAction">
+            <result name="rulelist">/upload/rulelist.jsp</result>
+            <result name="rulemanage">/upload/rulemanage.jsp</result>
+        </action>
+        
+        <action name="upload" class="tms.datacenter.upload.action.UploadAction">
+        </action>
+    </package>
+</struts>

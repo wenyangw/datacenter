@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="datacenter"
+  id="myeclipse.1356057308082"
+  context-root="/datacenter"
+  j2ee-spec="5.0"
+  archive="datacenter.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

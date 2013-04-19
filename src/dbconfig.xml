@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<db>
+	<database dbname="datacenter" dbtype="SQLSERVER" 
+	driver="com.microsoft.jdbc.sqlserver.SQLServerDriver"
+	user="sa" password="sine" 
+	connstr="jdbc:microsoft:sqlserver://192.168.0.3:1433;DatabaseName=tms"
+	maxcount="15"/>
+</db>

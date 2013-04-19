@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+    <package name="tms.datacenter.sysmanage.action" namespace="/sysmanage" extends="struts-default">
+		<global-results>
+            <result name="nopower">/sysframe/nopower.jsp</result>
+            <result name="error">/sysframe/error.jsp</result>
+            <result name="success">/sysframe/success.jsp</result>
+            <result name="login">/index.jsp</result>
+            <result name="detail">/common/detail.jsp</result>
+        </global-results>
+		<action name="loginAction" class="tms.datacenter.sysmanage.action.LoginAction">
+            <result name="loginSuccess">/sysframe/mainframe.jsp</result>
+        </action>
+        <action name="logoutAction" class="tms.datacenter.sysmanage.action.LogoutAction">
+        </action>
+        <action name="userManageAction" class="tms.datacenter.sysmanage.action.UserManageAction">
+            <result name="userlist">/sysmanage/usermanage/userlist.jsp</result>
+             <result name="usermanage">/sysmanage/usermanage/usermanage.jsp</result>
+        </action>
+        <action name="sysParamAction" class="tms.datacenter.sysmanage.action.SysParamAction">
+            <result name="paramlist">/sysmanage/sysparam/paramlist.jsp</result>
+            <result name="listfordialog">/sysmanage/sysparam/listfordialog.jsp</result>
+            <result name="parammanage">/sysmanage/sysparam/parammanage.jsp</result>
+        </action>
+        <action name="roleManageAction" class="tms.datacenter.sysmanage.action.RoleManageAction">
+            <result name="rolelist">/sysmanage/rolemanage/rolelist.jsp</result>
+            <result name="rolemanage">/sysmanage/rolemanage/rolemanage.jsp</result>
+            <result name="privilege">/sysmanage/rolemanage/privilege.jsp</result>
+        </action>
+        <action name="contentControlAction" class="tms.datacenter.sysmanage.action.ContentControlAction">
+            <result name="list">/sysmanage/contentcontrol/controllist.jsp</result>
+            <result name="manage">/sysmanage/contentcontrol/controlmanage.jsp</result>
+        </action>
+        <action name="menuAction" class="tms.datacenter.sysmanage.action.MenuAction">
+            <result name="menu">/sysframe/menu.jsp</result>
+            <result name="mainmenu">/sysframe/mainmenu.jsp</result>
+        </action>
+    </package>
+    <package name="tms.datacenter.stat.action" namespace="/stat" extends="struts-default">
+		<global-results>
+            <result name="nopower">/sysframe/nopower.jsp</result>
+            <result name="error">/sysframe/error.jsp</result>
+            <result name="success">/sysframe/success.jsp</result>
+            <result name="login">/index.jsp</result>
+            <result name="detail">/common/detail.jsp</result>
+        </global-results>
+		<action name="commonStatAction" class="tms.datacenter.stat.action.CommonStatAction">
+            <result name="stat">/stat/commonStatlist.jsp</result>
+            <result name="list">/stat/commonlist.jsp</result>
+        </action>
+    </package>
+</struts>

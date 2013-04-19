@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu>
+	<parentmenu name="系统管理" id="m01">
+		<sonmenu name="参数管理" id="m01m02"
+			actionclass="tms.datacenter.sysmanage.action.SysParamAction"
+			privilege="1" link="/sysmanage/sysParamAction?methodName=list&amp;moduleid=m01m02" />
+		<sonmenu name="角色管理" id="m01m01"
+			actionclass="tms.datacenter.sysmanage.action.RoleManageAction"
+			privilege="1" link="/sysmanage/roleManageAction?methodName=list&amp;moduleid=m01m01" />
+		<sonmenu name="内容控制管理" id="m01m04"
+			actionclass="tms.datacenter.sysmanage.action.contentControlAction"
+			privilege="1" link="/sysmanage/contentControlAction?methodName=list&amp;moduleid=m01m04" />
+		<sonmenu name="用户管理" id="m01m03"
+			actionclass="tms.datacenter.sysmanage.action.UserManageAction"
+			privilege="1" link="/sysmanage/userManageAction?methodName=list&amp;moduleid=m01m03" />
+	</parentmenu>
+	<parentmenu name="文件上传" id="m02">
+		<sonmenu name="上传管理" id="m02m01"
+			actionclass="tms.datacenter.upload.action.UploadManageAction"
+			privilege="1" link="/upload/uploadManageAction?methodName=list&amp;moduleid=m02m01" />
+		<sonmenu name="上传计划" id="m02m02"
+			actionclass="tms.datacenter.upload.action.RuleManageAction"
+			privilege="1" link="/upload/ruleManageAction?methodName=list&amp;moduleid=m02m02" />
+	</parentmenu>
+	<parentmenu name="统计查询" id="m03">
+		<sonmenu name="测试" id="m03m01"
+			actionclass="tms.datacenter.stat.action.CommonStatAction"
+			privilege="1" link="/stat/commonStatAction?methodName=list&amp;specialParam=teststat1&amp;moduleid=m03m01" />
+		<sonmenu name="测试2" id="m03m02"
+			actionclass="tms.datacenter.stat.action.CommonStatAction"
+			privilege="1" link="/stat/commonStatAction?methodName=list&amp;specialParam=teststat2&amp;moduleid=m03m02" />
+	</parentmenu>
+</menu>

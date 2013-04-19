@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<privilege>
+	<topmodule name="系统管理" id="m01">
+		<module name="角色管理" id="m01m01" actionclass="tms.datacenter.sysmanage.action.RoleManageAction">
+			<operation name="list" cnname="列表" specialparam="" id="m01m01m01"
+				privilegevalue="1" showpos="0" needconfirm="0" selectcount="0"/>
+			<operation name="addPage" cnname="添加" specialparam="" id="m01m01m02"
+				privilegevalue="2" showpos="1" needconfirm="0" selectcount="0"/>
+			<operation name="add" cnname="执行添加" specialparam="" id="m01m01m03"
+				privilegevalue="4" showpos="2" needconfirm="0" selectcount="0"/>
+			<operation name="updatePage" cnname="修改" specialparam="" id="m01m01m04"
+				privilegevalue="8" showpos="1" needconfirm="0" selectcount="1"/>
+			<operation name="update" cnname="执行修改" specialparam="" id="m01m01m05"
+				privilegevalue="16" showpos="3" needconfirm="0" selectcount="0"/>
+			<operation name="delete" cnname="删除" specialparam="" id="m01m01m06"
+				privilegevalue="32" showpos="1" needconfirm="1" selectcount="2"/>
+			<operation name="updatePrivilegePage" cnname="权限查看" specialparam="" id="m01m01m07"
+				privilegevalue="64" showpos="0" needconfirm="0" selectcount="1"/>
+			<operation name="updatePrivilege" cnname="权限修改" specialparam="" id="m01m01m08"
+				privilegevalue="128" showpos="0" needconfirm="0" selectcount="0"/>
+			<operation name="detail" cnname="查看" specialparam="" id="m01m01m07"
+				privilegevalue="256" showpos="1" needconfirm="0" selectcount="1"/>
+		</module>
+		<module name="内容控制管理" id="m01m04" actionclass="tms.datacenter.sysmanage.action.ContentControlAction">
+			<operation name="list" cnname="列表" specialparam="" id="m01m04m01"
+				privilegevalue="1" showpos="0" needconfirm="0" selectcount="0"/>
+			<operation name="addPage" cnname="添加" specialparam="" id="m01m04m02"
+				privilegevalue="2" showpos="1" needconfirm="0" selectcount="0"/>
+			<operation name="add" cnname="执行添加" specialparam="" id="m01m04m03"
+				privilegevalue="4" showpos="2" needconfirm="0" selectcount="0"/>
+			<operation name="updatePage" cnname="修改" specialparam="" id="m01m04m04"
+				privilegevalue="8" showpos="1" needconfirm="0" selectcount="1"/>
+			<operation name="update" cnname="执行修改" specialparam="" id="m01m04m05"
+				privilegevalue="16" showpos="3" needconfirm="0" selectcount="0"/>
+			<operation name="delete" cnname="删除" specialparam="" id="m01m04m06"
+				privilegevalue="32" showpos="1" needconfirm="1" selectcount="2"/>
+			<operation name="detail" cnname="查看" specialparam="" id="m01m04m07"
+				privilegevalue="64" showpos="1" needconfirm="0" selectcount="1"/>
+		</module>
+		<module name="参数管理" id="m01m02" actionclass="tms.datacenter.sysmanage.action.SysParamAction">
+			<operation name="list" cnname="列表" specialparam="" id="m01m02m01"
+				privilegevalue="1" showpos="0" needconfirm="0" selectcount="0"/>
+			<operation name="addPage" cnname="添加" specialparam="" id="m01m02m02"
+				privilegevalue="2" showpos="1" needconfirm="0" selectcount="0"/>
+			<operation name="add" cnname="执行添加" specialparam="" id="m01m02m03"
+				privilegevalue="4" showpos="2" needconfirm="0" selectcount="0"/>
+			<operation name="updatePage" cnname="修改" specialparam="" id="m01m02m04"
+				privilegevalue="8" showpos="1" needconfirm="0" selectcount="1"/>
+			<operation name="update" cnname="执行修改" specialparam="" id="m01m02m05"
+				privilegevalue="16" showpos="3" needconfirm="0" selectcount="0"/>
+			<operation name="delete" cnname="删除" specialparam="" id="m01m02m06"
+				privilegevalue="32" showpos="1" needconfirm="1" selectcount="2"/>
+			<operation name="detail" cnname="查看" specialparam="" id="m01m02m07"
+				privilegevalue="64" showpos="1" needconfirm="0" selectcount="1"/>
+		</module>
+		<module name="用户管理" id="m01m03" actionclass="tms.datacenter.sysmanage.action.UserManageAction">
+			<operation name="list" cnname="列表" specialparam="" id="m01m03m01"
+				privilegevalue="1" showpos="0" needconfirm="0" selectcount="0"/>
+			<operation name="addPage" cnname="添加" specialparam="" id="m01m03m02"
+				privilegevalue="2" showpos="1" needconfirm="0" selectcount="0"/>
+			<operation name="add" cnname="执行添加" specialparam="" id="m01m03m03"
+				privilegevalue="4" showpos="2" needconfirm="0" selectcount="0"/>
+			<operation name="updatePage" cnname="修改" specialparam="" id="m01m03m04"
+				privilegevalue="8" showpos="1" needconfirm="0" selectcount="1"/>
+			<operation name="update" cnname="执行修改" specialparam="" id="m01m03m05"
+				privilegevalue="16" showpos="3" needconfirm="0" selectcount="0"/>
+			<operation name="delete" cnname="删除" specialparam="" id="m01m03m06"
+				privilegevalue="32" showpos="1" needconfirm="1" selectcount="2"/>
+			<operation name="detail" cnname="查看" specialparam="" id="m01m03m07"
+				privilegevalue="64" showpos="1" needconfirm="0" selectcount="1"/>
+		</module>
+	</topmodule>
+	<topmodule name="文件上传" id="m02">
+		<module name="上传管理" id="m02m01" actionclass="tms.datacenter.upload.action.UploadManageAction">
+			<operation name="list" cnname="列表" specialparam="" id="m02m01m01"
+				privilegevalue="1" showpos="0" needconfirm="0" selectcount="0"/>
+			<operation name="uploadPage" cnname="上传" specialparam="" id="m02m01m02"
+				privilegevalue="2" showpos="1" needconfirm="0" selectcount="0"/>
+			<operation name="upload" cnname="执行上传" specialparam="" id="m02m01m03"
+				privilegevalue="4" showpos="0" needconfirm="0" selectcount="0"/>
+			<operation name="log" cnname="上传日志" specialparam="" id="m02m01m04"
+				privilegevalue="8" showpos="1" needconfirm="0" selectcount="0"/>
+			<operation name="detail" cnname="查看" specialparam="" id="m02m01m05"
+				privilegevalue="16" showpos="2" needconfirm="0" selectcount="0"/>
+			<operation name="delete" cnname="删除" specialparam="" id="m02m01m06"
+				privilegevalue="32" showpos="3" needconfirm="0" selectcount="0"/>	
+		</module>
+		<module name="上传计划" id="m02m02" actionclass="tms.datacenter.upload.action.RuleManageAction">
+			<operation name="list" cnname="列表" specialparam="" id="m02m02m01"
+				privilegevalue="1" showpos="0" needconfirm="0" selectcount="0"/>
+			<operation name="addPage" cnname="添加" specialparam="" id="m02m02m02"
+				privilegevalue="2" showpos="1" needconfirm="0" selectcount="0"/>
+			<operation name="add" cnname="执行添加" specialparam="" id="m02m02m03"
+				privilegevalue="4" showpos="2" needconfirm="0" selectcount="0"/>
+			<operation name="updatePage" cnname="修改" specialparam="" id="m02m02m04"
+				privilegevalue="8" showpos="1" needconfirm="0" selectcount="1"/>
+			<operation name="update" cnname="执行修改" specialparam="" id="m02m02m05"
+				privilegevalue="16" showpos="3" needconfirm="0" selectcount="0"/>
+			<operation name="delete" cnname="删除" specialparam="" id="m02m02m06"
+				privilegevalue="32" showpos="1" needconfirm="1" selectcount="2"/>
+		</module>
+	</topmodule>
+	<topmodule name="查询统计" id="m03">
+		<module name="测试统计" id="m03m01" actionclass="tms.datacenter.stat.action.CommonStatAction">
+			<operation name="list" cnname="统计列表" specialparam="teststat1" id="m03m01m01"
+				privilegevalue="1" showpos="0" needconfirm="0" selectcount="0"/>
+			<operation name="exportToExcel" cnname="导出" specialparam="teststat1" id="m03m01m02"
+				privilegevalue="2" showpos="1" needconfirm="0" selectcount="0"/>
+		</module>
+		<module name="测试统计2" id="m03m02" actionclass="tms.datacenter.stat.action.CommonStatAction">
+			<operation name="list" cnname="统计列表" specialparam="teststat2" id="m03m02m01"
+				privilegevalue="1" showpos="0" needconfirm="0" selectcount="0"/>
+			<operation name="exportToExcel" cnname="导出" specialparam="teststat2" id="m03m02m02"
+				privilegevalue="2" showpos="1" needconfirm="0" selectcount="0"/>
+		</module>
+		
+	</topmodule>
+</privilege>
