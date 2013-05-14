@@ -40,6 +40,20 @@
             <result name="menu">/sysframe/menu.jsp</result>
             <result name="mainmenu">/sysframe/mainmenu.jsp</result>
         </action>
+        <action name="columnManageAction" class="tms.datacenter.index.action.ColumnManageAction">
+            <result name="columnlist">/index/columnlist.jsp</result>
+            <result name="columnmanage">/index/columnmanage.jsp</result>
+        </action>
+        <action name="picADManageAction" class="tms.datacenter.index.action.PicADManageAction">
+            <result name="picadlist">/index/picadlist.jsp</result>
+            <result name="picadmanage">/index/picadmanage.jsp</result>
+        </action>
+        <action name="uploadPicAction" class="tms.datacenter.index.action.UploadPicAction">
+            <result name="uploadres">/index/uploadres.jsp</result>
+        </action>
+        <action name="columnShowAction" class="tms.datacenter.index.action.ColumnShowAction">
+            <result name="columnshow">/index/picad.jsp</result>
+        </action>
     </package>
     <package name="tms.datacenter.stat.action" namespace="/stat" extends="struts-default">
 		<global-results>

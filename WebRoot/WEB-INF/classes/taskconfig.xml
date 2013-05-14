@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<task taskid="test1" taskname="测试1"
+		taskclass="tms.datacenter.timertask.tasks.TestTask" periodday="1"
+		delayday="1" tasktime="12:12:12" />
+	<task taskid="test2" taskname="测试2"
+		taskclass="tms.datacenter.timertask.tasks.TestTask" periodday="1"
+		delayday="1" tasktime="14:30:30" />
+</config>

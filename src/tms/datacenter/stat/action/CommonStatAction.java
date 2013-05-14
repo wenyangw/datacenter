@@ -249,7 +249,7 @@ public class CommonStatAction extends PrivilegeParentAction {
 							}else
 								conditionstr = "";
 							if(defaultvalue2 != null && defaultvalue2.trim().length() > 0){
-								conditionstr2 = conditionstr2.replaceAll("/e_"+queryname+"/", defaultvalue);
+								conditionstr2 = conditionstr2.replaceAll("/e_"+queryname+"/", defaultvalue2);
 							}else
 								conditionstr2 = "";
 							condition+=  conditionstr+conditionstr2;

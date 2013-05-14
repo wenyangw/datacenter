@@ -7,6 +7,69 @@
 		margin-left:2px;
 		background:#E6E6FA;
 	}
+	BODY.indexbody{
+		color:#303030;
+		font-size:10pt;
+		font-weight:600;
+		margin-top:0px;
+		margin-bottom:0px;
+		margin-right:0px;
+		margin-left:0px;
+		background-image:url(../images/indexbg.jpg);
+		repeat:  repeat-x FFFFFF;
+   		background-attachment: fixed;
+	}
+
+	TABLE.indextable{
+		cellspacing:0;
+		boder:0px;
+		cellpadding:0;
+	}
+	TABLE.columnbartable{
+		cellspacing:0px;
+		boder:0px;
+		cellpadding:0px;
+		border-collapse:collapse;
+	}
+	TD.indextd{
+		background: #FAFAFA;
+		
+	}
+	TD.columnbar1{
+		background-image:url(../images/cloumnbar1.jpg);
+		boder:0px;
+	}
+	TD.columnbar2{
+		background-image:url(../images/cloumnbar2.jpg);
+		boder:0px;
+	}
+	TD.columnbar3{
+		background-image:url(../images/cloumnbar3.jpg);
+		boder:0px;
+	}
+	TD.indexmenutitle{
+		background-color:yellow;
+	}
+	TD.indexmenucontent{
+		background-color:#EBEBEB;
+	}
+	A:link {
+  		color: #303030; text-decoration: none;
+  		text-decoration: underline;
+ 	}
+ 	A:visited {
+  		color: #303030; text-decoration: none;
+  		text-decoration: underline;
+ 	}
+ 	A:hover {
+  		color: red; text-decoration: underline;
+ 	}
+ 	HR{
+ 		border:1px dashed #000;
+ 		height:0px;
+ 		margin-top:0px;
+ 		margin-bottom:0px;
+	}
 	BODY.menubody {
 		color:#000000;
 		font-size:10pt;
@@ -17,8 +80,9 @@
 		background:#EAEAEA;
 	}
 	BODY.loginbody {
-		color:#FFFFFF;
-		font-size:16pt;
+		color:black;
+		font-size:13pt;
+		font-weight:bold;
 		margin-top:0px;
 		margin-bottom:0px;
 		margin-right:0px;
@@ -27,11 +91,19 @@
 		repeat:  repeat-x FFFFFF;
    		background-attachment: fixed;
 	}	
+	TABLE.logintable{
+		cellspacing:0;
+		boder:0;
+		width:511px;
+		height:305px;
+		cellpadding:0;
+		background-image:url(../images/loginbg.jpg);
+	}
 	TABLE.toptable{
 		cellspacing:0;
 		boder:0;
 		cellpadding:0;
-		
+		background-image:url(../images/logo.png);
 	}
 	TD.toptd{
 		font-weight:bold;
@@ -40,7 +112,7 @@
 		cellspacing:0;
 		cellpadding:0;
 		cellpadding:0;
-		background-image:url(../images/logo.png);
+		
 		repeat:  repeat-x FFFFFF;
    		background-attachment: fixed;
 	}
@@ -51,6 +123,7 @@
 		background:#C1CDCD;
 		
 	}
+	
 	TABLE.listtable{
 		cellspacing:0;
 		boder-left:0px solid;

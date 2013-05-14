@@ -68,7 +68,67 @@
 		<field fieldname="memo" fieldlabel="备注" fieldtype="1"
 			fieldlength="200" ispk="0" cannull="1" showpos="1"/>
 	</table>
-<!--	<table name="dc_uploadlog" cnname="上传日志" poolname="datacenter">-->
+	<table name="dc_column" cnname="栏目管理" poolname="datacenter">
+		<field fieldname="cid" fieldlabel="栏目编号" fieldtype="1"
+			fieldlength="20" ispk="1" cannull="0" showpos="1"/>
+		<field fieldname="ctitle" fieldlabel="标题" fieldtype="1"
+			fieldlength="100" ispk="0" cannull="0" showpos="1"/>
+		<field fieldname="clink" fieldlabel="链接地址" fieldtype="1"
+			fieldlength="256" ispk="0" cannull="1" showpos="0"/>
+		<field fieldname="showwhere" fieldlabel="显示位置" fieldtype="1"
+			fieldlength="25" ispk="0" cannull="1" showpos="0"/>
+		<field fieldname="showtype" fieldlabel="显示位置" fieldtype="3"
+			fieldlength="25" ispk="0" cannull="1" showpos="0"/>
+		<field fieldname="cheight" fieldlabel="栏目高度" fieldtype="3"
+			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="cwidth" fieldlabel="栏目宽度" fieldtype="3"
+			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="showorder" fieldlabel="显示序号" fieldtype="4"
+			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="updatetime" fieldlabel="更新时间" fieldtype="2"
+			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="operator" fieldlabel="操作人" fieldtype="1"
+			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="memo" fieldlabel="备注" fieldtype="1"
+			fieldlength="100" ispk="0" cannull="1" showpos="1"/>
+	</table>
+	<table name="dc_synlog" cnname="数据同步日志" poolname="datacenter">
+		<field fieldname="logid" fieldlabel="日志ID" fieldtype="3"
+			fieldlength="20" ispk="1" cannull="0" showpos="1"/>
+		<field fieldname="synname" fieldlabel="同步名称" fieldtype="1"
+			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="starttime" fieldlabel="同步开始时间" fieldtype="2"
+			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="endtime" fieldlabel="同步结束时间" fieldtype="2"
+			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="syncount" fieldlabel="同步数量" fieldtype="3"
+			fieldlength="25" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="batchid" fieldlabel="同步批次" fieldtype="1"
+			fieldlength="25" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="tablename" fieldlabel="表名称" fieldtype="1"
+			fieldlength="25" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="memo" fieldlabel="备注" fieldtype="1"
+			fieldlength="100" ispk="0" cannull="1" showpos="0"/>
+	</table>
+	<table name="dc_picad" cnname="图片广告" poolname="datacenter">
+		<field fieldname="picid" fieldlabel="图片ID" fieldtype="3"
+			fieldlength="20" ispk="1" cannull="1" showpos="1"/>
+		<field fieldname="title" fieldlabel="标题" fieldtype="1"
+			fieldlength="50" ispk="0" cannull="0" showpos="1"/>
+		<field fieldname="picpath" fieldlabel="图片路径" fieldtype="1"
+			fieldlength="100" ispk="0" cannull="0" showpos="1"/>
+		<field fieldname="link" fieldlabel="链接地址" fieldtype="1"
+			fieldlength="256" ispk="0" cannull="1" showpos="0"/>
+		<field fieldname="showorder" fieldlabel="显示序号" fieldtype="4"
+			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="updatetime" fieldlabel="更新时间" fieldtype="2"
+			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="operator" fieldlabel="操作人" fieldtype="1"
+			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="memo" fieldlabel="备注" fieldtype="1"
+			fieldlength="100" ispk="0" cannull="1" showpos="1"/>
+	</table>
+	<!--	<table name="dc_uploadlog" cnname="上传日志" poolname="datacenter">-->
 <!--		<field fieldname="UploadName" fieldlabel="项目名称" fieldtype="1"-->
 <!--			fieldlength="50" ispk="0" cannull="0" showpos="1"/>-->
 <!--		<field fieldname="UserName" fieldlabel="操作人" fieldtype="1"-->

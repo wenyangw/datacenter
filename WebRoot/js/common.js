@@ -133,3 +133,17 @@ function generateSql(){
 	else
 		condition.value = fieldname+" "+realop;
 }
+function reinitIframe(frameid){
+	alert("1");
+	var iframe = document.getElementById(frameid);
+	try{
+		alert(iframe.contentWindow.document);
+		alert("2");
+	var bHeight = iframe.contentWindow.document.body.scrollHeight;
+	var dHeight = iframe.contentWindow.document.documentElement.scrollHeight;
+	alert(dHeight);
+	var height = Math.max(bHeight, dHeight);
+	alert(height);
+	iframe.height =  height;
+	}catch (ex){}
+}

@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <stats>
+	<stat cnname="同步日志" methodname="tableList" specialparam="synlog" poolname="datacenter"
+		sqlstr="" tablename="dc_synlog" orderby="order by logid desc"  hiddenfields="memo" pkfield="logid">
+		<querycontrol name="synname" label="同步名称" type="text"
+			querytype="1" optionSql="" optionPoolname="datacenter"
+			conditionsql=" and synname like '%/synname/%'" conditionsql2="" isshow="1" listfield="">
+		</querycontrol>
+		<querycontrol name="starttime" label="开始时间" type="date"
+			querytype="2" optionSql="" optionPoolname="datacenter"
+			conditionsql=" and starttime &gt;= '/b_starttime/'" conditionsql2=" and starttime &lt;= '/e_starttime/ 23:59:59' " isshow="1" listfield="">
+		</querycontrol>
+	</stat>
 	<stat cnname="测试统计" methodname="sqlStat" specialparam="teststat1" poolname="datacenter"
 		sqlstr="select paramtype,count(paramcode) sl from dc_sys_param where 1=1 /paramtype/ group by paramtype"
 		tablename="" hiddenfields="" pkfield="">
@@ -13,7 +24,7 @@
 		</querycontrol>
 	</stat>
 	<stat cnname="测试查询" methodname="tableList" specialparam="teststat2" poolname="datacenter"
-		sqlstr="" tablename="dc_fyd" orderby=""  hiddenfields="fydid" pkfield="fydid">
+		sqlstr="" tablename="dc_fyd" orderby=""  hiddenfields="id" pkfield="id">
 		<querycontrol name="fydno" label="付印单号" type="text"
 			querytype="1" optionSql="" optionPoolname="datacenter"
 			conditionsql=" and fydno='/fydno/'" conditionsql2="" isshow="1" listfield="fydno">

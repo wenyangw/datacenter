@@ -25,8 +25,8 @@ public class MenuAction extends ActionSupport {
 			return "menu";
 		MenuConfig menu = new MenuConfig();
 		if("admin".equalsIgnoreCase(ruser.get("loginname"))){
-			request.setAttribute("menus", menu.getParentmenus());
-			if(main != null && main.trim().length() > 0){
+			request.setAttribute("menus", menu.getParentmenus());{
+				if(main != null && main.trim().length() > 0)
 					return "mainmenu";
 			}
 			return "menu";

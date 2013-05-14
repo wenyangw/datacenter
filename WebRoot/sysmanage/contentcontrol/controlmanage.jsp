@@ -251,7 +251,7 @@ function selectFromPram(){
 		alert("请选择操作符！");
 		return;
 	}
-	var selectedvalue = window.showModalDialog("<%=request.getContextPath() %>/sysmanage/sysParamAction?methodName=listfordialog&qparamtype="+typevalue+"&operate="+onamevalue+"&fieldtype="+fieldtype,obj,"dialogWidth:500px;dialogHeight:500px；resizable:yes");
+	var selectedvalue = window.showModalDialog("<%=request.getContextPath() %>/sysmanage/sysParamAction?methodName=listfordialog&qparamtype="+typevalue+"&operate="+onamevalue+"&fieldtype="+fieldtype,obj,"dialogWidth:500px;dialogHeight:500px;resizable:yes");
 	var sqlcontrol = document.getElementById("vnameid");
 	if(selectedvalue&&selectedvalue!='')
 		sqlcontrol.value = selectedvalue;

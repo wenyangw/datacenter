@@ -85,7 +85,6 @@ public class TableManage {
 			if (orderby != null && orderby.trim().length() > 0) {
 				sql += " " + orderby;
 			}
-			System.out.println(sql);
 			rs = stmt.executeQuery(sql);
 			ResultSetMetaData meta = rs.getMetaData();
 			int fieldCount = meta.getColumnCount();
@@ -196,7 +195,7 @@ public class TableManage {
 					+ " where " + pkfield + " not in " + "(select top "
 					+ (offset) + " " + pkfield + " from " + tableName
 					+ " where 1=1 " + condition_str + " " + orderby + ") "+ condition_str + " " + orderby;
-			System.out.println(sql);
+			// System.out.println(sql);
 			rs = stmt.executeQuery(sql);
 			ResultSetMetaData meta = rs.getMetaData();
 			int fieldCount = meta.getColumnCount();

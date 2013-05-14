@@ -60,14 +60,17 @@ if(user != null){
 %>
 <table width="100%" height="76" class="toptable">
 	<tr>
-		<td height="52" colspan="2" class="toptd" valign="MIDDLE" align="right">
-			LOGO
+		<td height="52" width="5%" class="toptd" valign="MIDDLE" align="left">
+			<img style="height:40px;margin-top:5px;" src="<%=request.getContextPath() %>/images/s.gif">
+		</td>
+		<td height="52" class="toptd" valign="MIDDLE" align="left">
+			<font size="6" color="white">北方联合出版传媒数据共享平台</font>
 		</td>
 	</tr>
 	<tr>
-		<td height="20" class="toptd2" width="40%" valign="top" align="left">
+		<td height="20" class="toptd2" width="40%" colspan="2" valign="top" align="left">
 			&nbsp;&nbsp;<%=str_user %><span id="timespan"></span>&nbsp;&nbsp;
-		<a href="#" onclick="logout()">退出系统</a>&nbsp;
+		<a href="#" onclick="logout()">退出系统</a>&nbsp;&nbsp;&nbsp;<a href="<%=request.getContextPath() %>/sysmanage/loginindex.jsp" target="_blank">首页</a>
 		</td>
 	</tr>
 </table>

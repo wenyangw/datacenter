@@ -24,35 +24,40 @@ function checkdata(){
 </script>
 </head>
 <body class="loginbody">
+<img style="height:40px;margin-top:10px;" src="<%=request.getContextPath() %>/images/s.gif">
+<font size="5" color="#FFFFFF">北方联合出版传媒数据共享平台</font>
 <table width="100%">
 	<tr>
-		<td height="120"></td>
+		<td height="70"></td>
 	</tr>
 	<tr>
-		<td align="center">
+<td align="center">
 <form name="loginform" action="<%=request.getContextPath() %>/sysmanage/loginAction" method="POST">
-<table>
+<table class="logintable">
 <tr>
-	<td>用户名</td>
-	<td><input type="text" name="loginName" id="loginNameid" value="" style="width:200px;"></td>
+	<td colspan="2" height="30" valign="bottom" align="center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<img style="height:40px;margin-top:0px;" src="<%=request.getContextPath() %>/images/userlogin.png"><font color="green">用户登录</font></td>
 </tr>
 <tr>
-	<td>密码</td>
-	<td><input type="password" name="loginPsw" id="loginPswid" value="" style="width:200px;"></td>
+	<td height="20" width="30%" align="right">用户名</td>
+	<td align="left"><input type="text" name="loginName" id="loginNameid" value="" style="width:200px;"></td>
 </tr>
 <tr>
-	<td colspan="2" align="center">
+	<td height="20"  width="30%" align="right">密&nbsp;&nbsp;&nbsp;&nbsp;码</td>
+	<td align="left"><input type="password" name="loginPsw" id="loginPswid" value="" style="width:200px;"></td>
+</tr>
+<tr>
+	<td height="20" colspan="2" align="center">
 	<input type="submit" value="登陆" onclick="return checkdata();">&nbsp;
 	<input type="reset" value="重置">
 	</td>
 </tr>
 <tr>
-	<td colspan="2" align="center">
+	<td colspan="2" height="20" align="center" valign="top">
 		<font color="white"><%=request.getAttribute("errorMsg")==null?"":(String)request.getAttribute("errorMsg") %></font>
 	</td>
 </tr>
 </table>
-
 </form>
 </td>
 	</tr>

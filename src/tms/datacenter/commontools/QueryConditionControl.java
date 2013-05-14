@@ -219,13 +219,13 @@ public class QueryConditionControl {
 						+ "<input type=\"text\" class=\"querytext\" name=\"b_"
 						+ name + "\" value=\"" + value + "\">-";
 				s += "<input type=\"text\" class=\"querytext\" name=\"e_"
-						+ name + "\" value=\"" + value + "\">";
+						+ name + "\" value=\"" + value2 + "\">";
 			} else if (CONTROL_TYPE_DATE.equalsIgnoreCase(controltype)) {
-				s = label + "<input type=\"text\" class=\"querydate\" name=\""
+				s = label + "<input type=\"text\" class=\"querydate\" name=\"b_"
 						+ name + "\" value=\"" + value
 						+ "\" onclick=\"calendar();\">-";
-				s += "<input type=\"text\" class=\"querydate\" name=\"" + name
-						+ "\" value=\"" + value + "\" onclick=\"calendar();\">";
+				s += "<input type=\"text\" class=\"querydate\" name=\"e_" + name
+						+ "\" value=\"" + value2 + "\" onclick=\"calendar();\">";
 			} else if (CONTROL_TYPE_SELECT.equalsIgnoreCase(controltype)) {
 				s = label + "<select name=\"b_" + name
 						+ "\"><option value=\"\"></option>";
