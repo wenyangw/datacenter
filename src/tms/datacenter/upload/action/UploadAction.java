@@ -57,7 +57,7 @@ public class UploadAction extends ActionSupport{
 	
 	@Override
 	public String execute() throws Exception {
-		
+		int excelCols = 0;
 		
 		HttpServletRequest request = ServletActionContext.getRequest();
 		
@@ -104,6 +104,8 @@ public class UploadAction extends ActionSupport{
 				ServletActionContext.getRequest().setAttribute("errorMsg", "上传文件无内容");
 				return "error";
 			}
+			//取到excel文件的列数
+			excelCols = ((List)list.get(0)).size();
 			//去掉标题行
 			list.remove(0);
 		}
@@ -112,7 +114,7 @@ public class UploadAction extends ActionSupport{
 		um.getTxtseparate();
 		List uploadFields = um.getColumnList();
 		//上传项目设置的字段数与上传文件实际的列数应保持一致
-		if(uploadFields.size() != ((List)list.get(0)).size()){
+		if(uploadFields.size() != excelCols){
 			ServletActionContext.getRequest().setAttribute("errorMsg", "上传文件与目标文件列数不符");
 			return "error";
 		}

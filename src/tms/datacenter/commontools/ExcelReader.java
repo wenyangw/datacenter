@@ -87,7 +87,12 @@ public class ExcelReader {
 
 				switch (cell.getCellType()) {
 				case Cell.CELL_TYPE_STRING:
-					str += cell.getRichStringCellValue().getString();
+					String s = cell.getRichStringCellValue().getString();
+					if (s.trim().length() <= 0){
+						s = " ";
+					}
+					str += s;
+					//str += cell.getRichStringCellValue().getString();
 					break;
 				case Cell.CELL_TYPE_NUMERIC:
 					if (org.apache.poi.ss.usermodel.DateUtil

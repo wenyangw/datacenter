@@ -61,14 +61,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			RuleManage rm = new RuleManage();
 			for(int i = 0; i < records.size(); i++){
 				r = (UploadMsg)records.get(i);
-				specialparam = r.getSpecialparam();
 				
-				cnname = r.getCnname();
-				lastUpload = ulm.getLastUpload(specialparam);
+					specialparam = r.getSpecialparam();
+				
+					cnname = r.getCnname();
+					lastUpload = ulm.getLastUpload(specialparam);
 				
 				//lastDate = r.get("LastUpdate");
 				//nextDate = pm.getNextUploadTime(Integer.parseInt(proId));
-				nextUpload = rm.getNextUpload(specialparam);
+					nextUpload = rm.getNextUpload(specialparam);
 				//plink = request.getContextPath()+"/upload/uploadManageAction?methodName=uploadPage&pkfield="+proId;
 				if(i%2 == 0){
 					datatdclass = "data1";
@@ -81,12 +82,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<td class="<%=datatdclass %>" align="center"><%=cnname %></td>
 				<td class="<%=datatdclass %>" align="center"><%=lastUpload %></td>
 				<td class="<%=datatdclass %>" align="center">
-				<%if(DateUtil.daysBetween(DateUtil.getCurrentDateString(DateUtil.ISO_EXPANDED_DATE_FORMAT), nextUpload) > 0){ %>
+				<%
+				if (nextUpload != null){
+				if(DateUtil.daysBetween(DateUtil.getCurrentDateString(DateUtil.ISO_EXPANDED_DATE_FORMAT), nextUpload) > 0){ %>
 				
 				<font color="blue"><%=nextUpload %></font>
 				<%}else{ %>
 				<font color="red"><%=nextUpload %></font>
-				<%} %>
+				<%}
+				}%>
 				</td>
 <%--				<td class="<%=datatdclass %>" align="center"><a href="<%=plink%>">上传</a></td>--%>
 				</tr>

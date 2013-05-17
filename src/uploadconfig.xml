@@ -9,13 +9,51 @@
 		<column number="6" fieldname="CreateDate"/>
 		<column number="7" fieldname="OperaName"/>
 	</upload>
-	<upload cnname="测试2" specialparam="test2" table="testtable2" txtseparate=",">
-		<column number="1" fieldname="field1"/>
-		<column number="2" fieldname="field2"/>
-		<column number="3" fieldname="field3"/>
-		<column number="4" fieldname="field4"/>
-		<column number="5" fieldname="field5"/>
-		<column number="6" fieldname="field6"/>
-		<column number="7" fieldname="field7"/>
+	<upload cnname="纸张信息" specialparam="dc_zzxx" table="dc_zzxx" txtseparate=",">
+		<column number="1" fieldname="ZzName"/>
+		<column number="2" fieldname="Zzgg"/>
+		<column number="3" fieldname="Zzcd"/>
+		<column number="4" fieldname="Price"/>
+		<column number="5" fieldname="JhTotal"/>
+		<column number="6" fieldname="SjdhTotal"/>
+		<column number="7" fieldname="KdTotal"/>
+		<column number="8" fieldname="KcTotal"/>
+		<column number="9" fieldname="Ysc"/>
+		<column number="10" fieldname="ThTotal"/>
+		<column number="11" fieldname="Bz"/>
+	</upload>
+	<upload cnname="教材包装发印环节信息" specialparam="dc_jcbzfy" table="dc_jcbzfy" txtseparate=",">
+		<column number="1" fieldname="BookName"/>
+		<column number="2" fieldname="BanBie"/>
+		<column number="3" fieldname="Price"/>
+		<column number="4" fieldname="StoreName"/>
+		<column number="5" fieldname="YjTotal"/>
+		<column number="6" fieldname="BzDate"/>
+		<column number="7" fieldname="BzTotal"/>
+		<column number="8" fieldname="FhDate"/>
+		<column number="9" fieldname="FhTotal"/>
+		<column number="10" fieldname="JiBie"/>
+	</upload>
+	<upload cnname="教材进货收货信息" specialparam="dc_jcjhsh" table="dc_jcjhsh" txtseparate=",">
+		<column number="1" fieldname="BookName"/>
+		<column number="2" fieldname="BanBie"/>
+		<column number="3" fieldname="Price"/>
+		<column number="4" fieldname="Ghdw"/>
+		<column number="5" fieldname="YjTotal"/>
+		<column number="6" fieldname="JhDate"/>
+		<column number="7" fieldname="DhTotal"/>
+		<column number="8" fieldname="DhDate"/>
+		<column number="9" fieldname="JiBie"/>
+	</upload>
+	<upload cnname="收书信息" specialparam="dc_ssxx" table="dc_ssxx" txtseparate=",">
+		<column number="1" fieldname="BookName"/>
+		<column number="2" fieldname="BanBie"/>
+		<column number="3" fieldname="Price"/>
+		<column number="4" fieldname="Ysc"/>
+		<column number="5" fieldname="YjTotal"/>
+		<column number="6" fieldname="JhTotal"/>
+		<column number="7" fieldname="QwTotal"/>
+		<column number="8" fieldname="CbDate"/>
+		<column number="9" fieldname="Bz"/>
 	</upload>
 </uploads>
