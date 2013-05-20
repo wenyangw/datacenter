@@ -11,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Hashtable;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -104,12 +105,24 @@ public class UploadAction extends ActionSupport{
 				ServletActionContext.getRequest().setAttribute("errorMsg", "上传文件无内容");
 				return "error";
 			}
+			
+//			for (Object o : (List)list.get(0)){
+//				System.out.println("the list is " + o);
+//				
+//			}
+			for(Iterator<String> itr = ((List)list.get(0)).iterator();itr.hasNext();)  
+	        {
+				String s = itr.next();
+				if (s.trim().length() == 0){
+					itr.remove();
+				}
+	        }
+			
 			//取到excel文件的列数
 			excelCols = ((List)list.get(0)).size();
 			//去掉标题行
 			list.remove(0);
 		}
-		
 		//取得文本文件分隔符
 		um.getTxtseparate();
 		List uploadFields = um.getColumnList();
@@ -130,15 +143,26 @@ public class UploadAction extends ActionSupport{
 		
 		String logNo = user.get("loginname") + getTime();
 		
+		//获得当前时间
+		String uploadTime = DateUtil.dateToStringWithTime(DateUtil.getCurrentDateTime());
+		
 		//将上传内容转换为存储Record的List
 		List<Record> records = new ArrayList<Record>();
 		for (int i = 0; i < list.size(); i++) {
 			List rows = (List)list.get(i);
+			System.out.println("rows's size = " + rows.size());
+			if (rows.size() == 1){
+				break;
+			}
 			Record r = new Record();
-			for(int j = 0; j < rows.size(); j++){
+			//for(int j = 0; j < rows.size(); j++){
+			for(int j = 0; j < excelCols; j++){
 				String fieldName = ((ColumnMsg)uploadFields.get(j)).getFieldname();
 				String fieldType = ((Field)tableFields.get(j)).getFieldType();
-				String fieldValue = rows.get(j).toString();
+				String fieldValue = "";
+				if(rows.size() > j){
+					fieldValue = rows.get(j).toString();
+				}
 				boolean isPk = ((Field)tableFields.get(j)).isIspk();
 				
 				r.set(fieldName, fieldValue, fieldType, isPk);
@@ -148,6 +172,7 @@ public class UploadAction extends ActionSupport{
 			r.set("organization", org, Field.FIELD_TYPE_TEXT, false);
 			r.set("department", department, Field.FIELD_TYPE_TEXT, false);
 			r.set("logno", logNo, Field.FIELD_TYPE_TEXT, false);
+			r.set("updatetime", uploadTime, Field.FIELD_TYPE_DATE, false);
 			
 			//对每个Record进行校验
 			String error = RecordCheck.checkRecord(pkfield, r, true);
@@ -159,8 +184,7 @@ public class UploadAction extends ActionSupport{
 			records.add(r);
 		}
 		
-		//获得当前时间
-		String uploadTime = DateUtil.dateToStringWithTime(DateUtil.getCurrentDateTime());
+		
 		//生成上传日志记录
 		Record log = new Record();
 		log.set("uploadname", pkfield, Field.FIELD_TYPE_TEXT, false);
@@ -207,6 +231,7 @@ public class UploadAction extends ActionSupport{
 			params.put("methodName", "list");
 			params.put("moduleid", moduleid);
 			request.setAttribute("params", params);
+			list = null;
 			return "success";
 		} catch (Exception e) {
 			try {

@@ -179,6 +179,8 @@
 			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="LogNo" fieldlabel="上传批次" fieldtype="1"
 			fieldlength="50" ispk="0" cannull="0" showpos="1"/>
+		<field fieldname="UpdateTime" fieldlabel="更新日期" fieldtype="2"
+			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
 	</table>
 	<table name="dc_ssxx" cnname="收书信息" poolname="datacenter">
 		<field fieldname="BookName" fieldlabel="书名" fieldtype="1"
@@ -207,6 +209,8 @@
 			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="LogNo" fieldlabel="上传批次" fieldtype="1"
 			fieldlength="50" ispk="0" cannull="0" showpos="1"/>
+		<field fieldname="UpdateTime" fieldlabel="更新日期" fieldtype="2"
+			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
 	</table>
 	<table name="dc_jcbzfy" cnname="教材包装以印环节信息" poolname="datacenter">
 		<field fieldname="BookName" fieldlabel="书名" fieldtype="1"
@@ -237,6 +241,8 @@
 			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="LogNo" fieldlabel="上传批次" fieldtype="1"
 			fieldlength="50" ispk="0" cannull="0" showpos="1"/>
+		<field fieldname="UpdateTime" fieldlabel="更新日期" fieldtype="2"
+			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
 	</table>
 	<table name="dc_jcjhsh" cnname="教材进货收货信息" poolname="datacenter">
 		<field fieldname="BookName" fieldlabel="书名" fieldtype="1"
@@ -265,6 +271,8 @@
 			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="LogNo" fieldlabel="上传批次" fieldtype="1"
 			fieldlength="50" ispk="0" cannull="0" showpos="1"/>
+		<field fieldname="UpdateTime" fieldlabel="更新日期" fieldtype="2"
+			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
 	</table>
 	<table name="dc_fyd" cnname="付印单" poolname="datacenter">
 		<field fieldname="FydNo" fieldlabel="付印单编码" fieldtype="1"
@@ -288,6 +296,8 @@
 		<field fieldname="department" fieldlabel="部门" fieldtype="1"
 			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="logno" fieldlabel="上传批次" fieldtype="1"
+			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="UpdateTime" fieldlabel="更新日期" fieldtype="2"
 			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
 	</table>
 	

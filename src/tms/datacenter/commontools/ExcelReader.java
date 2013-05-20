@@ -66,7 +66,8 @@ public class ExcelReader {
 	}
 	
 	public Sheet getSheet() throws Exception{
-		return getWorkbook().getSheetAt(0);
+		Sheet sheet = getWorkbook().getSheetAt(0);
+		return sheet;
 	}
     
     public String getContent() throws Exception {
@@ -87,12 +88,7 @@ public class ExcelReader {
 
 				switch (cell.getCellType()) {
 				case Cell.CELL_TYPE_STRING:
-					String s = cell.getRichStringCellValue().getString();
-					if (s.trim().length() <= 0){
-						s = " ";
-					}
-					str += s;
-					//str += cell.getRichStringCellValue().getString();
+					str += cell.getRichStringCellValue().getString();
 					break;
 				case Cell.CELL_TYPE_NUMERIC:
 					if (org.apache.poi.ss.usermodel.DateUtil
@@ -152,7 +148,7 @@ public class ExcelReader {
 						    // 是否为int型
 						    	str = Integer.toString((int) d);
 						    }else { 
-						    	System.out.println("double.....");
+						    	//System.out.println("double.....");
 						    	// 是否为double型
 						    	str = Double.toString(cell.getNumericCellValue());
 						    }
@@ -171,6 +167,7 @@ public class ExcelReader {
 				}
 				lists.add(list);
 			}
+			System.out.println("lists'size are " + lists.size());
 		return lists;
 		// return stringBuilder.toString();
 	}
@@ -179,18 +176,21 @@ public class ExcelReader {
 	
 	public static void main(String[] args) throws Exception {
 		//File file = new File("D:\\book1.xlsx");
-		String fileName = "D:\\book1.xls";
+		String fileName = "D:\\book2.xls";
 		ExcelReader read = new ExcelReader(new File(fileName), EXCEL2003);
+		int i = 1;
 		if(read.isExcel()){
 			//read = new ExcelReader(fileName);
 			List lists = read.getExcelContents();
-			for(Object o : lists){
-				List list = (List)o;
-				for(Object oo : list){
-					System.out.print(String.valueOf(oo) + "\t");
-				}
-				System.out.print("\n");
-			}
+			System.out.println("size = " + lists.size());
+//			for(Object o : lists){
+//				List list = (List)o;
+//				System.out.print(String.valueOf(i++) + "\t");
+//				for(Object oo : list){
+//					System.out.print(String.valueOf(oo) + "\t");
+//				}
+//				System.out.print("\n");
+//			}
 		}else{
 			System.out.println("文件格式不对！");
 		}
