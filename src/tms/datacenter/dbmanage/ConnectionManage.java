@@ -296,11 +296,11 @@ public class ConnectionManage {
 
 		{
 			Connection con = null;
-			// 如果闲置小于最大连接,返回一个新连接
+			// 如果没有可用连接
 			if (freeConnections.size() <= 0) {
 				con = newConnection();
 			}
-			// 如果闲置大于最大连接，返回一个可用的旧连接
+			// 如果有可用连接
 			else if (freeConnections.size() > 0) {
 				con = (Connection) freeConnections.firstElement();
 //				System.out.println(" [a 连接池可用连接数 ] : " + "[ "

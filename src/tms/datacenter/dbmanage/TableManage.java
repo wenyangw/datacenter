@@ -852,6 +852,7 @@ public class TableManage {
 		}
 		return "";
 	}
+	
 	public static void main(String[] args) {
 		ConnectionManage cm = ConnectionManage.getInstance();
 		Connection conn = cm.getConnection("datacenter");

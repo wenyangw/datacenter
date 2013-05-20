@@ -101,6 +101,7 @@
 			<operation name="detail" cnname="查看" specialparam="" id="m01m06m07"
 				privilegevalue="64" showpos="1" needconfirm="0" selectcount="1"/>
 		</module>
+		
 	</topmodule>
 	<topmodule name="文件上传" id="m02">
 		<module name="上传管理" id="m02m01" actionclass="tms.datacenter.upload.action.UploadManageAction">
@@ -151,6 +152,35 @@
 			<operation name="exportToExcel" cnname="导出" specialparam="teststat2" id="m03m02m02"
 				privilegevalue="2" showpos="1" needconfirm="0" selectcount="0"/>
 		</module>
-		
+		<module name="付印单查询" id="m03m03" actionclass="tms.datacenter.stat.action.CommonStatAction">
+			<operation name="list" cnname="付印单列表" specialparam="fydquery" id="m03m03m01"
+				privilegevalue="1" showpos="0" needconfirm="0" selectcount="0"/>
+			<operation name="exportToExcel" cnname="导出" specialparam="fydquery" id="m03m03m02"
+				privilegevalue="2" showpos="1" needconfirm="0" selectcount="0"/>
+		</module>
+		<module name="纸张信息" id="m03m04" actionclass="tms.datacenter.stat.action.CommonStatAction">
+			<operation name="list" cnname="纸张信息列表" specialparam="zzxx" id="m03m04m01"
+				privilegevalue="1" showpos="0" needconfirm="0" selectcount="0"/>
+			<operation name="exportToExcel" cnname="导出" specialparam="zzxx" id="m03m04m02"
+				privilegevalue="2" showpos="1" needconfirm="0" selectcount="0"/>
+		</module>
+		<module name="教材包装发印环节" id="m03m05" actionclass="tms.datacenter.stat.action.CommonStatAction">
+			<operation name="list" cnname="教材包装发印环节列表" specialparam="fyhj" id="m03m05m01"
+				privilegevalue="1" showpos="0" needconfirm="0" selectcount="0"/>
+			<operation name="exportToExcel" cnname="导出" specialparam="fyhj" id="m03m05m02"
+				privilegevalue="2" showpos="1" needconfirm="0" selectcount="0"/>
+		</module>
+		<module name="教材进货收货信息" id="m03m06" actionclass="tms.datacenter.stat.action.CommonStatAction">
+			<operation name="list" cnname="教材进货收货信息列表" specialparam="jcjhsh" id="m03m06m01"
+				privilegevalue="1" showpos="0" needconfirm="0" selectcount="0"/>
+			<operation name="exportToExcel" cnname="导出" specialparam="jcjhsh" id="m03m06m02"
+				privilegevalue="2" showpos="1" needconfirm="0" selectcount="0"/>
+		</module>
+		<module name="收书信息" id="m03m07" actionclass="tms.datacenter.stat.action.CommonStatAction">
+			<operation name="list" cnname="收书信息列表" specialparam="ssxx" id="m03m07m01"
+				privilegevalue="1" showpos="0" needconfirm="0" selectcount="0"/>
+			<operation name="exportToExcel" cnname="导出" specialparam="ssxx" id="m03m07m02"
+				privilegevalue="2" showpos="1" needconfirm="0" selectcount="0"/>
+		</module>
 	</topmodule>
 </privilege>

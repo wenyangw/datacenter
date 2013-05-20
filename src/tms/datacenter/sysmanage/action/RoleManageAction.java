@@ -20,6 +20,7 @@ import tms.datacenter.dbmanage.TableManage;
 import tms.datacenter.sysmanage.ContentControl;
 import tms.datacenter.sysmanage.RoleManage;
 import tms.datacenter.sysmanage.SysParam;
+import tms.datacenter.sysmanage.UploadPrivilege;
 import tms.datacenter.sysmanage.UserManage;
 
 public class RoleManageAction extends PrivilegeParentAction {
@@ -273,6 +274,7 @@ public class RoleManageAction extends PrivilegeParentAction {
 		Hashtable rolePrivilege = rm.getRolePrivilege("datacenter", rolecode);
 		request.setAttribute("allPrivilege", allPrivilege);
 		request.setAttribute("rolePrivilege", rolePrivilege);
+		
 		return "privilege";
 	}
 	public String updatePrivilege(){

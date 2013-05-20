@@ -17,6 +17,7 @@ import tms.datacenter.dbmanage.TableManage;
 import tms.datacenter.sysmanage.ContentControl;
 import tms.datacenter.sysmanage.RoleManage;
 import tms.datacenter.sysmanage.SysParam;
+import tms.datacenter.sysmanage.UploadPrivilege;
 import tms.datacenter.sysmanage.UserManage;
 
 public class UserManageAction extends PrivilegeParentAction {
@@ -155,7 +156,9 @@ public class UserManageAction extends PrivilegeParentAction {
 		ContentControl cc = new ContentControl();
 		ArrayList allcontrols = cc.getAllControls();
 		request.setAttribute("allcontrols", allcontrols);
-		
+		UploadPrivilege up = new UploadPrivilege();
+		request.setAttribute("allupload", up.getAllUploads());
+		//request.setAttribute("userupload", up.getUserUploadsName(loginname));
 		return "usermanage";
 	}
 
@@ -255,7 +258,17 @@ public class UserManageAction extends PrivilegeParentAction {
 					}
 				}
 			}
+			String[] uploadspecialparams = request.getParameterValues("uploadspecialparam");
+			if (uploadspecialparams != null && uploadspecialparams.length > 0) {
+				UploadPrivilege up = new UploadPrivilege();
+				if(!up.setPrivilege(conn,loginname, uploadspecialparams)){
+					conn.rollback();
+					return this.operaterError("更新上传权限失败！");
+				}
+					
+			}
 			conn.commit();
+			
 			this.setReturnAction(request.getContextPath()
 					+ "/sysmanage/userManageAction");
 			Hashtable params = new Hashtable();
@@ -326,6 +339,9 @@ public class UserManageAction extends PrivilegeParentAction {
 		ArrayList usercontrols = cc.getUserControlCodes(loginname);
 		request.setAttribute("allcontrols", allcontrols);
 		request.setAttribute("usercontrols", usercontrols);
+		UploadPrivilege up = new UploadPrivilege();
+		request.setAttribute("allupload", up.getAllUploads());
+		request.setAttribute("userupload", up.getUserUploadsName(loginname));
 		return "usermanage";
 	}
 
@@ -429,6 +445,15 @@ public class UserManageAction extends PrivilegeParentAction {
 						}
 					}
 				}
+			}
+			String[] uploadspecialparams = request.getParameterValues("uploadspecialparam");
+			if (uploadspecialparams != null && uploadspecialparams.length > 0) {
+				UploadPrivilege up = new UploadPrivilege();
+				if(!up.setPrivilege(conn,loginname, uploadspecialparams)){
+					conn.rollback();
+					return this.operaterError("更新上传权限失败！");
+				}
+					
 			}
 			conn.commit();
 			this.setReturnAction(request.getContextPath()

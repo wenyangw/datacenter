@@ -66,8 +66,7 @@ public class ExcelReader {
 	}
 	
 	public Sheet getSheet() throws Exception{
-		Sheet sheet = getWorkbook().getSheetAt(0);
-		return sheet;
+		return getWorkbook().getSheetAt(0);
 	}
     
     public String getContent() throws Exception {
@@ -167,7 +166,6 @@ public class ExcelReader {
 				}
 				lists.add(list);
 			}
-			System.out.println("lists'size are " + lists.size());
 		return lists;
 		// return stringBuilder.toString();
 	}
@@ -176,9 +174,8 @@ public class ExcelReader {
 	
 	public static void main(String[] args) throws Exception {
 		//File file = new File("D:\\book1.xlsx");
-		String fileName = "D:\\book2.xls";
+		String fileName = "D:\\book1.xls";
 		ExcelReader read = new ExcelReader(new File(fileName), EXCEL2003);
-		int i = 1;
 		if(read.isExcel()){
 			//read = new ExcelReader(fileName);
 			List lists = read.getExcelContents();

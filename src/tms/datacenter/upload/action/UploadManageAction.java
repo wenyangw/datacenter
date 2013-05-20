@@ -24,6 +24,7 @@ import tms.datacenter.dbmanage.Record;
 import tms.datacenter.dbmanage.RecordCheck;
 import tms.datacenter.dbmanage.TableManage;
 import tms.datacenter.sysmanage.ContentControl;
+import tms.datacenter.sysmanage.UploadPrivilege;
 import tms.datacenter.sysmanage.action.PrivilegeParentAction;
 import tms.datacenter.upload.ColumnMsg;
 import tms.datacenter.upload.RuleManage;
@@ -51,9 +52,12 @@ public class UploadManageAction  extends PrivilegeParentAction {
 		ContentControl cc = new ContentControl();
 		String condition = cc.getControlSQL(this.getLoginUser(), "dc_role");
 		
-		UploadConfig uc = UploadConfig.getInstance();
-		ArrayList uploads = uc.getUploadslist();
-		
+//		UploadConfig uc = UploadConfig.getInstance();
+//		ArrayList uploads = uc.getUploadslist();
+		Record user = this.getLoginUser();
+		String loginName = user.get("loginname");
+		UploadPrivilege up = new UploadPrivilege();
+		ArrayList uploads = up.getUserUploads(loginName);
 		//request.setAttribute("records", records);
 		request.setAttribute("records", uploads);
 		//request.setAttribute("pager", pager.getPage());

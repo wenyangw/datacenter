@@ -69,14 +69,14 @@ public class UploadAction extends ActionSupport{
 		TableConfig tc = TableConfig.getInstance();
 		TableDesc td = tc.getTable(pkfield);
 		
-		List tableFields = new ArrayList();
+		//List tableFields = new ArrayList();
 		
-		if(td == null){
-			request.setAttribute("errorMsg", "上传配置文件错误，请联系管理员！");
-			return "error";
-		}else{
-			tableFields = td.getFieldList();
-		}
+//		if(td == null){
+//			request.setAttribute("errorMsg", "上传配置文件错误，请联系管理员！");
+//			return "error";
+//		}else{
+//			tableFields = td.getFieldList();
+//		}
 		//上传文件只能接收excel2003和2007格式以及txt文本文件
 		if(!(uploadContentType.equals(EXCEL2003) || uploadContentType.equals(EXCEL2007) || uploadContentType.equals(TXTFILE))){
 			request.setAttribute("errorMsg", "上传文件格式不对");
@@ -158,12 +158,12 @@ public class UploadAction extends ActionSupport{
 			//for(int j = 0; j < rows.size(); j++){
 			for(int j = 0; j < excelCols; j++){
 				String fieldName = ((ColumnMsg)uploadFields.get(j)).getFieldname();
-				String fieldType = ((Field)tableFields.get(j)).getFieldType();
+				String fieldType = ((Field)td.getField(fieldName)).getFieldType();
 				String fieldValue = "";
 				if(rows.size() > j){
 					fieldValue = rows.get(j).toString();
 				}
-				boolean isPk = ((Field)tableFields.get(j)).isIspk();
+				boolean isPk = ((Field)td.getField(fieldName)).isIspk();
 				
 				r.set(fieldName, fieldValue, fieldType, isPk);
 			}
@@ -175,7 +175,7 @@ public class UploadAction extends ActionSupport{
 			r.set("updatetime", uploadTime, Field.FIELD_TYPE_DATE, false);
 			
 			//对每个Record进行校验
-			String error = RecordCheck.checkRecord(pkfield, r, true);
+			String error = RecordCheck.checkRecord(pkfield, r, false,true);
 			if(error != null && error.trim().length() > 0){
 				request.setAttribute("errorMsg", "在第" + (i+1) + "行生成数据失败，\n" + error + "\n请仔细核对！");
 				return "error";

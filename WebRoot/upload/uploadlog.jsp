@@ -102,7 +102,7 @@ String tableName = (String)request.getAttribute("tablename");
 		<td align="right">
 			<%
 				ArrayList uo = (ArrayList)request.getAttribute("uo");
-				out.println(RoleManage.paraUserOperationToButton(uo,Operation.SHOW_POS_ADD));
+				out.println(RoleManage.paraUserOperationToButton(uo,"2"));
 			%>
 		</td>
 	</tr>

@@ -116,7 +116,7 @@ public class RecordCheck {
 				else
 					rfieldvalue = null;
 				if(rfieldvalue == null || rfieldvalue.trim().length() <= 0){
-					if(Field.CAN_NULL_NO.equals(cannull)){
+					if(Field.CAN_NULL_NO.equals(cannull)&&!ispk&&!autopk){
 						return fieldlabel+"²»ÄÜÎª¿Õ£¡";
 					}
 				}

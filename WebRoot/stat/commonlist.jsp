@@ -32,7 +32,7 @@
 	out.println("<input type=\"button\" value=\"查询\" onclick=\"commonOperateSimple('list')\">");
 %>
 <div class="listdiv">
-<table width="100%" class="listtable">
+<table width="98%" class="listtable">
 	
 	<%
 		Hashtable fieldLabels = (Hashtable)request.getAttribute("fieldslabels");

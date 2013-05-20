@@ -38,5 +38,20 @@
 		<sonmenu name="测试2" id="m03m02"
 			actionclass="tms.datacenter.stat.action.CommonStatAction"
 			privilege="1" link="/stat/commonStatAction?methodName=list&amp;specialParam=teststat2&amp;moduleid=m03m02" />
+		<sonmenu name="付印单信息" id="m03m03"
+			actionclass="tms.datacenter.stat.action.CommonStatAction"
+			privilege="1" link="/stat/commonStatAction?methodName=list&amp;specialParam=fydquery&amp;moduleid=m03m03" />
+		<sonmenu name="纸张信息" id="m03m04"
+			actionclass="tms.datacenter.stat.action.CommonStatAction"
+			privilege="1" link="/stat/commonStatAction?methodName=list&amp;specialParam=zzxx&amp;moduleid=m03m04" />
+		<sonmenu name="教材包装发印环节" id="m03m05"
+			actionclass="tms.datacenter.stat.action.CommonStatAction"
+			privilege="1" link="/stat/commonStatAction?methodName=list&amp;specialParam=fyhj&amp;moduleid=m03m05" />
+		<sonmenu name="教材进货收货信息" id="m03m06"
+			actionclass="tms.datacenter.stat.action.CommonStatAction"
+			privilege="1" link="/stat/commonStatAction?methodName=list&amp;specialParam=jcjhsh&amp;moduleid=m03m06" />
+		<sonmenu name="收书信息" id="m03m07"
+			actionclass="tms.datacenter.stat.action.CommonStatAction"
+			privilege="1" link="/stat/commonStatAction?methodName=list&amp;specialParam=ssxx&amp;moduleid=m03m07" />
 	</parentmenu>
 </menu>

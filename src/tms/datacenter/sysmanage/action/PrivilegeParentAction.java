@@ -54,7 +54,8 @@ public class PrivilegeParentAction extends ActionSupport{
 			}else{
 				lastValue=0;
 			}
-		}
+		}if(user_privilege == null)
+			user_privilege = new Hashtable();
 		if(lastValue > 0){
 			Class c = getClass();
 			Method method = c.getMethod(methodName, null);

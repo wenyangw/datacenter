@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8" import="tms.datacenter.dbmanage.*,java.util.*"%>
+    pageEncoding="utf-8" import="tms.datacenter.dbmanage.*,java.util.*,tms.datacenter.upload.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -260,6 +260,40 @@ ArrayList depts  = (ArrayList)request.getAttribute("depts");
 						}else{
 							%>
 							<input type="checkbox" name="controlcode" value="<%=controlcode %>"><%=tablecnname+"("+tablename+")_"+controldesc %>&nbsp;
+							<%
+						}
+					}
+				}
+			}
+			%>
+		</td>
+	</tr>
+	<tr>
+		<td class="tdhead" align="center" colspan="2">上传权限控制</td>
+	</tr>
+	<tr>
+		<td class="data1"  colspan="2">
+			<%
+			ArrayList allupload =  (ArrayList)request.getAttribute("allupload");
+			ArrayList userupload =  (ArrayList)request.getAttribute("userupload");
+			if(userupload == null)
+				userupload = new ArrayList();
+			if(allupload != null && allupload.size() > 0){
+				String upname = "";
+				String specialparam = "";
+				UploadMsg um = null;
+				for(int i = 0; i < allupload.size(); i++){
+					um = (UploadMsg)allupload.get(i);
+					upname = um.getCnname();
+					specialparam = um.getSpecialparam();
+					if(specialparam != null&&specialparam.trim().length() > 0){
+						if(userupload.contains(specialparam)){
+							%>
+							<input type="checkbox" name="uploadspecialparam" checked="checked" value="<%=specialparam %>"><%=upname%>&nbsp;
+							<%
+						}else{
+							%>
+							<input type="checkbox" name="uploadspecialparam"  value="<%=specialparam %>"><%=upname%>&nbsp;
 							<%
 						}
 					}

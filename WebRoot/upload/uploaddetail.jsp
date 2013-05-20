@@ -55,9 +55,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<tr>
 		<td class="tdhead" align="center" height="25">全选<input type="checkbox" name="selectAll" value="1" onclick="checkAll(this,'pkfield')"></td>
 		<%
-		for(Object o : lists){
+		for(int i = 0; i < lists.size(); i++){
 			//取得上传字段的名称
-			String str = ((ColumnMsg)o).getFieldname();
+			String str = ((ColumnMsg)lists.get(i)).getFieldname();
 			//取得数据表字段的描述
 			String label = td.getField(str).getFieldLabel();
 		%>
