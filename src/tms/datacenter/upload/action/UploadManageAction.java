@@ -4,8 +4,10 @@ import java.io.File;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -226,7 +228,6 @@ public class UploadManageAction  extends PrivilegeParentAction {
 		String[] logNos = request.getParameterValues("logNo");
 		String tableName = request.getParameter("tablename");
 		
-		System.out.println("tablename = " + tableName);
 		if (logNos == null || logNos.length != 1)
 			return this.operaterError("请选择1条记录进行操作！");
 		
@@ -336,4 +337,90 @@ public class UploadManageAction  extends PrivilegeParentAction {
 		}
 	}
 	
+	public String compare(){
+		HttpServletRequest request = this.getRequest();
+		String[] logNos = request.getParameterValues("logNo");
+		String tableName = request.getParameter("tablename");
+		
+		if (logNos == null || logNos.length != 1)
+			return this.operaterError("请选择1条记录进行操作！");
+		
+		String logNo = logNos[0];
+		
+		String page = request.getParameter("page");
+		if (page == null || !page.matches("\\d+"))
+			page = "0";
+		int int_page = Integer.parseInt(page);
+
+		Hashtable parames = new Hashtable();
+		parames.put("methodName", "compare");
+		
+		TableManage tm = new TableManage();
+		tm.setTableName(tableName);
+		
+		//读取上传配置文件，得到对应上传项目的字段数
+		UploadConfig uc = UploadConfig.getInstance();
+		UploadMsg um = uc.getUpload(tableName);
+		
+		ArrayList resultList = tm.getAllRecords("datacenter", "logNo = '" + logNo + "'", "");
+		
+		Set<String> set = new HashSet<String>();
+		List<Record> mulList = new ArrayList<Record>();
+		
+		for (Object o : resultList){
+			Record r = (Record)o;
+			String allField = "";
+			for(Object o1 : um.getColumnList()){
+				//System.out.println(((ColumnMsg)o1).getFieldname());
+				//System.out.println(r.get(((ColumnMsg)o1).getFieldname()));
+				allField += r.get(((ColumnMsg)o1).getFieldname()).trim();
+				
+			}
+						
+			if(set.contains(allField)){
+				mulList.add(r);
+			}else{
+				set.add(allField);
+			}
+			System.out.println(allField);
+			
+		}
+		System.out.println("mulList's size = " + mulList.size());
+		
+		
+		
+		//int totalcount = resultList.size();
+
+		//Pager pager = new Pager(int_page, totalcount, request.getContextPath()
+//				+ "/upload/uploadManageAction", parames);
+//		pager.setListMethodName("detail");
+//		pager.setSize(15);
+//		int offset = pager.getStartposition();
+//		//在数据库中获取数据List<Record>
+//		ArrayList al = (ArrayList)tm.getPageRecord("datacenter",
+//			"logNo = '" + logNo + "'",
+//			"",
+//			"id",
+//			offset,
+//			pager.getSize());
+//		
+//		//将上述的List<Record>，转换为List<List>，与数据表无关，并传入jsp页面
+//		if (al != null && al.size() != 0) {
+			
+			//Record role = (Record) records.get(0);
+			request.setAttribute("tablename", tableName);
+			request.setAttribute("logNo", logNo);
+			request.setAttribute("details", mulList);
+		//	request.setAttribute("pager", pager.getPage());
+//		} else{
+//			return this.operaterError("上传内容不存在！");
+//		}
+			
+		String moduleid=StringToZn.toZn(request.getParameter("moduleid"));
+		if(moduleid == null)
+			moduleid = "";
+		request.setAttribute("moduleid", moduleid);
+
+		return "detail";
+	}
 }

@@ -118,7 +118,9 @@
 			<operation name="detail" cnname="查看" specialparam="" id="m02m01m06"
 				privilegevalue="32" showpos="2" needconfirm="0" selectcount="0"/>
 			<operation name="delete" cnname="删除" specialparam="" id="m02m01m07"
-				privilegevalue="64" showpos="3" needconfirm="0" selectcount="0"/>	
+				privilegevalue="64" showpos="3" needconfirm="0" selectcount="0"/>
+			<operation name="compare" cnname="上传数据比较" specialparam="" id="m02m01m08"
+				privilegevalue="128" showpos="2" needconfirm="0" selectcount="0"/>		
 		</module>
 		<module name="上传计划" id="m02m02" actionclass="tms.datacenter.upload.action.RuleManageAction">
 			<operation name="list" cnname="列表" specialparam="" id="m02m02m01"

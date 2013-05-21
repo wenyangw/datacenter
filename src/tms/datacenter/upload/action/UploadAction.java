@@ -150,7 +150,6 @@ public class UploadAction extends ActionSupport{
 		List<Record> records = new ArrayList<Record>();
 		for (int i = 0; i < list.size(); i++) {
 			List rows = (List)list.get(i);
-			System.out.println("rows's size = " + rows.size());
 			if (rows.size() == 1){
 				break;
 			}
