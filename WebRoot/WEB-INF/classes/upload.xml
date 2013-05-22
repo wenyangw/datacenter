@@ -36,6 +36,7 @@
             <result name="uploadlog">/upload/uploadlog.jsp</result>
             <result name="upload">/upload/upload.jsp</result>
             <result name="detail">/upload/uploaddetail.jsp</result>
+            <result name="compare">/upload/uploadCompare.jsp</result>
         </action>
         <action name="uploadAction" class="tms.datacenter.upload.action.UploadAction">
             <result name="uploadshow">/upload/uploadshow.jsp</result>

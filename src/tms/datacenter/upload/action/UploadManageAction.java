@@ -4,9 +4,11 @@ import java.io.File;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
@@ -345,7 +347,7 @@ public class UploadManageAction  extends PrivilegeParentAction {
 		if (logNos == null || logNos.length != 1)
 			return this.operaterError("请选择1条记录进行操作！");
 		
-		String logNo = logNos[0];
+		//String logNo = logNos[0];
 		
 		String page = request.getParameter("page");
 		if (page == null || !page.matches("\\d+"))
@@ -362,14 +364,27 @@ public class UploadManageAction  extends PrivilegeParentAction {
 		UploadConfig uc = UploadConfig.getInstance();
 		UploadMsg um = uc.getUpload(tableName);
 		
-		ArrayList resultList = tm.getAllRecords("datacenter", "logNo = '" + logNo + "'", "");
+		String condition = "(";
+		for (int i = 0; i <= logNos.length; i++){
+			if (i != 0){
+				condition += " or ";
+			}
+			condition += "logNo = '" + logNos[i] + "'";
+			
+		}
+		condition += ")";
 		
-		Set<String> set = new HashSet<String>();
+		//ArrayList resultList = tm.getAllRecords("datacenter", "logNo = '" + logNo + "'", "");
+		ArrayList resultList = tm.getAllRecords("datacenter", condition, "");
+		
+		//Set<String> set = new HashSet<String>();
+		Map<String, Record> map = new HashMap<String, Record>();
 		List<Record> mulList = new ArrayList<Record>();
 		
 		for (Object o : resultList){
 			Record r = (Record)o;
 			String allField = "";
+			//String log = r.get("logNo");
 			for(Object o1 : um.getColumnList()){
 				//System.out.println(((ColumnMsg)o1).getFieldname());
 				//System.out.println(r.get(((ColumnMsg)o1).getFieldname()));
@@ -377,10 +392,14 @@ public class UploadManageAction  extends PrivilegeParentAction {
 				
 			}
 						
-			if(set.contains(allField)){
+			//if(set.contains(allField)){
+			if (map.containsKey(allField)){
 				mulList.add(r);
+				mulList.add(map.get(allField));
+				
 			}else{
-				set.add(allField);
+				//set.add(allField);
+				map.put(allField, r);
 			}
 			System.out.println(allField);
 			
@@ -409,7 +428,7 @@ public class UploadManageAction  extends PrivilegeParentAction {
 			
 			//Record role = (Record) records.get(0);
 			request.setAttribute("tablename", tableName);
-			request.setAttribute("logNo", logNo);
+			//request.setAttribute("logNo", logNo);
 			request.setAttribute("details", mulList);
 		//	request.setAttribute("pager", pager.getPage());
 //		} else{
@@ -421,6 +440,6 @@ public class UploadManageAction  extends PrivilegeParentAction {
 			moduleid = "";
 		request.setAttribute("moduleid", moduleid);
 
-		return "detail";
+		return "compare";
 	}
 }
