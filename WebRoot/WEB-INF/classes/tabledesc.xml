@@ -400,11 +400,11 @@
 		<field fieldname="id" fieldlabel="编号" fieldtype="3"
 			fieldlength="4" ispk="1" cannull="0" showpos="1"/>
 		<field fieldname="ZzName" fieldlabel="品种" fieldtype="1"
-			fieldlength="30" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="100" ispk="0" cannull="0" showpos="1"/>
 		<field fieldname="Zzgg" fieldlabel="纸张规格" fieldtype="1"
-			fieldlength="10" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="50" ispk="0" cannull="0" showpos="1"/>
 		<field fieldname="Zzcd" fieldlabel="纸张产地" fieldtype="1"
-			fieldlength="10" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="50" ispk="0" cannull="0" showpos="1"/>
 		<field fieldname="Price" fieldlabel="价格" fieldtype="4"
 			fieldlength="12" ispk="0" cannull="0" showpos="1"/>
 		<field fieldname="JhTotal" fieldlabel="本季计划用纸" fieldtype="4"
@@ -416,7 +416,7 @@
 		<field fieldname="KcTotal" fieldlabel="库存量" fieldtype="4"
 			fieldlength="9" ispk="0" cannull="0" showpos="1"/>
 		<field fieldname="Ysc" fieldlabel="承印厂" fieldtype="1"
-			fieldlength="20" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="50" ispk="0" cannull="0" showpos="1"/>
 		<field fieldname="ThTotal" fieldlabel="提货数量" fieldtype="4"
 			fieldlength="9" ispk="0" cannull="0" showpos="1"/>
 		<field fieldname="Bz" fieldlabel="备注" fieldtype="1"

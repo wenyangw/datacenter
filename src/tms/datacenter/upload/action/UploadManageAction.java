@@ -344,8 +344,8 @@ public class UploadManageAction  extends PrivilegeParentAction {
 		String[] logNos = request.getParameterValues("logNo");
 		String tableName = request.getParameter("tablename");
 		
-		if (logNos == null || logNos.length != 1)
-			return this.operaterError("请选择1条记录进行操作！");
+		if (logNos == null)
+			return this.operaterError("请至少选择1条记录进行操作！");
 		
 		//String logNo = logNos[0];
 		
@@ -364,8 +364,9 @@ public class UploadManageAction  extends PrivilegeParentAction {
 		UploadConfig uc = UploadConfig.getInstance();
 		UploadMsg um = uc.getUpload(tableName);
 		
+		//选择多批次对比时，将批次号连接
 		String condition = "(";
-		for (int i = 0; i <= logNos.length; i++){
+		for (int i = 0; i < logNos.length; i++){
 			if (i != 0){
 				condition += " or ";
 			}
@@ -377,45 +378,41 @@ public class UploadManageAction  extends PrivilegeParentAction {
 		//ArrayList resultList = tm.getAllRecords("datacenter", "logNo = '" + logNo + "'", "");
 		ArrayList resultList = tm.getAllRecords("datacenter", condition, "");
 		
-		//Set<String> set = new HashSet<String>();
-		Map<String, Record> map = new HashMap<String, Record>();
+		Map<String, List<Record>> map = new HashMap<String, List<Record>>();
 		List<Record> mulList = new ArrayList<Record>();
 		
 		for (Object o : resultList){
 			Record r = (Record)o;
 			String allField = "";
-			//String log = r.get("logNo");
 			for(Object o1 : um.getColumnList()){
-				//System.out.println(((ColumnMsg)o1).getFieldname());
-				//System.out.println(r.get(((ColumnMsg)o1).getFieldname()));
 				allField += r.get(((ColumnMsg)o1).getFieldname()).trim();
-				
 			}
 						
-			//if(set.contains(allField)){
 			if (map.containsKey(allField)){
-				mulList.add(r);
-				mulList.add(map.get(allField));
-				
+				map.get(allField).add(r);
 			}else{
-				//set.add(allField);
-				map.put(allField, r);
+				List<Record> temp = new ArrayList<Record>();
+				temp.add(r);
+				map.put(allField, temp);
 			}
-			System.out.println(allField);
-			
 		}
-		System.out.println("mulList's size = " + mulList.size());
+		for (Map.Entry<String, List<Record>> entry : map.entrySet()) {
+            List<Record> value = entry.getValue();
+            if (value.size() > 1){
+            	mulList.addAll(value);
+            }
+        }
 		
 		
 		
-		//int totalcount = resultList.size();
-
-		//Pager pager = new Pager(int_page, totalcount, request.getContextPath()
+//		int totalcount = resultList.size();
+//
+//		Pager pager = new Pager(int_page, totalcount, request.getContextPath()
 //				+ "/upload/uploadManageAction", parames);
 //		pager.setListMethodName("detail");
 //		pager.setSize(15);
 //		int offset = pager.getStartposition();
-//		//在数据库中获取数据List<Record>
+		//在数据库中获取数据List<Record>
 //		ArrayList al = (ArrayList)tm.getPageRecord("datacenter",
 //			"logNo = '" + logNo + "'",
 //			"",
@@ -423,14 +420,14 @@ public class UploadManageAction  extends PrivilegeParentAction {
 //			offset,
 //			pager.getSize());
 //		
-//		//将上述的List<Record>，转换为List<List>，与数据表无关，并传入jsp页面
+		//将上述的List<Record>，转换为List<List>，与数据表无关，并传入jsp页面
 //		if (al != null && al.size() != 0) {
 			
 			//Record role = (Record) records.get(0);
 			request.setAttribute("tablename", tableName);
 			//request.setAttribute("logNo", logNo);
 			request.setAttribute("details", mulList);
-		//	request.setAttribute("pager", pager.getPage());
+//			request.setAttribute("pager", pager.getPage());
 //		} else{
 //			return this.operaterError("上传内容不存在！");
 //		}
