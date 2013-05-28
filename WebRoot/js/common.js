@@ -1,3 +1,4 @@
+
 function checkAll(checkAllControl,checkBoxName){
 	var checkboxes = document.getElementsByName(checkBoxName);
 	if(checkboxes){
@@ -72,6 +73,7 @@ function commonOperate(method,specialparam,cnname,needconfirm,selectcount){
 		methodcontrol.value=method;
 	if(special)
 		special.value=specialparam;
+	
 	methodcontrol.form.submit();
 }
 function generateSql(){

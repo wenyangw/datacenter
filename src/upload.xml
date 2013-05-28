@@ -46,6 +46,18 @@
             <result name="rulemanage">/upload/rulemanage.jsp</result>
         </action>
         
+        <action name="reportAction" class="tms.datacenter.upload.action.ReportAction">
+            <result name="list">/upload/report.jsp</result>
+<!--             <result name="print" type="jasper"> -->
+<!--             	<param name="location">/report/test.jasper</param>  -->
+<!--                 <param name="dataSource">lists</param> -->
+<!--                 <param name="reportParameters">map</param>  -->
+<!--                 <param name="format">PDF</param> -->
+<!--                 <param name="documentName">xsmx</param> -->
+<!--                 <param name="contentDisposition">attachment</param> -->
+<!--             </result> -->
+        </action>
+        
         <action name="upload" class="tms.datacenter.upload.action.UploadAction">
         </action>
     </package>

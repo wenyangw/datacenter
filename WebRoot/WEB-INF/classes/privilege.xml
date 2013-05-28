@@ -120,7 +120,7 @@
 			<operation name="delete" cnname="删除" specialparam="" id="m02m01m07"
 				privilegevalue="64" showpos="3" needconfirm="0" selectcount="0"/>
 			<operation name="compare" cnname="上传数据比较" specialparam="" id="m02m01m08"
-				privilegevalue="128" showpos="2" needconfirm="0" selectcount="0"/>		
+				privilegevalue="128" showpos="2" needconfirm="0" selectcount="0"/>
 		</module>
 		<module name="上传计划" id="m02m02" actionclass="tms.datacenter.upload.action.RuleManageAction">
 			<operation name="list" cnname="列表" specialparam="" id="m02m02m01"
@@ -140,6 +140,11 @@
 			<operation name="list" cnname="日志列表" specialparam="synlog" id="m02m03m01"
 				privilegevalue="1" showpos="0" needconfirm="0" selectcount="0"/>
 		</module>
+		<module name="报表图表演示" id="m02m04" actionclass="tms.datacenter.upload.action.ReportAction">
+			<operation name="print" cnname="报表打印" specialparam="synlog" id="m02m04m01"
+				privilegevalue="1" showpos="2" needconfirm="0" selectcount="0"/>
+		</module>
+		
 	</topmodule>
 	<topmodule name="查询统计" id="m03">
 		<module name="测试统计" id="m03m01" actionclass="tms.datacenter.stat.action.CommonStatAction">

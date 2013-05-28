@@ -30,6 +30,9 @@
 		<sonmenu name="数据同步日志" id="m02m03"
 			actionclass="tms.datacenter.stat.action.CommonStatAction"
 			privilege="1" link="/stat/commonStatAction?methodName=list&amp;specialParam=synlog&amp;moduleid=m02m03" />
+		<sonmenu name="报表图表演示" id="m02m04"
+			actionclass="tms.datacenter.upload.action.ReportAction"
+			privilege="1" link="/upload/reportAction?methodName=list&amp;moduleid=m02m04" />	
 	</parentmenu>
 	<parentmenu name="统计查询" id="m03">
 		<sonmenu name="测试" id="m03m01"

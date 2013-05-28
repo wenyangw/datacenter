@@ -7,6 +7,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title></title>
 <link href="<%=request.getContextPath() %>/css/common.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" language="javascript" src="<%=request.getContextPath() %>/js/util.js">
+
+</script>
 </head>
 <body>
 <%
@@ -44,7 +47,7 @@ if(project != null)
 	</tr>
 	<tr>
 		<td class="data1" align="center" colspan="2">
-			<input type="submit" value="确定">
+			<input type="submit" value="确定" onclick="showloading('数据正在上传，请稍等。。。')">
 			<input type="button" value="返回" onclick="javascript:history.back()">
 		</td>
 	</tr>
