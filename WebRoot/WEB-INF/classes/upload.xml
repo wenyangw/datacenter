@@ -8,6 +8,10 @@
 
     <package name="tms.datacenter.upload.action" namespace = "/upload" extends="struts-default">
     
+    	<result-types>  
+    		<result-type name="chart" class="org.apache.struts2.dispatcher.ChartResult"/>  
+		</result-types>
+    
     	<!-- 配置自定义拦截器LoginedCheckInterceptor -->
         
         <interceptors>
@@ -23,6 +27,8 @@
         </interceptors>
         
         <default-interceptor-ref name="myStack"/>
+        
+        
         
     	<global-results>
             <result name="nopower">/sysframe/nopower.jsp</result>
@@ -48,16 +54,20 @@
         
         <action name="reportAction" class="tms.datacenter.upload.action.ReportAction">
             <result name="list">/upload/report.jsp</result>
-<!--             <result name="print" type="jasper"> -->
-<!--             	<param name="location">/report/test.jasper</param>  -->
-<!--                 <param name="dataSource">lists</param> -->
-<!--                 <param name="reportParameters">map</param>  -->
-<!--                 <param name="format">PDF</param> -->
-<!--                 <param name="documentName">xsmx</param> -->
-<!--                 <param name="contentDisposition">attachment</param> -->
-<!--             </result> -->
+            <result name="chart" type="chart">/upload/chart.jsp
+            	<param name="value">chart</param>  
+        		<param name="height">400</param>  
+        		<param name="width">700</param>
+            </result>
         </action>
-        
+
+        <action name="chartAction" class="tms.datacenter.upload.action.ChartAction">
+            <result name="success" type="chart">  
+        		<param name="value">chart</param>  
+        		<param name="height">400</param>  
+        		<param name="width">700</param>  
+    		</result>        
+        </action>
         <action name="upload" class="tms.datacenter.upload.action.UploadAction">
         </action>
     </package>

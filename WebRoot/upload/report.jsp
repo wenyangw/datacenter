@@ -1,10 +1,10 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="gbk"%>
 <%@ page import="java.util.ArrayList,tms.datacenter.dbmanage.*"%>
 <%@ page import="tms.datacenter.sysmanage.*"%>
 
 
 <%
-String path = request.getContextPath();
+String path = (String)request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
@@ -29,60 +29,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-<form name="listform" id="listformid" action="<%=request.getContextPath() %>/upload/ruleManageAction" method="post">
+<form name="listform" id="listformid" action="<%=request.getContextPath() %>/upload/reportAction" method="post">
 <input type="hidden" name="methodName" id="methodNameId" value="list">
 <input type="hidden" name="specialparam" id="specialparamId" value="">
 <input type="hidden" name="moduleid" id="moduleidId" value="<%=request.getAttribute("moduleid")==null?"":(String)request.getAttribute("moduleid") %>">
 <div class="listdiv">
+<center><h2>Ê¹ÓÃÖùÍ¼ºÍ±ıÍ¼ÁĞÈ¡ËùÓĞË®¹û²úÁ¿</h2></center>  
+<%--     ÖùÍ¼:<img src="<%=request.getAttribute("chart") %>"><br/>   --%>
+ÖùÍ¼:<img src="upload/chartAction.action"><br/>
 <table width="100%" class="listtable">
-<!-- 	<tr> -->
-<!-- 		<td class="tdhead" align="center" height="25">å…¨é€‰<input type="checkbox" name="selectAll" value="1" onclick="checkAll(this,'pkfield')"></td> -->
-<!-- 		<td class="tdhead" align="center">ä¸Šä¼ é¡¹ç›®åç§°</td> -->
-<!-- 		<td class="tdhead" align="center">è®¡åˆ’ç±»å‹</td> -->
-<!-- 		<td class="tdhead" align="center">å‘¨æœŸ</td> -->
-<!-- 		<td class="tdhead" align="center">å¼€å§‹æ—¶é—´</td> -->
-<%-- <%--		<td class="tdhead" align="center">æ“ä½œ</td>--%> --%>
-<!-- 	</tr> -->
-<%-- 	<% --%>
-// 		//Hashtable fieldLabels = (Hashtable)request.getAttribute("fieldslabels");
-// 		ArrayList records = (ArrayList)request.getAttribute("records");
-// 		if(records != null && records.size() > 0){
-			
-// 			Record r = null;
-// 			String ruleId = "";
-// 			String uploadName = "";
-// 			String ruleType = "";
-// 			String cycle = "";
-// 			String startTime = "";
-// 			String datatdclass = "";
-			
-// 			for(int i = 0; i < records.size(); i++){
-// 				r = (Record)records.get(i);
-// 				ruleId = r.get("RuleId");
-// 				//uploadname = r.get("ProName");
-// 				uploadName = uc.getUpload(r.get("UploadName")).getCnname();
-// 				ruleType = RuleType.getRuleType(Integer.parseInt(r.get("RuleType")));
-// 				cycle = r.get("Cycle");
-// 				startTime = DateUtil.dateToString(DateUtil.stringToDate(r.get("StartTime"), "yyyy-mm-dd"), "yyyy-mm-dd");
-				
-// 				if(i%2 == 0){
-// 					datatdclass = "data1";
-// 				}else{
-// 					datatdclass = "data2";
-// 				}
-<%-- 				%> --%>
-<!-- 				<tr> -->
-<%-- 				<td class="<%=datatdclass %>" height="20" align="center"><input type="checkbox" name="pkfield" value="<%=ruleId %>"></td> --%>
-<%-- 				<td class="<%=datatdclass %>" align="center"><%=uploadName %></td> --%>
-<%-- 				<td class="<%=datatdclass %>" align="center"><%=ruleType %></td> --%>
-<%-- 				<td class="<%=datatdclass %>" align="center"><%=cycle %></td> --%>
-<%-- 				<td class="<%=datatdclass %>" align="center"><%=startTime %></td> --%>
-<%-- <%--				<td class="<%=datatdclass %>" align="center"><a href="#">è®¾ç½®</a></td>--%> --%>
-<!-- 				</tr> -->
-<%-- 				<% --%>
-// 			}
-// 		}
-<%-- 	%>		 --%>
 	
 </table>
 </div>
