@@ -54,11 +54,7 @@
         
         <action name="reportAction" class="tms.datacenter.upload.action.ReportAction">
             <result name="list">/upload/report.jsp</result>
-            <result name="chart" type="chart">/upload/chart.jsp
-            	<param name="value">chart</param>  
-        		<param name="height">400</param>  
-        		<param name="width">700</param>
-            </result>
+            <result name="chart">/upload/chart.jsp</result>
         </action>
 
         <action name="chartAction" class="tms.datacenter.upload.action.ChartAction">
@@ -68,6 +64,7 @@
         		<param name="width">700</param>  
     		</result>        
         </action>
+        
         <action name="upload" class="tms.datacenter.upload.action.UploadAction">
         </action>
     </package>

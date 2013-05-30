@@ -30,8 +30,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
 <div class="listdiv">
-<center><h2>使用柱图和饼图列取所有水果产量</h2></center>  
-<%--     柱图:<img src="<%=request.getAttribute("chart") %>"><br/>   --%>
-柱图:<img src="upload/reportAction!chart.action" /><br/>
+<center>  
+<img src="upload/chartAction.action" /><br/></center>
+</div>
+<center><input type="button" value="返回" onclick="javascript:history.back()"></center>
   </body>
 </html>

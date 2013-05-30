@@ -117,7 +117,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <table class="bottomtable" width="100%">
 	<tr>
 		<td align="right">
-			<input type="button" value="返回" onclick="javascript:history.back()">
+			<input type="button" value="返回" onclick="javascript:history.go(-1)">
 		</td>
 		<td align="right">
 			<%

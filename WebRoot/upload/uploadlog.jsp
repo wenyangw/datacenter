@@ -97,7 +97,7 @@ String tableName = (String)request.getAttribute("tablename");
 <table class="bottomtable" width="100%">
 	<tr>
 		<td align="right">
-			<input type="button" value="返回" onclick="javascript:history.back()">
+			<input type="button" value="返回" onclick="javascript:history.go(-1)">
 		</td>
 		<td align="right">
 			<%

@@ -24,7 +24,6 @@ import tms.datacenter.sysmanage.action.PrivilegeParentAction;
 public class ChartAction extends ActionSupport{
 		
 	private JFreeChart chart;
-	private String fileName;
 	public JFreeChart getChart() {
 		return chart;
 	}
@@ -34,21 +33,9 @@ public class ChartAction extends ActionSupport{
 		this.chart = chart;
 	}
 
-
-	public String getFileName() {
-		return fileName;
-	}
-
-
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
-	}
-
-
 	public String execute() throws Exception{
 		HttpServletRequest request = ServletActionContext.getRequest();
 		chart = createBarChart();
-		fileName = ServletUtilities.saveChartAsPNG(chart, 400, 600, request.getSession());
 		return SUCCESS;
 	}
 	
@@ -62,9 +49,9 @@ public class ChartAction extends ActionSupport{
         
 		CategoryDataset dataset = getDataSet2();  
         JFreeChart chart = ChartFactory.createBarChart3D(  
-                "水果产量图", // 图表标题  
-                "水果", // 目录轴的显示标签  
-                "产量", // 数值轴的显示标签  
+                "2013年图书销售统计", // 图表标题  
+                "", // 目录轴的显示标签  
+                "销售额(万元)", // 数值轴的显示标签  
                 dataset, // 数据集  
                 PlotOrientation.VERTICAL, // 图表方向：水平、垂直  
                 true,   // 是否显示图例(对于简单的柱状图必须是false)  
@@ -77,21 +64,21 @@ public class ChartAction extends ActionSupport{
   
     private CategoryDataset getDataSet2() {  
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();  
-        dataset.addValue(100, "北京", "苹果");  
-        dataset.addValue(100, "上海", "苹果");  
-        dataset.addValue(100, "广州", "苹果");  
-        dataset.addValue(200, "北京", "梨子");  
-        dataset.addValue(200, "上海", "梨子");  
-        dataset.addValue(200, "广州", "梨子");  
-        dataset.addValue(300, "北京", "葡萄");  
-        dataset.addValue(300, "上海", "葡萄");  
-        dataset.addValue(300, "广州", "葡萄");  
-        dataset.addValue(400, "北京", "香蕉");  
-        dataset.addValue(400, "上海", "香蕉");  
-        dataset.addValue(400, "广州", "香蕉");  
-        dataset.addValue(500, "北京", "荔枝");  
-        dataset.addValue(500, "上海", "荔枝");  
-        dataset.addValue(500, "广州", "荔枝");  
+        dataset.addValue(100, "社科", "1月");  
+        dataset.addValue(100, "音像", "1月");  
+        dataset.addValue(100, "文艺", "1月");  
+        dataset.addValue(200, "社科", "2月");  
+        dataset.addValue(200, "音像", "2月");  
+        dataset.addValue(200, "文艺", "2月");  
+        dataset.addValue(300, "社科", "3月");  
+        dataset.addValue(300, "音像", "3月");  
+        dataset.addValue(300, "文艺", "3月");  
+        dataset.addValue(400, "社科", "4月");  
+        dataset.addValue(400, "音像", "4月");  
+        dataset.addValue(400, "文艺", "4月");  
+        dataset.addValue(500, "社科", "5月");  
+        dataset.addValue(500, "音像", "5月");  
+        dataset.addValue(500, "文艺", "5月");  
         return dataset;  
     }  
 	

@@ -34,11 +34,40 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <input type="hidden" name="specialparam" id="specialparamId" value="">
 <input type="hidden" name="moduleid" id="moduleidId" value="<%=request.getAttribute("moduleid")==null?"":(String)request.getAttribute("moduleid") %>">
 <div class="listdiv">
-<center><h2>使用柱图和饼图列取所有水果产量</h2></center>  
-<%--     柱图:<img src="<%=request.getAttribute("chart") %>"><br/>   --%>
-柱图:<img src="upload/chartAction.action"><br/>
+<center><h2>2013年图书销售统计</h2></center>
 <table width="100%" class="listtable">
-	
+	<tr>
+		<td class="tdhead" align="center" height="25"></td>
+		<td class="tdhead" align="center">1月</td>
+		<td class="tdhead" align="center">2月</td>
+		<td class="tdhead" align="center">3月</td>
+		<td class="tdhead" align="center">4月</td>
+		<td class="tdhead" align="center">5月</td>
+	</tr>
+	<tr>
+		<td height="20" align="center">社科</td>
+		<td height="20" align="center">100</td>
+		<td height="20" align="center">200</td>
+		<td height="20" align="center">300</td>
+		<td height="20" align="center">400</td>
+		<td height="20" align="center">500</td>
+	</td>
+	<tr>
+		<td height="20" align="center">音像</td>
+		<td height="20" align="center">100</td>
+		<td height="20" align="center">200</td>
+		<td height="20" align="center">300</td>
+		<td height="20" align="center">400</td>
+		<td height="20" align="center">500</td>
+	</td>
+	<tr>
+		<td height="20" align="center">文艺</td>
+		<td height="20" align="center">100</td>
+		<td height="20" align="center">200</td>
+		<td height="20" align="center">300</td>
+		<td height="20" align="center">400</td>
+		<td height="20" align="center">500</td>
+	</td>
 </table>
 </div>
 <%=request.getAttribute("pager")==null?"":(String)request.getAttribute("pager") %>

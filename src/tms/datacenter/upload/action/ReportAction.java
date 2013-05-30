@@ -1,6 +1,8 @@
 package tms.datacenter.upload.action;
 
 import java.awt.Font;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
@@ -19,43 +21,17 @@ import org.jfree.data.category.DefaultCategoryDataset;
 
 import net.sf.jasperreports.engine.JREmptyDataSource;
 import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.view.JRViewer;
 
 import tms.datacenter.commontools.StringToZn;
 import tms.datacenter.dbmanage.Record;
 import tms.datacenter.sysmanage.ContentControl;
 import tms.datacenter.sysmanage.action.PrivilegeParentAction;
+import tms.datacenter.upload.ReportBean;
 
 
 public class ReportAction  extends PrivilegeParentAction {
-	
-	
-	
-	
-	private List<Record> lists;
-	private Map<String, Object> map;
-	private JFreeChart chart;
-	private String fileName;
-	public JFreeChart getChart() {
-		return chart;
-	}
-
-		
-	public void setChart(JFreeChart chart) {
-		this.chart = chart;
-	}
-
-
-	public String getFileName() {
-		return fileName;
-	}
-
-
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
-	}
-	
-	
 	
 	public String list() throws Exception {
 		HttpServletRequest request = this.getRequest();
@@ -88,12 +64,24 @@ public class ReportAction  extends PrivilegeParentAction {
 	}
 	
 	public String print() throws Exception {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("title", "2013年图书销售统计");
+		
+		List<ReportBean> lists = new ArrayList<ReportBean>();
+		lists.add(new ReportBean("社科", 100.0, 200.0, 300.0, 400.0, 500.0));
+		lists.add(new ReportBean("音像", 100.0, 200.0, 300.0, 400.0, 500.0));
+		lists.add(new ReportBean("文艺", 100.0, 200.0, 300.0, 400.0, 500.0));
+		
+		JRBeanCollectionDataSource ds = new JRBeanCollectionDataSource(lists);
+		
 //		HttpServletRequest request = this.getRequest();
 //		String basePath = request.getContextPath();
 //		System.out.println(request.getRealPath(basePath));
 //		System.out.println("basePath = " + basePath);
-		JasperFillManager.fillReportToFile(getRootPath() + "/upload/test1.jasper", null,
-				new JREmptyDataSource());//使用空参数，空的数据源
+		JasperFillManager.fillReportToFile(getRootPath() + "/upload/test1.jasper", map,
+				ds);//使用空参数，空的数据源
+		
+		
 		
 		//map = new HashMap<String, Object>();
 		
@@ -112,7 +100,7 @@ public class ReportAction  extends PrivilegeParentAction {
 	       jf.setVisible(true);
 		
 		
-		return null;
+		return "list";
 		
 	}
 	
@@ -155,55 +143,7 @@ public class ReportAction  extends PrivilegeParentAction {
 	 }
 	
 	public String chart() throws Exception{
-		HttpServletRequest request = ServletActionContext.getRequest();
-		chart = createBarChart();
-		fileName = ServletUtilities.saveChartAsPNG(chart, 400, 600, request.getSession());
-		
 		return "chart";
 	}
-	
-	
-	public JFreeChart createBarChart() throws Exception{
-		StandardChartTheme standardChartTheme = new StandardChartTheme("name");
-		standardChartTheme.setLargeFont(new Font("楷体", Font.BOLD, 12));// 可以改变轴向的字体
-		standardChartTheme.setRegularFont(new Font("宋体", Font.BOLD, 12));// 可以改变图例的字体
-		standardChartTheme.setExtraLargeFont(new Font("隶书", Font.BOLD, 12));// 可以改变图标的标题字体
-		ChartFactory.setChartTheme(standardChartTheme);// 设置主题
-        
-		CategoryDataset dataset = getDataSet2();  
-        JFreeChart chart = ChartFactory.createBarChart3D(  
-                "水果产量图", // 图表标题  
-                "水果", // 目录轴的显示标签  
-                "产量", // 数值轴的显示标签  
-                dataset, // 数据集  
-                PlotOrientation.VERTICAL, // 图表方向：水平、垂直  
-                true,   // 是否显示图例(对于简单的柱状图必须是false)  
-                true,   // 是否生成工具  
-                true    // 是否生成URL链接  
-                );
-        
-        return chart;  
-    }  
-  
-    private CategoryDataset getDataSet2() {  
-        DefaultCategoryDataset dataset = new DefaultCategoryDataset();  
-        dataset.addValue(100, "北京", "苹果");  
-        dataset.addValue(100, "上海", "苹果");  
-        dataset.addValue(100, "广州", "苹果");  
-        dataset.addValue(200, "北京", "梨子");  
-        dataset.addValue(200, "上海", "梨子");  
-        dataset.addValue(200, "广州", "梨子");  
-        dataset.addValue(300, "北京", "葡萄");  
-        dataset.addValue(300, "上海", "葡萄");  
-        dataset.addValue(300, "广州", "葡萄");  
-        dataset.addValue(400, "北京", "香蕉");  
-        dataset.addValue(400, "上海", "香蕉");  
-        dataset.addValue(400, "广州", "香蕉");  
-        dataset.addValue(500, "北京", "荔枝");  
-        dataset.addValue(500, "上海", "荔枝");  
-        dataset.addValue(500, "广州", "荔枝");  
-        return dataset;  
-    } 
-	
-	
+			
 }
