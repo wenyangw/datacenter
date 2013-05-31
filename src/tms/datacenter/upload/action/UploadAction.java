@@ -153,6 +153,13 @@ public class UploadAction extends ActionSupport{
 			if (rows.size() == 1){
 				break;
 			}
+			String str = "";
+			for(Object ss : rows){
+				str += ss.toString();
+			}
+			if (str.trim().length() == 0){
+				break;
+			}
 			Record r = new Record();
 			//for(int j = 0; j < rows.size(); j++){
 			for(int j = 0; j < excelCols; j++){

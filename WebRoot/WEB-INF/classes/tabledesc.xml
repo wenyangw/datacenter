@@ -159,42 +159,52 @@
 			fieldlength="50" ispk="0" cannull="0" showpos="1"/>
 	</table>
 	<table name="dc_fyap" cnname="付印安排信息" poolname="datacenter">
-		<field fieldname="id" fieldlabel="付印单安排编码" fieldtype="3"
+		<field fieldname="id" fieldlabel="编号" fieldtype="3"
 			fieldlength="4" ispk="1" cannull="0" showpos="1"/>
 		<field fieldname="BookName" fieldlabel="书名" fieldtype="1"
 			fieldlength="60" ispk="0" cannull="0" showpos="1"/>
 		<field fieldname="BookNo" fieldlabel="书号" fieldtype="1"
-			fieldlength="11" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="11" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="Price" fieldlabel="定价" fieldtype="4"
-			fieldlength="8" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="8" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="BanNo" fieldlabel="版次" fieldtype="1"
-			fieldlength="20" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="20" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="YinNo" fieldlabel="印次" fieldtype="1"
-			fieldlength="20" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="20" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="Ysc" fieldlabel="印厂" fieldtype="1"
-			fieldlength="10" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="10" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="FyDate" fieldlabel="付印时间" fieldtype="2"
-			fieldlength="8" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="8" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="JhDate" fieldlabel="交货时间" fieldtype="2"
-			fieldlength="8" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="8" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="FyTotal" fieldlabel="付印数量" fieldtype="3"
-			fieldlength="8" ispk="0" cannull="0" showpos="1"/>
-		<field fieldname="Dsdw" fieldlabel="订数单位" fieldtype="1"
-			fieldlength="20" ispk="0" cannull="0" showpos="1"/>
-		<field fieldname="Ds" fieldlabel="订数" fieldtype="3"
-			fieldlength="8" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="8" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="Sxhsd" fieldlabel="省新华书店" fieldtype="3"
+			fieldlength="20" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="Jfgs" fieldlabel="教发公司" fieldtype="3"
+			fieldlength="8" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="Cbbys" fieldlabel="出版部样书" fieldtype="3"
+			fieldlength="20" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="Yyyx" fieldlabel="教育音像" fieldtype="3"
+			fieldlength="8" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="Dlcg" fieldlabel="大连采购" fieldtype="3"
+			fieldlength="20" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="Pxys" fieldlabel="培训样书" fieldtype="3"
+			fieldlength="8" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="JiNo" fieldlabel="季别" fieldtype="1"
-			fieldlength="10" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="10" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="Bz" fieldlabel="备注" fieldtype="1"
+			fieldlength="100" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="UserName" fieldlabel="操作员姓名" fieldtype="1"
-			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
+			fieldlength="50" ispk="0" cannull="0" showpos="1"/>
 		<field fieldname="organization" fieldlabel="所在单位" fieldtype="1"
 			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="department" fieldlabel="部门" fieldtype="1"
 			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="LogNo" fieldlabel="批次" fieldtype="1"
-			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
+			fieldlength="50" ispk="0" cannull="0" showpos="1"/>
 		<field fieldname="updatetime" fieldlabel="更新时间" fieldtype="2"
-			fieldlength="8" ispk="0" cannull="1" showpos="1"/>
+			fieldlength="8" ispk="0" cannull="0" showpos="1"/>
 	</table>
 	<table name="dc_fyd" cnname="付印单" poolname="datacenter">
 		<field fieldname="id" fieldlabel="编号" fieldtype="3"
@@ -204,27 +214,27 @@
 		<field fieldname="BookName" fieldlabel="书名" fieldtype="1"
 			fieldlength="50" ispk="0" cannull="0" showpos="1"/>
 		<field fieldname="Ysc" fieldlabel="承印厂" fieldtype="1"
-			fieldlength="20" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="20" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="Zzfl" fieldlabel="纸张分类" fieldtype="1"
-			fieldlength="6" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="6" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="Zzlb" fieldlabel="纸别" fieldtype="1"
-			fieldlength="20" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="20" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="Zzgg" fieldlabel="纸张规格" fieldtype="1"
-			fieldlength="20" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="20" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="yf" fieldlabel="印法" fieldtype="1"
-			fieldlength="6" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="6" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="Cf" fieldlabel="裁法" fieldtype="1"
-			fieldlength="6" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="6" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="ZzTotal" fieldlabel="纸张数" fieldtype="4"
-			fieldlength="8" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="8" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="Ysl" fieldlabel="印数" fieldtype="3"
-			fieldlength="8" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="8" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="Fyr" fieldlabel="发印人" fieldtype="1"
-			fieldlength="10" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="10" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="CreateDate" fieldlabel="开单时间" fieldtype="2"
-			fieldlength="8" ispk="0" cannull="0" showpos="1"/>
-		<field fieldname="OperaName" fieldlabel="操作员名称" fieldtype="1"
-			fieldlength="50" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="8" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="Bz" fieldlabel="备注" fieldtype="1"
+			fieldlength="100" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="UserName" fieldlabel="操作员姓名" fieldtype="1"
 			fieldlength="50" ispk="0" cannull="0" showpos="1"/>
 		<field fieldname="organization" fieldlabel="所在单位" fieldtype="1"
@@ -232,9 +242,9 @@
 		<field fieldname="department" fieldlabel="部门" fieldtype="1"
 			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="LogNo" fieldlabel="批次" fieldtype="1"
-			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
+			fieldlength="50" ispk="0" cannull="0" showpos="1"/>
 		<field fieldname="updatetime" fieldlabel="更新时间" fieldtype="2"
-			fieldlength="8" ispk="0" cannull="1" showpos="1"/>
+			fieldlength="8" ispk="0" cannull="0" showpos="1"/>
 	</table>
 	<table name="dc_jcbzfy" cnname="教材包装发印环节" poolname="datacenter">
 		<field fieldname="id" fieldlabel="编号" fieldtype="3"
@@ -242,33 +252,33 @@
 		<field fieldname="BookName" fieldlabel="书名" fieldtype="1"
 			fieldlength="60" ispk="0" cannull="0" showpos="1"/>
 		<field fieldname="BanBie" fieldlabel="版别" fieldtype="1"
-			fieldlength="10" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="10" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="Price" fieldlabel="单价" fieldtype="4"
-			fieldlength="12" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="12" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="StoreName" fieldlabel="店名" fieldtype="1"
-			fieldlength="60" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="60" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="YjTotal" fieldlabel="应进册数" fieldtype="3"
-			fieldlength="9" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="9" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="BzDate" fieldlabel="包装日期" fieldtype="2"
-			fieldlength="12" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="12" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="BzTotal" fieldlabel="包装册数" fieldtype="3"
-			fieldlength="12" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="12" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="FhDate" fieldlabel="发货日期" fieldtype="2"
-			fieldlength="8" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="8" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="FhTotal" fieldlabel="发货册数" fieldtype="4"
-			fieldlength="8" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="8" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="JiBie" fieldlabel="季别" fieldtype="1"
-			fieldlength="10" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="10" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="UserName" fieldlabel="操作员姓名" fieldtype="1"
-			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
+			fieldlength="50" ispk="0" cannull="0" showpos="1"/>
 		<field fieldname="organization" fieldlabel="所在单位" fieldtype="1"
 			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="department" fieldlabel="部门" fieldtype="1"
 			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="LogNo" fieldlabel="批次" fieldtype="1"
-			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
+			fieldlength="50" ispk="0" cannull="0" showpos="1"/>
 		<field fieldname="updatetime" fieldlabel="更新时间" fieldtype="2"
-			fieldlength="8" ispk="0" cannull="1" showpos="1"/>
+			fieldlength="8" ispk="0" cannull="0" showpos="1"/>
 	</table>
 	<table name="dc_jcjhsh" cnname="教材进货收货信息" poolname="datacenter">
 		<field fieldname="id" fieldlabel="编号" fieldtype="3"
@@ -276,65 +286,67 @@
 		<field fieldname="BookName" fieldlabel="书名" fieldtype="1"
 			fieldlength="60" ispk="0" cannull="0" showpos="1"/>
 		<field fieldname="BanBie" fieldlabel="版别" fieldtype="1"
-			fieldlength="10" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="10" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="Price" fieldlabel="单价" fieldtype="4"
-			fieldlength="12" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="12" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="Ghdw" fieldlabel="供货单位" fieldtype="1"
-			fieldlength="60" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="60" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="YjTotal" fieldlabel="应进册数" fieldtype="3"
-			fieldlength="9" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="9" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="JhDate" fieldlabel="进货日期" fieldtype="2"
-			fieldlength="12" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="12" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="DhTotal" fieldlabel="到货册数" fieldtype="3"
-			fieldlength="12" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="12" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="DhDate" fieldlabel="到货日期" fieldtype="2"
-			fieldlength="8" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="8" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="JiBie" fieldlabel="季别" fieldtype="1"
-			fieldlength="10" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="10" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="UserName" fieldlabel="操作员姓名" fieldtype="1"
-			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
+			fieldlength="50" ispk="0" cannull="0" showpos="1"/>
 		<field fieldname="organization" fieldlabel="所在单位" fieldtype="1"
 			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="department" fieldlabel="部门" fieldtype="1"
 			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="LogNo" fieldlabel="批次" fieldtype="1"
-			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
+			fieldlength="50" ispk="0" cannull="0" showpos="1"/>
 		<field fieldname="updatetime" fieldlabel="更新时间" fieldtype="2"
-			fieldlength="8" ispk="0" cannull="1" showpos="1"/>
+			fieldlength="8" ispk="0" cannull="0" showpos="1"/>
 	</table>
 	<table name="dc_sjfy" cnname="实际付印生产进度" poolname="datacenter">
 		<field fieldname="id" fieldlabel="编号" fieldtype="3"
 			fieldlength="4" ispk="1" cannull="0" showpos="1"/>
-		<field fieldname="SjfyDate" fieldlabel="实际付印时间" fieldtype="2"
-			fieldlength="8" ispk="0" cannull="0" showpos="1"/>
-		<field fieldname="Scjd" fieldlabel="生产进度" fieldtype="1"
-			fieldlength="60" ispk="0" cannull="0" showpos="1"/>
-		<field fieldname="Jhsj" fieldlabel="交货时间" fieldtype="2"
-			fieldlength="8" ispk="0" cannull="0" showpos="1"/>
 		<field fieldname="BookName" fieldlabel="书名" fieldtype="1"
 			fieldlength="60" ispk="0" cannull="0" showpos="1"/>
-		<field fieldname="BanBie" fieldlabel="版别" fieldtype="1"
-			fieldlength="10" ispk="0" cannull="0" showpos="1"/>
-		<field fieldname="Price" fieldlabel="单价" fieldtype="4"
-			fieldlength="12" ispk="0" cannull="0" showpos="1"/>
-		<field fieldname="Ysc" fieldlabel="印厂" fieldtype="1"
-			fieldlength="10" ispk="0" cannull="0" showpos="1"/>
-		<field fieldname="YinTotal" fieldlabel="印数" fieldtype="3"
-			fieldlength="9" ispk="0" cannull="0" showpos="1"/>
 		<field fieldname="BookNo" fieldlabel="书号" fieldtype="1"
-			fieldlength="11" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="11" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="Price" fieldlabel="单价" fieldtype="4"
+			fieldlength="12" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="SjfyDate" fieldlabel="实际付印时间" fieldtype="2"
+			fieldlength="8" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="Scjd" fieldlabel="生产进度" fieldtype="1"
+			fieldlength="60" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="JhDate" fieldlabel="交货时间" fieldtype="2"
+			fieldlength="8" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="BanBie" fieldlabel="版别" fieldtype="1"
+			fieldlength="10" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="Ysc" fieldlabel="印厂" fieldtype="1"
+			fieldlength="10" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="YinTotal" fieldlabel="印数" fieldtype="3"
+			fieldlength="9" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="JiBie" fieldlabel="季别" fieldtype="1"
-			fieldlength="10" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="10" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="Bz" fieldlabel="备注" fieldtype="1"
+			fieldlength="100" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="UserName" fieldlabel="操作员姓名" fieldtype="1"
-			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
+			fieldlength="50" ispk="0" cannull="0" showpos="1"/>
 		<field fieldname="organization" fieldlabel="所在单位" fieldtype="1"
 			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="department" fieldlabel="部门" fieldtype="1"
 			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="LogNo" fieldlabel="批次" fieldtype="1"
-			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
+			fieldlength="50" ispk="0" cannull="0" showpos="1"/>
 		<field fieldname="updatetime" fieldlabel="更新时间" fieldtype="2"
-			fieldlength="8" ispk="0" cannull="1" showpos="1"/>
+			fieldlength="8" ispk="0" cannull="0" showpos="1"/>
 	</table>
 	<table name="dc_ssxx" cnname="收书信息" poolname="datacenter">
 		<field fieldname="id" fieldlabel="编号" fieldtype="3"
@@ -342,59 +354,61 @@
 		<field fieldname="BookName" fieldlabel="书名" fieldtype="1"
 			fieldlength="60" ispk="0" cannull="0" showpos="1"/>
 		<field fieldname="BanBie" fieldlabel="版别" fieldtype="1"
-			fieldlength="10" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="10" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="Price" fieldlabel="单价" fieldtype="4"
-			fieldlength="12" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="12" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="Ysc" fieldlabel="印厂" fieldtype="1"
-			fieldlength="20" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="20" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="YjTotal" fieldlabel="应进数量" fieldtype="3"
-			fieldlength="9" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="9" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="JhTotal" fieldlabel="进货数量" fieldtype="3"
-			fieldlength="9" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="9" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="QwTotal" fieldlabel="欠尾数量" fieldtype="3"
-			fieldlength="9" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="9" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="CbDate" fieldlabel="出版日期" fieldtype="2"
-			fieldlength="11" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="11" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="Bz" fieldlabel="备注" fieldtype="1"
-			fieldlength="100" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="100" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="UserName" fieldlabel="操作员姓名" fieldtype="1"
-			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
+			fieldlength="50" ispk="0" cannull="0" showpos="1"/>
 		<field fieldname="organization" fieldlabel="所在单位" fieldtype="1"
 			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="department" fieldlabel="部门" fieldtype="1"
 			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="LogNo" fieldlabel="批次" fieldtype="1"
-			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
+			fieldlength="50" ispk="0" cannull="0" showpos="1"/>
 		<field fieldname="updatetime" fieldlabel="更新时间" fieldtype="2"
-			fieldlength="8" ispk="0" cannull="1" showpos="1"/>
+			fieldlength="8" ispk="0" cannull="0" showpos="1"/>
 	</table>
 	<table name="dc_zdml" cnname="征订目录" poolname="datacenter">
 		<field fieldname="id" fieldlabel="编号" fieldtype="3"
 			fieldlength="4" ispk="1" cannull="0" showpos="1"/>
 		<field fieldname="BookName" fieldlabel="书名" fieldtype="1"
 			fieldlength="60" ispk="0" cannull="0" showpos="1"/>
-		<field fieldname="BanBie" fieldlabel="版别" fieldtype="1"
-			fieldlength="10" ispk="0" cannull="0" showpos="1"/>
 		<field fieldname="BookNo" fieldlabel="书号" fieldtype="1"
-			fieldlength="11" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="11" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="BanBie" fieldlabel="版别" fieldtype="1"
+			fieldlength="10" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="BanCi" fieldlabel="版次" fieldtype="1"
-			fieldlength="20" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="20" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="Price" fieldlabel="估价" fieldtype="4"
-			fieldlength="12" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="12" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="YinSe" fieldlabel="印色" fieldtype="1"
-			fieldlength="10" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="10" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="JiBie" fieldlabel="季别" fieldtype="1"
-			fieldlength="10" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="10" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="Bz" fieldlabel="备注" fieldtype="1"
+			fieldlength="100" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="UserName" fieldlabel="操作员姓名" fieldtype="1"
-			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
+			fieldlength="50" ispk="0" cannull="0" showpos="1"/>
 		<field fieldname="organization" fieldlabel="所在单位" fieldtype="1"
 			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="department" fieldlabel="部门" fieldtype="1"
 			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="LogNo" fieldlabel="批次" fieldtype="1"
-			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
+			fieldlength="50" ispk="0" cannull="0" showpos="1"/>
 		<field fieldname="updatetime" fieldlabel="更新时间" fieldtype="2"
-			fieldlength="8" ispk="0" cannull="1" showpos="1"/>
+			fieldlength="8" ispk="0" cannull="0" showpos="1"/>
 	</table>
 	<table name="dc_zzxx" cnname="纸张信息" poolname="datacenter">
 		<field fieldname="id" fieldlabel="编号" fieldtype="3"
@@ -402,34 +416,34 @@
 		<field fieldname="ZzName" fieldlabel="品种" fieldtype="1"
 			fieldlength="100" ispk="0" cannull="0" showpos="1"/>
 		<field fieldname="Zzgg" fieldlabel="纸张规格" fieldtype="1"
-			fieldlength="50" ispk="0" cannull="0" showpos="1"/>
-		<field fieldname="Zzcd" fieldlabel="纸张产地" fieldtype="1"
-			fieldlength="50" ispk="0" cannull="0" showpos="1"/>
-		<field fieldname="Price" fieldlabel="价格" fieldtype="4"
-			fieldlength="12" ispk="0" cannull="0" showpos="1"/>
-		<field fieldname="JhTotal" fieldlabel="本季计划用纸" fieldtype="4"
-			fieldlength="9" ispk="0" cannull="0" showpos="1"/>
-		<field fieldname="SjdhTotal" fieldlabel="实际到货" fieldtype="4"
-			fieldlength="9" ispk="0" cannull="0" showpos="1"/>
-		<field fieldname="KdTotal" fieldlabel="开单数量" fieldtype="4"
-			fieldlength="9" ispk="0" cannull="0" showpos="1"/>
-		<field fieldname="KcTotal" fieldlabel="库存量" fieldtype="4"
-			fieldlength="9" ispk="0" cannull="0" showpos="1"/>
-		<field fieldname="Ysc" fieldlabel="承印厂" fieldtype="1"
-			fieldlength="50" ispk="0" cannull="0" showpos="1"/>
-		<field fieldname="ThTotal" fieldlabel="提货数量" fieldtype="4"
-			fieldlength="9" ispk="0" cannull="0" showpos="1"/>
-		<field fieldname="Bz" fieldlabel="备注" fieldtype="1"
-			fieldlength="100" ispk="0" cannull="0" showpos="1"/>
-		<field fieldname="UserName" fieldlabel="操作员姓名" fieldtype="1"
 			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="Zzcd" fieldlabel="纸张产地" fieldtype="1"
+			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="Price" fieldlabel="价格" fieldtype="4"
+			fieldlength="12" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="JhTotal" fieldlabel="本季计划用纸" fieldtype="4"
+			fieldlength="9" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="SjdhTotal" fieldlabel="实际到货" fieldtype="4"
+			fieldlength="9" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="KdTotal" fieldlabel="开单数量" fieldtype="4"
+			fieldlength="9" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="KcTotal" fieldlabel="库存量" fieldtype="4"
+			fieldlength="9" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="Ysc" fieldlabel="承印厂" fieldtype="1"
+			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="ThTotal" fieldlabel="提货数量" fieldtype="4"
+			fieldlength="9" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="Bz" fieldlabel="备注" fieldtype="1"
+			fieldlength="100" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="UserName" fieldlabel="操作员姓名" fieldtype="1"
+			fieldlength="50" ispk="0" cannull="0" showpos="1"/>
 		<field fieldname="organization" fieldlabel="所在单位" fieldtype="1"
 			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="department" fieldlabel="部门" fieldtype="1"
 			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="LogNo" fieldlabel="批次" fieldtype="1"
-			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
+			fieldlength="50" ispk="0" cannull="0" showpos="1"/>
 		<field fieldname="updatetime" fieldlabel="更新时间" fieldtype="2"
-			fieldlength="8" ispk="0" cannull="1" showpos="1"/>
+			fieldlength="8" ispk="0" cannull="0" showpos="1"/>
 	</table>
 </tables>

@@ -1,13 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uploads>
+	<upload cnname="付印安排信息" specialparam="dc_fyap" table="dc_fyap" txtseparate="\t">
+		<column number="1" fieldname="BookName"/>
+		<column number="2" fieldname="BookNo"/>
+		<column number="3" fieldname="Price"/>
+		<column number="4" fieldname="BanNo"/>
+		<column number="5" fieldname="YinNo"/>
+		<column number="6" fieldname="Ysc"/>
+		<column number="7" fieldname="FyDate"/>
+		<column number="8" fieldname="JhDate"/>
+		<column number="9" fieldname="FyTotal"/>
+		<column number="10" fieldname="Sxhsd"/>
+		<column number="11" fieldname="Jfgs"/>
+		<column number="12" fieldname="Cbbys"/>
+		<column number="13" fieldname="Yyyx"/>
+		<column number="14" fieldname="Dlcg"/>
+		<column number="15" fieldname="Pxys"/>
+		<column number="16" fieldname="JiNo"/>
+		<column number="17" fieldname="Bz"/>
+	</upload>
 	<upload cnname="付印单" specialparam="dc_fyd" table="dc_fyd" txtseparate="\t">
 		<column number="1" fieldname="FydNo"/>
-		<column number="2" fieldname="ZzId"/>
-		<column number="3" fieldname="ZzCount"/>
-		<column number="4" fieldname="BookName"/>
-		<column number="5" fieldname="YscId"/>
-		<column number="6" fieldname="CreateDate"/>
-		<column number="7" fieldname="OperaName"/>
+		<column number="2" fieldname="BookName"/>
+		<column number="3" fieldname="Ysc"/>
+		<column number="4" fieldname="Zzfl"/>
+		<column number="5" fieldname="Zzlb"/>
+		<column number="6" fieldname="Zzgg"/>
+		<column number="7" fieldname="Yf"/>
+		<column number="8" fieldname="Cf"/>
+		<column number="9" fieldname="ZzTotal"/>
+		<column number="10" fieldname="Ysl"/>
+		<column number="11" fieldname="Fyr"/>
+		<column number="12" fieldname="CreateDate"/>
+		<column number="13" fieldname="Bz"/>
 	</upload>
 	<upload cnname="纸张信息" specialparam="dc_zzxx" table="dc_zzxx" txtseparate=",">
 		<column number="1" fieldname="ZzName"/>
@@ -55,5 +80,28 @@
 		<column number="7" fieldname="QwTotal"/>
 		<column number="8" fieldname="CbDate"/>
 		<column number="9" fieldname="Bz"/>
+	</upload>
+	<upload cnname="实际付印生产进度" specialparam="dc_sjfy" table="dc_sjfy" txtseparate="\t">
+		<column number="1" fieldname="BookName"/>
+		<column number="2" fieldname="BookNo"/>
+		<column number="3" fieldname="Price"/>
+		<column number="4" fieldname="SjfyDate"/>
+		<column number="5" fieldname="Scjd"/>
+		<column number="6" fieldname="JhDate"/>
+		<column number="7" fieldname="BanBie"/>
+		<column number="8" fieldname="Ysc"/>
+		<column number="9" fieldname="YinTotal"/>
+		<column number="10" fieldname="JiBie"/>
+		<column number="11" fieldname="Bz"/>
+	</upload>
+	<upload cnname="征订目录" specialparam="dc_zdml" table="dc_zdml" txtseparate="\t">
+		<column number="1" fieldname="BookName"/>
+		<column number="2" fieldname="BookNo"/>
+		<column number="3" fieldname="BanBie"/>
+		<column number="4" fieldname="BanCi"/>
+		<column number="5" fieldname="Price"/>
+		<column number="6" fieldname="YinSe"/>
+		<column number="7" fieldname="JiBie"/>
+		<column number="8" fieldname="Bz"/>
 	</upload>
 </uploads>

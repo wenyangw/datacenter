@@ -141,10 +141,12 @@
 				privilegevalue="1" showpos="0" needconfirm="0" selectcount="0"/>
 		</module>
 		<module name="报表图表演示" id="m02m04" actionclass="tms.datacenter.upload.action.ReportAction">
-			<operation name="print" cnname="报表打印" specialparam="" id="m02m04m01"
+			<operation name="list" cnname="报表打印" specialparam="" id="m02m04m01"
 				privilegevalue="1" showpos="1" needconfirm="0" selectcount="0"/>
-			<operation name="chart" cnname="图表演示" specialparam="" id="m02m04m02"
+			<operation name="print" cnname="报表打印" specialparam="" id="m02m04m02"
 				privilegevalue="2" showpos="1" needconfirm="0" selectcount="0"/>
+			<operation name="chart" cnname="图表演示" specialparam="" id="m02m04m03"
+				privilegevalue="4" showpos="1" needconfirm="0" selectcount="0"/>
 		</module>
 		
 	</topmodule>
