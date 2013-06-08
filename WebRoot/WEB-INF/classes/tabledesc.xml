@@ -446,4 +446,54 @@
 		<field fieldname="updatetime" fieldlabel="更新时间" fieldtype="2"
 			fieldlength="8" ispk="0" cannull="0" showpos="1"/>
 	</table>
+	<table name="dc_smpz" cnname="全省市县书目品种" poolname="datacenter">
+		<field fieldname="id" fieldlabel="编号" fieldtype="3"
+			fieldlength="4" ispk="1" cannull="0" showpos="1"/>
+		<field fieldname="BookName" fieldlabel="书名" fieldtype="1"
+			fieldlength="100" ispk="0" cannull="0" showpos="1"/>
+		<field fieldname="Year" fieldlabel="年度" fieldtype="1"
+			fieldlength="4" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="Jijie" fieldlabel="季节" fieldtype="1"
+			fieldlength="1" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="MuluNo" fieldlabel="目录号" fieldtype="1"
+			fieldlength="10" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="No" fieldlabel="序号" fieldtype="1"
+			fieldlength="4" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="BanbieNo" fieldlabel="版别号" fieldtype="1"
+			fieldlength="4" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="Banbie" fieldlabel="版别" fieldtype="1"
+			fieldlength="10" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="Price" fieldlabel="定价" fieldtype="4"
+			fieldlength="9" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="GhdwNo" fieldlabel="供货单位号" fieldtype="1"
+			fieldlength="4" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="Ghdw" fieldlabel="供货单位" fieldtype="1"
+			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="Leibie" fieldlabel="类别" fieldtype="1"
+			fieldlength="4" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="Grade" fieldlabel="年级" fieldtype="1"
+			fieldlength="2" ispk="1" cannull="0" showpos="1"/>
+		<field fieldname="KemuNo" fieldlabel="科目号" fieldtype="1"
+			fieldlength="2" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="Kemu" fieldlabel="科目" fieldtype="1"
+			fieldlength="20" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="ShengNo" fieldlabel="省号" fieldtype="1"
+			fieldlength="2" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="DianNo" fieldlabel="店号" fieldtype="1"
+			fieldlength="3" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="Total" fieldlabel="册数" fieldtype="3"
+			fieldlength="9" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="AreaNo" fieldlabel="地区编号" fieldtype="1"
+			fieldlength="6" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="UserName" fieldlabel="操作员姓名" fieldtype="1"
+			fieldlength="50" ispk="0" cannull="0" showpos="1"/>
+		<field fieldname="organization" fieldlabel="所在单位" fieldtype="1"
+			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="department" fieldlabel="部门" fieldtype="1"
+			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="LogNo" fieldlabel="批次" fieldtype="1"
+			fieldlength="50" ispk="0" cannull="0" showpos="1"/>
+		<field fieldname="updatetime" fieldlabel="更新时间" fieldtype="2"
+			fieldlength="8" ispk="0" cannull="0" showpos="1"/>
+	</table>
 </tables>

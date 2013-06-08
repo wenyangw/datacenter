@@ -104,4 +104,24 @@
 		<column number="7" fieldname="JiBie"/>
 		<column number="8" fieldname="Bz"/>
 	</upload>
+	<upload cnname="全省市县书目品种" specialparam="dc_smpz" table="dc_smpz" txtseparate="\t">
+		<column number="5" fieldname="BookName"/>
+		<column number="1" fieldname="Year"/>
+		<column number="2" fieldname="Jijie"/>
+		<column number="3" fieldname="MuluNo"/>
+		<column number="4" fieldname="No"/>
+		<column number="6" fieldname="BanbieNo"/>
+		<column number="7" fieldname="Banbie"/>
+		<column number="8" fieldname="Price"/>
+		<column number="1" fieldname="GhdwNo"/>
+		<column number="2" fieldname="Ghdw"/>
+		<column number="3" fieldname="Leibie"/>
+		<column number="4" fieldname="Grade"/>
+		<column number="5" fieldname="KemuNo"/>
+		<column number="6" fieldname="Kemu"/>
+		<column number="7" fieldname="ShengNo"/>
+		<column number="8" fieldname="DianNo"/>
+		<column number="8" fieldname="Total"/>
+		<column number="8" fieldname="AreaNo"/>
+	</upload>
 </uploads>
