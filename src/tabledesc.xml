@@ -138,16 +138,24 @@
 		<field fieldname="memo" fieldlabel="备注" fieldtype="1"
 			fieldlength="100" ispk="0" cannull="1" showpos="1"/>
 	</table>
-	<!--	<table name="dc_uploadlog" cnname="上传日志" poolname="datacenter">-->
-<!--		<field fieldname="UploadName" fieldlabel="项目名称" fieldtype="1"-->
-<!--			fieldlength="50" ispk="0" cannull="0" showpos="1"/>-->
-<!--		<field fieldname="UserName" fieldlabel="操作人" fieldtype="1"-->
-<!--			fieldlength="50" ispk="0" cannull="0" showpos="1"/>-->
-<!--		<field fieldname="UploadTime" fieldlabel="上传时间" fieldtype="2"-->
-<!--			fieldlength="20" ispk="0" cannull="0" showpos="1"/>-->
-<!--		<field fieldname="Organazation" fieldlabel="单位" fieldtype="1"-->
-<!--			fieldlength="50" ispk="0" cannull="1" showpos="1"/>-->
-<!--	</table>-->
+	<table name="dc_uploadlog" cnname="上传日志" poolname="datacenter">
+		<field fieldname="LogId" fieldlabel="编号" fieldtype="3"
+			fieldlength="8" ispk="1" cannull="0" showpos="1"/>
+		<field fieldname="LogNo" fieldlabel="上传批次" fieldtype="1"
+			fieldlength="50" ispk="0" cannull="0" showpos="1"/>
+		<field fieldname="UploadName" fieldlabel="项目名称" fieldtype="1"
+			fieldlength="50" ispk="0" cannull="0" showpos="1"/>
+		<field fieldname="Locked" fieldlabel="锁定" fieldtype="1"
+			fieldlength="1" ispk="0" cannull="0" showpos="1"/>
+		<field fieldname="UserName" fieldlabel="操作人" fieldtype="1"
+			fieldlength="50" ispk="0" cannull="0" showpos="1"/>
+		<field fieldname="UploadTime" fieldlabel="上传时间" fieldtype="2"
+			fieldlength="20" ispk="0" cannull="0" showpos="1"/>
+		<field fieldname="Organazation" fieldlabel="单位" fieldtype="1"
+			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="Department" fieldlabel="部门" fieldtype="1"
+			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
+	</table>
 	<table name="dc_uploadrule" cnname="上传计划" poolname="datacenter">
 		<field fieldname="UploadName" fieldlabel="项目名称" fieldtype="1"
 			fieldlength="50" ispk="0" cannull="0" showpos="1"/>

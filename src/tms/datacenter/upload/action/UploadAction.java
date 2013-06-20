@@ -193,17 +193,19 @@ public class UploadAction extends ActionSupport{
 		
 		//生成上传日志记录
 		Record log = new Record();
+//		log.set("logid", "1", Field.FIELD_TYPE_INT, true);
 		log.set("uploadname", pkfield, Field.FIELD_TYPE_TEXT, false);
 		log.set("username", userName, Field.FIELD_TYPE_TEXT, false);
 		log.set("uploadtime", uploadTime, Field.FIELD_TYPE_DATE, false);
 		log.set("organization", org, Field.FIELD_TYPE_TEXT, false);
 		log.set("department", department, Field.FIELD_TYPE_TEXT, false);
 		log.set("logno", logNo, Field.FIELD_TYPE_TEXT, false);
+		log.set("locked", "1", Field.FIELD_TYPE_TEXT, false);
 		
 		//上传日志Record校验
 		String error = RecordCheck.checkRecord("dc_uploadlog", log, true);
 		if(error != null && error.trim().length() > 0){
-			request.setAttribute("errorMsg", "上传日志生成失败，请重试！");
+			request.setAttribute("errorMsg", error + "\n上传日志生成失败，请重试！");
 			return "error";
 		}
 		
