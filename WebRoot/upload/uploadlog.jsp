@@ -43,6 +43,7 @@ String tableName = (String)request.getAttribute("tablename");
 		<td class="tdhead" align="center">更新时间</td>
 		<td class="tdhead" align="center">操作员</td>
 		<td class="tdhead" align="center">部门</td>
+		<td class="tdhead" align="center">状态</td>
 	</tr>
 	<%
 		
@@ -58,6 +59,7 @@ String tableName = (String)request.getAttribute("tablename");
 			String username = "";
 			String orgName = "";
 			String datatdclass = "";
+			String locked = "";
 			//String plink = "";
 			UploadConfig uc = UploadConfig.getInstance();
 			for(int i = 0; i < records.size(); i++){
@@ -69,6 +71,7 @@ String tableName = (String)request.getAttribute("tablename");
 				username = r.get("username");
 				orgName = r.get("organization");
 				logNo = r.get("logNo");
+				locked = r.get("locked");
 				
 				//plink = request.getContextPath()+"/upload/uploadManageAction?methodName=detail&pkfield="+logNo + "&tablename="+pkfield;
 				if(i%2 == 0){
@@ -83,6 +86,7 @@ String tableName = (String)request.getAttribute("tablename");
 				<td class="<%=datatdclass %>" align="center"><%=uploadTime %></td>
 				<td class="<%=datatdclass %>" align="center"><%=username %></td>
 				<td class="<%=datatdclass %>" align="center"><%=orgName %></td>
+				<td class="<%=datatdclass %>" align="center"><%=(locked == '1')?"已锁定":"未锁定"  %></td>
 				</tr>
 				<%
 			}

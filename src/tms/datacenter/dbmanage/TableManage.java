@@ -640,6 +640,7 @@ public class TableManage {
 						}
 						haspk = true;
 					}
+					
 				}
 				if (!haspk)
 					return -3;

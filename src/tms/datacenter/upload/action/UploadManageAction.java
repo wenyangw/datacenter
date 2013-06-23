@@ -168,6 +168,66 @@ public class UploadManageAction  extends PrivilegeParentAction {
 	}
 	
 	/**
+	 * 删除解锁
+	 * @return
+	 */
+	public String unlock(){
+		HttpServletRequest request = this.getRequest();
+		//String tableName = request.getParameter("tablename");
+		String[] logNos = request.getParameterValues("logNo");
+		
+		if (logNos == null || logNos.length != 1)
+			return this.operaterError("请选择1条记录进行操作！");
+		
+		String logNo = logNos[0];
+		
+		TableManage tm = new TableManage();
+		
+		String moduleid=StringToZn.toZn(request.getParameter("moduleid"));
+		if(moduleid == null)
+			moduleid = "";
+		request.setAttribute("moduleid", moduleid);
+		
+		tm.setTableName("dc_uploadlog");
+		ArrayList resultList = tm.getAllRecords("datacenter", "logNo = '" + logNo + "'", "");
+		Record r = (Record)resultList.get(0);
+		r.set("locked", "0");
+		
+		ConnectionManage cm = ConnectionManage.getInstance();
+		Connection conn = cm.getConnection("datacenter");
+				
+		try {
+			conn.setAutoCommit(false);
+			//根据上传日志no删除
+			//int resLog = tm.deleteRecords(conn, "dc_uploadlog", "logNo", Field.FIELD_TYPE_TEXT,logNos);
+			int resLog = tm.updateRecord(conn, "dc_uploadlog", r);
+			if(resLog > 0){
+				conn.commit();
+				this.setReturnAction(request.getContextPath()
+						+ "/upload/uploadManageAction");
+				Hashtable params = new Hashtable();
+				params.put("methodName", "list");
+				params.put("moduleid", moduleid);
+				this.setPromptMsg("成功解锁上传数据");
+				this.setReturnParams(params);
+				return "success";
+			}else{
+				conn.rollback();
+				return this.operaterError("操作失败，没有解锁任何记录！");
+			}
+		} catch (SQLException e) {
+			return this.operaterError("操作失败:"+e.getMessage());
+		}finally{
+			try {
+				conn.setAutoCommit(true);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			cm.freeConnection("datacenter", conn);
+		}
+	}
+	
+	/**
 	 * 删除上传日志
 	 * @return
 	 */
@@ -182,14 +242,23 @@ public class UploadManageAction  extends PrivilegeParentAction {
 		String logNo = logNos[0];
 		
 		TableManage tm = new TableManage();
-				
+		
+		
 		String moduleid=StringToZn.toZn(request.getParameter("moduleid"));
 		if(moduleid == null)
 			moduleid = "";
 		request.setAttribute("moduleid", moduleid);
 		
+		tm.setTableName("dc_uploadlog");
+		ArrayList resultList = tm.getAllRecords("datacenter", "logNo = '" + logNo + "'", "");
+		Record r = (Record)resultList.get(0);
+		if(r.get("locked").equals("1")){
+			return this.operaterError("上传数据已被锁定，请联系管理员！");
+		}
+		
 		ConnectionManage cm = ConnectionManage.getInstance();
 		Connection conn = cm.getConnection("datacenter");
+				
 		try {
 			conn.setAutoCommit(false);
 			//根据上传日志no删除
