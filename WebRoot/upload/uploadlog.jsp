@@ -86,7 +86,12 @@ String tableName = (String)request.getAttribute("tablename");
 				<td class="<%=datatdclass %>" align="center"><%=uploadTime %></td>
 				<td class="<%=datatdclass %>" align="center"><%=username %></td>
 				<td class="<%=datatdclass %>" align="center"><%=orgName %></td>
-				<td class="<%=datatdclass %>" align="center"><%=(locked == '1')?"已锁定":"未锁定"  %></td>
+				<td class="<%=datatdclass %>" align="center">
+				<%
+					if(locked.equals("1")){
+					%>
+					已锁定
+					<%}else{%>未锁定<%}%></td>
 				</tr>
 				<%
 			}
