@@ -203,7 +203,7 @@ public class UploadAction extends ActionSupport{
 		log.set("locked", "1", Field.FIELD_TYPE_TEXT, false);
 		
 		//上传日志Record校验
-		String error = RecordCheck.checkRecord("dc_uploadlog", log, true);
+		String error = RecordCheck.checkRecord("dc_uploadlog", log, false, true);
 		if(error != null && error.trim().length() > 0){
 			request.setAttribute("errorMsg", error + "\n上传日志生成失败，请重试！");
 			return "error";

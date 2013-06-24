@@ -191,6 +191,7 @@ public class UploadManageAction  extends PrivilegeParentAction {
 		tm.setTableName("dc_uploadlog");
 		ArrayList resultList = tm.getAllRecords("datacenter", "logNo = '" + logNo + "'", "");
 		Record r = (Record)resultList.get(0);
+		r.set("logId", r.get("logId"), r.getFieldType("logId"),true);
 		r.set("locked", "0");
 		
 		ConnectionManage cm = ConnectionManage.getInstance();
