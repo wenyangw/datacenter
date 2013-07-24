@@ -16,6 +16,7 @@ import tms.datacenter.dbmanage.Record;
 import tms.datacenter.dbmanage.RecordCheck;
 import tms.datacenter.dbmanage.TableManage;
 import tms.datacenter.sysmanage.Module;
+import tms.datacenter.sysmanage.OperateLog;
 import tms.datacenter.sysmanage.Operation;
 import tms.datacenter.sysmanage.PrivilegeConfig;
 import tms.datacenter.sysmanage.RoleManage;
@@ -26,6 +27,7 @@ import com.opensymphony.xwork2.ActionSupport;
 public class PrivilegeParentAction extends ActionSupport{
 	
 	public Hashtable fieldslabels = new Hashtable();
+	private String log_str = "";
 	@Override
 	public String execute() throws Exception {
 		HttpServletRequest request = ServletActionContext.getRequest (); 
@@ -35,15 +37,26 @@ public class PrivilegeParentAction extends ActionSupport{
 		if(moduleid == null)
 			moduleid = "";
 		Record dcuser = getLoginUser();
+		log_str = "";
+		int privilegeValue = getOperationPrivilegeValue(methodName,specialParam,moduleid);
+		if(privilegeValue <= 0 || (privilegeValue != 1 && privilegeValue%2!=0)){
+			Class c = getClass();
+			Method method = c.getMethod(methodName, null);
+			request.setAttribute("uo", getAllOperations());
+			return (String)method.invoke(c.newInstance(), null);
+		}
 		if(dcuser == null)
 			return "nopower";
 		if("admin".equalsIgnoreCase(dcuser.get("loginname"))){
 			Class c = getClass();
 			Method method = c.getMethod(methodName, null);
 			request.setAttribute("uo", getAllOperations());
+			if(privilegeValue > 1){
+				OperateLog log = new OperateLog();
+				log.AddLog(dcuser.get("loginname"), log_str, "");
+			}
 			return (String)method.invoke(c.newInstance(), null);
 		}
-		int privilegeValue = getOperationPrivilegeValue(methodName,specialParam,moduleid);
 		int lastValue = 1;
 		Hashtable user_privilege = null;
 		if(privilegeValue > 0 && (privilegeValue == 1 || privilegeValue%2==0)){
@@ -60,6 +73,10 @@ public class PrivilegeParentAction extends ActionSupport{
 			Class c = getClass();
 			Method method = c.getMethod(methodName, null);
 			request.setAttribute("uo", getUserHasOperations(user_privilege));
+			if(privilegeValue > 1){
+				OperateLog log = new OperateLog();
+				log.AddLog(dcuser.get("loginname"), log_str, "");
+			}
 			return (String)method.invoke(c.newInstance(), null);
 		}else{
 			//无权限提示
@@ -135,6 +152,7 @@ public class PrivilegeParentAction extends ActionSupport{
 		return dcuser;
 	}
 	private int getOperationPrivilegeValue(String method,String specialParam,String moduleid){
+		log_str = "";
 		String actionClass = this.getClass().getName();
 		//System.out.print(actionClass);
 		if(actionClass == null || actionClass.trim().length() <= 0)
@@ -146,11 +164,13 @@ public class PrivilegeParentAction extends ActionSupport{
 		if(specialParam == null)
 			specialParam = "";
 		PrivilegeConfig pc = PrivilegeConfig.getInstance();
+		
 		ArrayList topmodule = pc.getModules();
 		if(topmodule != null && topmodule.size() > 0){
 			TopModule tm = null;
 			Hashtable modules = null;
 			for(int i = 0; i < topmodule.size(); i++){
+				log_str = "";
 				tm = (TopModule)topmodule.get(i);
 				modules = tm.getModules();
 				Module m = null;
@@ -161,6 +181,7 @@ public class PrivilegeParentAction extends ActionSupport{
 					if(m != null){
 						operations = m.getOperations();
 						o = (Operation)operations.get(method+"分隔符"+specialParam.trim());
+						log_str = tm.getName()+"--"+m.getName()+"--"+o.getCnname();
 						return o.getPrivilegevalue();
 					}
 				}

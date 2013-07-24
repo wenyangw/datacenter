@@ -12,6 +12,6 @@ public class LogoutAction extends ActionSupport {
 		HttpServletRequest request = ServletActionContext.getRequest(); 
 		HttpSession session = request.getSession(true);
 		session.removeAttribute("dcuser");
-		return "login";
+		return "index";
 	}
 }

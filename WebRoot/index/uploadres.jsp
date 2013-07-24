@@ -19,6 +19,5 @@ function getPicPath(){
 
 操作成功！
 <br><input type="button" onclick="getPicPath()" value="关闭"></input><br>
-<img alt="pic" src="<%=request.getContextPath()+uploadFile %>" width="300">
 </body>
 </html>

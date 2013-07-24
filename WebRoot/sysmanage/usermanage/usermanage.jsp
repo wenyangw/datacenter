@@ -187,6 +187,7 @@ ArrayList depts  = (ArrayList)request.getAttribute("depts");
 	</tr>
 	<tr>
 		<td class="data1"  colspan="2">
+			<table>
 			<%
 			ArrayList allroles = (ArrayList)request.getAttribute("allroles");
 			ArrayList userroles = (ArrayList)request.getAttribute("userroles");
@@ -206,24 +207,45 @@ ArrayList depts  = (ArrayList)request.getAttribute("depts");
 				Record role = null;
 				String roleCode = "";
 				String roleName = "";
-				for(int i = 0; i < allroles.size(); i++){
+				for(int i = 0; i < allroles.size(); i+=2){
+					out.println("<tr>");
 					role = (Record)allroles.get(i);
 					roleCode = role.get("rolecode");
 					roleName = role.get("rolename");
 					if(roleCode != null&&roleCode.trim().length() > 0){
 						if(userRoleCodes.contains(roleCode)){
 							%>
-							<input type="checkbox" name="rolecode" checked="checked" value="<%=roleCode %>"><%=roleName+"("+roleCode+")" %>&nbsp;
+							<td><input type="checkbox" name="rolecode" checked="checked" value="<%=roleCode %>"><%=roleName+"("+roleCode+")" %></td>
 							<%
 						}else{
 							%>
-							<input type="checkbox" name="rolecode" value="<%=roleCode %>"><%=roleName+"("+roleCode+")" %>&nbsp;
+							<td><input type="checkbox" name="rolecode" value="<%=roleCode %>"><%=roleName+"("+roleCode+")" %></td>
 							<%
 						}
 					}
+					if(i+1 < allroles.size()){
+						role = (Record)allroles.get(i+1);
+						roleCode = role.get("rolecode");
+						roleName = role.get("rolename");
+						if(roleCode != null&&roleCode.trim().length() > 0){
+							if(userRoleCodes.contains(roleCode)){
+							%>
+							<td><input type="checkbox" name="rolecode" checked="checked" value="<%=roleCode %>"><%=roleName+"("+roleCode+")" %></td>
+							<%
+							}else{
+							%>
+							<td><input type="checkbox" name="rolecode" value="<%=roleCode %>"><%=roleName+"("+roleCode+")" %></td>
+							<%
+							}
+						}
+					}else{
+						%><td></td><%
+					}
+					out.println("</tr>");
 				}
 			}
 			%>
+			</table>
 		</td>
 	</tr>
 	<tr>
@@ -231,6 +253,7 @@ ArrayList depts  = (ArrayList)request.getAttribute("depts");
 	</tr>
 	<tr>
 		<td class="data1"  colspan="2">
+		<table>
 			<%
 			ArrayList allcontrols =  (ArrayList)request.getAttribute("allcontrols");
 			ArrayList usercontrols =  (ArrayList)request.getAttribute("usercontrols");
@@ -244,7 +267,8 @@ ArrayList depts  = (ArrayList)request.getAttribute("depts");
 				String tablename = "";
 				String tablecnname = "";
 				TableDesc td = null;
-				for(int i = 0; i < allcontrols.size(); i++){
+				for(int i = 0; i < allcontrols.size(); i+=2){
+					out.println("<tr>");
 					control = (Record)allcontrols.get(i);
 					controlcode = control.get("controlcode");
 					tablename = control.get("tablename");
@@ -255,17 +279,41 @@ ArrayList depts  = (ArrayList)request.getAttribute("depts");
 					if(controlcode != null&&controlcode.trim().length() > 0){
 						if(usercontrols.contains(controlcode)){
 							%>
-							<input type="checkbox" name="controlcode" checked="checked" value="<%=controlcode %>"><%=tablecnname+"("+tablename+")_"+controldesc %>&nbsp;
+							<td><input type="checkbox" name="controlcode" checked="checked" value="<%=controlcode %>"><%=tablecnname+"("+tablename+")_"+controldesc %></td>
 							<%
 						}else{
 							%>
-							<input type="checkbox" name="controlcode" value="<%=controlcode %>"><%=tablecnname+"("+tablename+")_"+controldesc %>&nbsp;
+							<td><input type="checkbox" name="controlcode" value="<%=controlcode %>"><%=tablecnname+"("+tablename+")_"+controldesc %></td>
 							<%
 						}
 					}
+					if(i+1 < allcontrols.size()){
+						control = (Record)allcontrols.get(i+1);
+						controlcode = control.get("controlcode");
+						tablename = control.get("tablename");
+						controldesc = control.get("controldesc");
+						td = tc.getTable(tablename);
+						if(td != null)
+							tablecnname = td.getCnname();
+						if(controlcode != null&&controlcode.trim().length() > 0){
+							if(usercontrols.contains(controlcode)){
+								%>
+								<td><input type="checkbox" name="controlcode" checked="checked" value="<%=controlcode %>"><%=tablecnname+"("+tablename+")_"+controldesc %></td>
+								<%
+							}else{
+								%>
+								<td><input type="checkbox" name="controlcode" value="<%=controlcode %>"><%=tablecnname+"("+tablename+")_"+controldesc %></td>
+								<%
+							}
+						}
+					}else{
+						out.println("<td></td>");
+					}
+					out.println("</tr>");
 				}
 			}
 			%>
+			</table>
 		</td>
 	</tr>
 	<tr>

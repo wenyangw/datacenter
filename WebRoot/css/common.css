@@ -142,7 +142,7 @@
 		background:#8B3E2F;
 		color:#FFFFFF;
 		font-weight:bold;
-		background-image:url(../images/pmenu.png);
+		
 		height:25px;;
 	}
 	TD.data1{
@@ -200,7 +200,7 @@
 		height:100%;width:170px;overflow:auto;
 	}
 	div.parentmenudiv{
-		cursor:hand;width:170px;height:23px;
+		cursor:pointer;width:170px;height:23px;
 		overflow:false;background:#7B68EE;margin-top:1px;;margin-bottom:0px;
 		margin-left:0px;font-size:11pt;color:white;font-weight:700;text-align:center;
 		line-height:23px;background-image:url(../images/pmenu.png);

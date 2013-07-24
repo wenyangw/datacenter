@@ -4,14 +4,14 @@
         "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
-
     <package name="tms.datacenter.sysmanage.action" namespace="/sysmanage" extends="struts-default">
 		<global-results>
             <result name="nopower">/sysframe/nopower.jsp</result>
             <result name="error">/sysframe/error.jsp</result>
             <result name="success">/sysframe/success.jsp</result>
-            <result name="login">/index.jsp</result>
+            <result name="login">/login.jsp</result>
             <result name="detail">/common/detail.jsp</result>
+            <result name="index">/index.jsp</result>
         </global-results>
 		<action name="loginAction" class="tms.datacenter.sysmanage.action.LoginAction">
             <result name="loginSuccess">/sysframe/mainframe.jsp</result>
@@ -31,6 +31,9 @@
             <result name="rolelist">/sysmanage/rolemanage/rolelist.jsp</result>
             <result name="rolemanage">/sysmanage/rolemanage/rolemanage.jsp</result>
             <result name="privilege">/sysmanage/rolemanage/privilege.jsp</result>
+        </action>
+        <action name="operateLogAction" class="tms.datacenter.sysmanage.action.OperateLogAction">
+            <result name="loglist">/sysmanage/operatelog/loglist.jsp</result>
         </action>
         <action name="contentControlAction" class="tms.datacenter.sysmanage.action.ContentControlAction">
             <result name="list">/sysmanage/contentcontrol/controllist.jsp</result>
@@ -54,6 +57,15 @@
         <action name="columnShowAction" class="tms.datacenter.index.action.ColumnShowAction">
             <result name="columnshow">/index/picad.jsp</result>
         </action>
+        <action name="noticeManageAction" class="tms.datacenter.index.action.NoticeManageAction">
+            <result name="noticelist">/index/noticelist.jsp</result>
+            <result name="noticemanage">/index/noticemanage.jsp</result>
+        </action>
+        <action name="noticeManageAction" class="tms.datacenter.index.action.NoticeManageAction">
+            <result name="noticelist">/index/noticelist.jsp</result>
+            <result name="noticemanage">/index/noticemanage.jsp</result>
+        </action>
+        
     </package>
     <package name="tms.datacenter.stat.action" namespace="/stat" extends="struts-default">
 		<global-results>

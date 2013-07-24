@@ -79,7 +79,7 @@ public class RoleManageAction extends PrivilegeParentAction {
 				+ "/sysmanage/roleManageAction", parames);
 		pager.setSize(15);
 		int offset = pager.getStartposition();
-		ArrayList records = um.getPageRecord("datacenter", condition, "",
+		ArrayList records = um.getPageRecord("datacenter", condition, " order by updatetime desc",
 				"rolecode", offset, pager.getSize());
 
 		request.setAttribute("records", records);

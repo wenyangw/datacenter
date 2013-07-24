@@ -90,10 +90,16 @@ public class UploadAction extends ActionSupport{
 		//将上传文件转换为List
 		List list = null;
 		
+		//上传文件列数
+		int cols = 0;
+		
 		if(uploadContentType.equals(TXTFILE)){
 			//处理文本文件
 			TxtReader txtReader = new TxtReader(upload);
 			list = txtReader.getTxtContents(um.getTxtseparate());
+			//取得文本文件分隔符
+			
+			cols = ((List)list.get(0)).size();
 		}else{
 			//处理excel文件
 			ExcelReader er = new ExcelReader(upload, uploadContentType);
@@ -119,15 +125,16 @@ public class UploadAction extends ActionSupport{
 	        }
 			
 			//取到excel文件的列数
-			excelCols = ((List)list.get(0)).size();
+			cols = ((List)list.get(0)).size();
 			//去掉标题行
 			list.remove(0);
 		}
-		//取得文本文件分隔符
-		um.getTxtseparate();
+		
+		
+		
 		List uploadFields = um.getColumnList();
 		//上传项目设置的字段数与上传文件实际的列数应保持一致
-		if(uploadFields.size() != excelCols){
+		if(uploadFields.size() != cols){
 			ServletActionContext.getRequest().setAttribute("errorMsg", "上传文件与目标文件列数不符");
 			return "error";
 		}
@@ -162,7 +169,7 @@ public class UploadAction extends ActionSupport{
 			}
 			Record r = new Record();
 			//for(int j = 0; j < rows.size(); j++){
-			for(int j = 0; j < excelCols; j++){
+			for(int j = 0; j < cols; j++){
 				String fieldName = ((ColumnMsg)uploadFields.get(j)).getFieldname();
 				String fieldType = ((Field)td.getField(fieldName)).getFieldType();
 				String fieldValue = "";

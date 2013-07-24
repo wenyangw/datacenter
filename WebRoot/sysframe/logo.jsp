@@ -70,7 +70,7 @@ if(user != null){
 	<tr>
 		<td height="20" class="toptd2" width="40%" colspan="2" valign="top" align="left">
 			&nbsp;&nbsp;<%=str_user %><span id="timespan"></span>&nbsp;&nbsp;
-		<a href="#" onclick="logout()">退出系统</a>&nbsp;&nbsp;&nbsp;<a href="<%=request.getContextPath() %>/sysmanage/loginindex.jsp" target="_blank">首页</a>
+		<a href="#" onclick="logout()">退出系统</a>&nbsp;&nbsp;&nbsp;<a href="<%=request.getContextPath() %>/index.jsp" target="_top">首页</a>
 		</td>
 	</tr>
 </table>

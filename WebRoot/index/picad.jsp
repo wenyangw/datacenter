@@ -9,22 +9,22 @@
 <style>
 	div.addiv{
 		width:750px;height:300px;overflow:false;
-		margin-left:25px;
-		margin-right:25px;
+		margin-left:5px;
+		margin-right:5px;
 		margin-top:5px;
 		
 	}
 	div.adbardiv{
-		width:700px;background:yellow;
-		margin-left:25px;
-		margin-right:25px;
+		width:740px;background:yellow;
+		margin-left:5px;
+		margin-right:5px;
 		margin-bottom:5px;
 		border-left:1px solid black;
 		border-right:1px solid black;
 		border-bottom:1px solid black;
 	}
 	img.adimg{
-		width:700px;
+		width:740px;
 		height:300px;
 		border-width:1px;
 	}

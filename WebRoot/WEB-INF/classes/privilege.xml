@@ -21,22 +21,7 @@
 			<operation name="detail" cnname="查看" specialparam="" id="m01m01m07"
 				privilegevalue="256" showpos="1" needconfirm="0" selectcount="1"/>
 		</module>
-		<module name="内容控制管理" id="m01m04" actionclass="tms.datacenter.sysmanage.action.ContentControlAction">
-			<operation name="list" cnname="列表" specialparam="" id="m01m04m01"
-				privilegevalue="1" showpos="0" needconfirm="0" selectcount="0"/>
-			<operation name="addPage" cnname="添加" specialparam="" id="m01m04m02"
-				privilegevalue="2" showpos="1" needconfirm="0" selectcount="0"/>
-			<operation name="add" cnname="执行添加" specialparam="" id="m01m04m03"
-				privilegevalue="4" showpos="2" needconfirm="0" selectcount="0"/>
-			<operation name="updatePage" cnname="修改" specialparam="" id="m01m04m04"
-				privilegevalue="8" showpos="1" needconfirm="0" selectcount="1"/>
-			<operation name="update" cnname="执行修改" specialparam="" id="m01m04m05"
-				privilegevalue="16" showpos="3" needconfirm="0" selectcount="0"/>
-			<operation name="delete" cnname="删除" specialparam="" id="m01m04m06"
-				privilegevalue="32" showpos="1" needconfirm="1" selectcount="2"/>
-			<operation name="detail" cnname="查看" specialparam="" id="m01m04m07"
-				privilegevalue="64" showpos="1" needconfirm="0" selectcount="1"/>
-		</module>
+		
 		<module name="参数管理" id="m01m02" actionclass="tms.datacenter.sysmanage.action.SysParamAction">
 			<operation name="list" cnname="列表" specialparam="" id="m01m02m01"
 				privilegevalue="1" showpos="0" needconfirm="0" selectcount="0"/>
@@ -67,6 +52,22 @@
 			<operation name="delete" cnname="删除" specialparam="" id="m01m03m06"
 				privilegevalue="32" showpos="1" needconfirm="1" selectcount="2"/>
 			<operation name="detail" cnname="查看" specialparam="" id="m01m03m07"
+				privilegevalue="64" showpos="1" needconfirm="0" selectcount="1"/>
+		</module>
+		<module name="内容控制管理" id="m01m04" actionclass="tms.datacenter.sysmanage.action.ContentControlAction">
+			<operation name="list" cnname="列表" specialparam="" id="m01m04m01"
+				privilegevalue="1" showpos="0" needconfirm="0" selectcount="0"/>
+			<operation name="addPage" cnname="添加" specialparam="" id="m01m04m02"
+				privilegevalue="2" showpos="1" needconfirm="0" selectcount="0"/>
+			<operation name="add" cnname="执行添加" specialparam="" id="m01m04m03"
+				privilegevalue="4" showpos="2" needconfirm="0" selectcount="0"/>
+			<operation name="updatePage" cnname="修改" specialparam="" id="m01m04m04"
+				privilegevalue="8" showpos="1" needconfirm="0" selectcount="1"/>
+			<operation name="update" cnname="执行修改" specialparam="" id="m01m04m05"
+				privilegevalue="16" showpos="3" needconfirm="0" selectcount="0"/>
+			<operation name="delete" cnname="删除" specialparam="" id="m01m04m06"
+				privilegevalue="32" showpos="1" needconfirm="1" selectcount="2"/>
+			<operation name="detail" cnname="查看" specialparam="" id="m01m04m07"
 				privilegevalue="64" showpos="1" needconfirm="0" selectcount="1"/>
 		</module>
 		<module name="首页栏目管理" id="m01m05" actionclass="tms.datacenter.index.action.ColumnManageAction">
@@ -101,9 +102,32 @@
 			<operation name="detail" cnname="查看" specialparam="" id="m01m06m07"
 				privilegevalue="64" showpos="1" needconfirm="0" selectcount="1"/>
 		</module>
-		
+		<module name="公告管理" id="m01m07" actionclass="tms.datacenter.index.action.NoticeManageAction">
+			<operation name="list" cnname="列表" specialparam="" id="m01m07m01"
+				privilegevalue="1" showpos="0" needconfirm="0" selectcount="0"/>
+			<operation name="addPage" cnname="添加" specialparam="" id="m01m07m02"
+				privilegevalue="2" showpos="1" needconfirm="0" selectcount="0"/>
+			<operation name="add" cnname="执行添加" specialparam="" id="m01m07m03"
+				privilegevalue="4" showpos="2" needconfirm="0" selectcount="0"/>
+			<operation name="updatePage" cnname="修改" specialparam="" id="m01m07m04"
+				privilegevalue="8" showpos="1" needconfirm="0" selectcount="1"/>
+			<operation name="update" cnname="执行修改" specialparam="" id="m01m07m05"
+				privilegevalue="16" showpos="3" needconfirm="0" selectcount="0"/>
+			<operation name="delete" cnname="删除" specialparam="" id="m01m07m06"
+				privilegevalue="32" showpos="1" needconfirm="1" selectcount="2"/>
+			<operation name="detail" cnname="查看" specialparam="" id="m01m07m07"
+				privilegevalue="64" showpos="1" needconfirm="0" selectcount="1"/>
+		</module>
+		<module name="操作日志" id="m01m08" actionclass="tms.datacenter.sysmanage.action.OperateLogAction">
+			<operation name="list" cnname="列表" specialparam="" id="m01m08m01"
+				privilegevalue="1" showpos="0" needconfirm="0" selectcount="0"/>
+			<operation name="delete" cnname="删除" specialparam="" id="m01m08m02"
+				privilegevalue="2" showpos="1" needconfirm="1" selectcount="2"/>
+			<operation name="detail" cnname="查看" specialparam="" id="m01m08m03"
+				privilegevalue="4" showpos="1" needconfirm="0" selectcount="1"/>
+		</module>
 	</topmodule>
-	<topmodule name="文件上传" id="m02">
+	<topmodule name="教材信息上传" id="m02">
 		<module name="上传管理" id="m02m01" actionclass="tms.datacenter.upload.action.UploadManageAction">
 			<operation name="list" cnname="列表" specialparam="" id="m02m01m01"
 				privilegevalue="1" showpos="0" needconfirm="0" selectcount="0"/>
@@ -113,16 +137,18 @@
 				privilegevalue="4" showpos="0" needconfirm="0" selectcount="0"/>
 			<operation name="log" cnname="上传日志" specialparam="" id="m02m01m04"
 				privilegevalue="8" showpos="1" needconfirm="0" selectcount="0"/>
-			<operation name="unlock" cnname="取消锁定" specialparam="" id="m02m01m05"
+			<operation name="unlock" cnname="日志解锁" specialparam="" id="m02m01m05"
 				privilegevalue="16" showpos="2" needconfirm="0" selectcount="0"/>
-			<operation name="logDel" cnname="删除上传数据" specialparam="" id="m02m01m06"
-				privilegevalue="32" showpos="2" needconfirm="0" selectcount="0"/>	
-			<operation name="detail" cnname="查看" specialparam="" id="m02m01m07"
-				privilegevalue="64" showpos="2" needconfirm="0" selectcount="0"/>
-			<operation name="delete" cnname="删除" specialparam="" id="m02m01m08"
-				privilegevalue="128" showpos="3" needconfirm="0" selectcount="0"/>
-			<operation name="compare" cnname="上传数据比较" specialparam="" id="m02m01m09"
-				privilegevalue="256" showpos="2" needconfirm="0" selectcount="0"/>
+			<operation name="lock" cnname="日志锁定" specialparam="" id="m02m01m06"
+				privilegevalue="32" showpos="2" needconfirm="0" selectcount="0"/>
+			<operation name="logDel" cnname="删除上传数据" specialparam="" id="m02m01m07"
+				privilegevalue="64" showpos="2" needconfirm="0" selectcount="0"/>	
+			<operation name="detail" cnname="查看" specialparam="" id="m02m01m08"
+				privilegevalue="128" showpos="2" needconfirm="0" selectcount="0"/>
+			<operation name="delete" cnname="删除" specialparam="" id="m02m01m09"
+				privilegevalue="256" showpos="3" needconfirm="0" selectcount="0"/>
+			<operation name="compare" cnname="上传数据比较" specialparam="" id="m02m01m10"
+				privilegevalue="512" showpos="2" needconfirm="0" selectcount="0"/>	
 		</module>
 		<module name="上传计划" id="m02m02" actionclass="tms.datacenter.upload.action.RuleManageAction">
 			<operation name="list" cnname="列表" specialparam="" id="m02m02m01"
@@ -144,56 +170,94 @@
 		</module>
 		<module name="报表图表演示" id="m02m04" actionclass="tms.datacenter.upload.action.ReportAction">
 			<operation name="list" cnname="报表打印" specialparam="" id="m02m04m01"
-				privilegevalue="1" showpos="0" needconfirm="0" selectcount="0"/>
+		privilegevalue="1" showpos="0" needconfirm="0" selectcount="0"/>
 			<operation name="print" cnname="报表打印" specialparam="" id="m02m04m02"
-				privilegevalue="2" showpos="1" needconfirm="0" selectcount="0"/>
+		privilegevalue="2" showpos="1" needconfirm="0" selectcount="0"/>
 			<operation name="chart" cnname="图表演示" specialparam="" id="m02m04m03"
 				privilegevalue="4" showpos="1" needconfirm="0" selectcount="0"/>
 		</module>
-		
 	</topmodule>
-	<topmodule name="查询统计" id="m03">
+	<topmodule name="教材信息查询" id="m03">
 		<module name="测试统计" id="m03m01" actionclass="tms.datacenter.stat.action.CommonStatAction">
 			<operation name="list" cnname="统计列表" specialparam="teststat1" id="m03m01m01"
 				privilegevalue="1" showpos="0" needconfirm="0" selectcount="0"/>
-			<operation name="exportToExcel" cnname="导出" specialparam="teststat1" id="m03m01m02"
+			<operation name="exportToExcel" cnname="导出EXCEL" specialparam="teststat1" id="m03m01m02"
 				privilegevalue="2" showpos="1" needconfirm="0" selectcount="0"/>
-		</module>
-		<module name="测试统计2" id="m03m02" actionclass="tms.datacenter.stat.action.CommonStatAction">
-			<operation name="list" cnname="统计列表" specialparam="teststat2" id="m03m02m01"
-				privilegevalue="1" showpos="0" needconfirm="0" selectcount="0"/>
-			<operation name="exportToExcel" cnname="导出" specialparam="teststat2" id="m03m02m02"
-				privilegevalue="2" showpos="1" needconfirm="0" selectcount="0"/>
+			<operation name="exportToTXT" cnname="导出TXT" specialparam="teststat1" id="m03m01m03"
+				privilegevalue="4" showpos="1" needconfirm="0" selectcount="0"/>
 		</module>
 		<module name="付印单查询" id="m03m03" actionclass="tms.datacenter.stat.action.CommonStatAction">
 			<operation name="list" cnname="付印单列表" specialparam="fydquery" id="m03m03m01"
 				privilegevalue="1" showpos="0" needconfirm="0" selectcount="0"/>
-			<operation name="exportToExcel" cnname="导出" specialparam="fydquery" id="m03m03m02"
+			<operation name="exportToExcel" cnname="导出EXCEL" specialparam="fydquery" id="m03m03m02"
 				privilegevalue="2" showpos="1" needconfirm="0" selectcount="0"/>
+			<operation name="exportToTXT" cnname="导出TXT" specialparam="fydquery" id="m03m03m03"
+				privilegevalue="4" showpos="1" needconfirm="0" selectcount="0"/>
 		</module>
 		<module name="纸张信息" id="m03m04" actionclass="tms.datacenter.stat.action.CommonStatAction">
 			<operation name="list" cnname="纸张信息列表" specialparam="zzxx" id="m03m04m01"
 				privilegevalue="1" showpos="0" needconfirm="0" selectcount="0"/>
-			<operation name="exportToExcel" cnname="导出" specialparam="zzxx" id="m03m04m02"
+			<operation name="exportToExcel" cnname="导出EXCEL" specialparam="zzxx" id="m03m04m02"
 				privilegevalue="2" showpos="1" needconfirm="0" selectcount="0"/>
+			<operation name="exportToTXT" cnname="导出TXT" specialparam="zzxx" id="m03m04m03"
+				privilegevalue="4" showpos="1" needconfirm="0" selectcount="0"/>
+				
 		</module>
 		<module name="教材包装发印环节" id="m03m05" actionclass="tms.datacenter.stat.action.CommonStatAction">
 			<operation name="list" cnname="教材包装发印环节列表" specialparam="fyhj" id="m03m05m01"
 				privilegevalue="1" showpos="0" needconfirm="0" selectcount="0"/>
-			<operation name="exportToExcel" cnname="导出" specialparam="fyhj" id="m03m05m02"
+			<operation name="exportToExcel" cnname="导出EXCEL" specialparam="fyhj" id="m03m05m02"
 				privilegevalue="2" showpos="1" needconfirm="0" selectcount="0"/>
+			<operation name="exportToTXT" cnname="导出TXT" specialparam="fyhj" id="m03m05m03"
+				privilegevalue="4" showpos="1" needconfirm="0" selectcount="0"/>
 		</module>
 		<module name="教材进货收货信息" id="m03m06" actionclass="tms.datacenter.stat.action.CommonStatAction">
 			<operation name="list" cnname="教材进货收货信息列表" specialparam="jcjhsh" id="m03m06m01"
 				privilegevalue="1" showpos="0" needconfirm="0" selectcount="0"/>
-			<operation name="exportToExcel" cnname="导出" specialparam="jcjhsh" id="m03m06m02"
+			<operation name="exportToExcel" cnname="导出EXCEL" specialparam="jcjhsh" id="m03m06m02"
 				privilegevalue="2" showpos="1" needconfirm="0" selectcount="0"/>
+			<operation name="exportToTXT" cnname="导出TXT" specialparam="jcjhsh" id="m03m06m03"
+				privilegevalue="4" showpos="1" needconfirm="0" selectcount="0"/>
 		</module>
 		<module name="收书信息" id="m03m07" actionclass="tms.datacenter.stat.action.CommonStatAction">
 			<operation name="list" cnname="收书信息列表" specialparam="ssxx" id="m03m07m01"
 				privilegevalue="1" showpos="0" needconfirm="0" selectcount="0"/>
-			<operation name="exportToExcel" cnname="导出" specialparam="ssxx" id="m03m07m02"
+			<operation name="exportToExcel" cnname="导出EXCEL" specialparam="ssxx" id="m03m07m02"
 				privilegevalue="2" showpos="1" needconfirm="0" selectcount="0"/>
+			<operation name="exportToTXT" cnname="导出TXT" specialparam="ssxx" id="m03m07m03"
+				privilegevalue="4" showpos="1" needconfirm="0" selectcount="0"/>
+		</module>
+		<module name="付印安排信息" id="m03m08" actionclass="tms.datacenter.stat.action.CommonStatAction">
+			<operation name="list" cnname="付印安排列表" specialparam="fyapquery" id="m03m08m01"
+				privilegevalue="1" showpos="0" needconfirm="0" selectcount="0"/>
+			<operation name="exportToExcel" cnname="导出EXCEL" specialparam="fyapquery" id="m03m08m02"
+				privilegevalue="2" showpos="1" needconfirm="0" selectcount="0"/>
+			<operation name="exportToTXT" cnname="导出TXT" specialparam="fyapquery" id="m03m08m03"
+				privilegevalue="4" showpos="1" needconfirm="0" selectcount="0"/>
+		</module>
+		<module name="实际付印生产进度" id="m03m09" actionclass="tms.datacenter.stat.action.CommonStatAction">
+			<operation name="list" cnname="实际付印生产进度列表" specialparam="sjfy" id="m03m09m01"
+				privilegevalue="1" showpos="0" needconfirm="0" selectcount="0"/>
+			<operation name="exportToExcel" cnname="导出EXCEL" specialparam="sjfy" id="m03m09m02"
+				privilegevalue="2" showpos="1" needconfirm="0" selectcount="0"/>
+			<operation name="exportToTXT" cnname="导出TXT" specialparam="sjfy" id="m03m09m03"
+				privilegevalue="4" showpos="1" needconfirm="0" selectcount="0"/>
+		</module>
+		<module name="征订目录信息" id="m03m10" actionclass="tms.datacenter.stat.action.CommonStatAction">
+			<operation name="list" cnname="征订目录列表" specialparam="zdml" id="m03m10m01"
+				privilegevalue="1" showpos="0" needconfirm="0" selectcount="0"/>
+			<operation name="exportToExcel" cnname="导出EXCEL" specialparam="zdml" id="m03m10m02"
+				privilegevalue="2" showpos="1" needconfirm="0" selectcount="0"/>
+			<operation name="exportToTXT" cnname="导出TXT" specialparam="zdml" id="m03m10m03"
+				privilegevalue="4" showpos="1" needconfirm="0" selectcount="0"/>
+		</module>
+		<module name="全省市县书目品种" id="m03m11" actionclass="tms.datacenter.stat.action.CommonStatAction">
+			<operation name="list" cnname="全省市县书目品种" specialparam="dc_smpz" id="m03m11m01"
+				privilegevalue="1" showpos="0" needconfirm="0" selectcount="0"/>
+			<operation name="exportToExcel" cnname="导出EXCEL" specialparam="dc_smpz" id="m03m11m02"
+				privilegevalue="2" showpos="1" needconfirm="0" selectcount="0"/>
+			<operation name="exportToTXT" cnname="导出TXT" specialparam="dc_smpz" id="m03m11m03"
+				privilegevalue="4" showpos="1" needconfirm="0" selectcount="0"/>
 		</module>
 	</topmodule>
 </privilege>

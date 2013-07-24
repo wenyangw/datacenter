@@ -23,6 +23,7 @@ import tms.datacenter.sysmanage.UserManage;
 public class UserManageAction extends PrivilegeParentAction {
 	/**
 	 * 构造查询控件
+	 * 
 	 * @return
 	 */
 	public ArrayList getQueryControl() {
@@ -35,30 +36,29 @@ public class UserManageAction extends PrivilegeParentAction {
 				QueryConditionControl.CONTROL_TYPE_TEXT);
 		qcc.setDefaultValue(loginname);
 		controls.add(qcc);
-		
+
 		String username = request.getParameter("qusername");
 		username = StringToZn.toZn(username);
-		qcc = new QueryConditionControl("qusername",
-				"姓名", QueryConditionControl.QUERY_TYPE_COMMON,
+		qcc = new QueryConditionControl("qusername", "姓名",
+				QueryConditionControl.QUERY_TYPE_COMMON,
 				QueryConditionControl.CONTROL_TYPE_TEXT);
 		qcc.setDefaultValue(username);
 		controls.add(qcc);
-		
 
 		String organisation = request.getParameter("qorganisation");
 		organisation = StringToZn.toZn(organisation);
-		qcc = new QueryConditionControl("qorganisation",
-				"单位", QueryConditionControl.QUERY_TYPE_COMMON,
+		qcc = new QueryConditionControl("qorganisation", "单位",
+				QueryConditionControl.QUERY_TYPE_COMMON,
 				QueryConditionControl.CONTROL_TYPE_SELECT);
 		qcc.setDefaultValue(organisation);
-		
+
 		String department = request.getParameter("qdepartment");
 		department = StringToZn.toZn(department);
 		QueryConditionControl qcc2 = new QueryConditionControl("qdepartment",
 				"部门", QueryConditionControl.QUERY_TYPE_COMMON,
 				QueryConditionControl.CONTROL_TYPE_SELECT);
 		qcc2.setDefaultValue(department);
-		
+
 		SysParam sp = new SysParam();
 		ArrayList params = sp.getAllRecords("datacenter", "", "");
 		if (params != null && params.size() > 0) {
@@ -67,10 +67,12 @@ public class UserManageAction extends PrivilegeParentAction {
 				r = (Record) params.get(i);
 				if (("" + SysParam.PARAM_TYPE_ORG).equalsIgnoreCase(r
 						.get("paramtype")))
-					qcc.addOptions(r.get("paramcode"), r.get("paramname")+"("+r.get("paramcode")+")");
+					qcc.addOptions(r.get("paramcode"), r.get("paramname") + "("
+							+ r.get("paramcode") + ")");
 				else if (("" + SysParam.PARAM_TYPE_DEPARTMENT)
 						.equalsIgnoreCase(r.get("paramtype")))
-					qcc2.addOptions(r.get("paramcode"), r.get("paramname")+"("+r.get("paramcode")+")");
+					qcc2.addOptions(r.get("paramcode"), r.get("paramname")
+							+ "(" + r.get("paramcode") + ")");
 			}
 		}
 		controls.add(qcc);
@@ -94,29 +96,31 @@ public class UserManageAction extends PrivilegeParentAction {
 		String username = request.getParameter("qusername");
 		String origanisation = request.getParameter("qorganisation");
 		String department = request.getParameter("qdepartment");
-		if(loginname != null && loginname.trim().length() > 0){
+		if (loginname != null && loginname.trim().length() > 0) {
 			loginname = StringToZn.toZn(loginname);
-			if(condition.trim().length() > 0)
-				condition+=" and ";
-			condition += "loginname like '%"+StringToZn.toDB(loginname)+"%'";
+			if (condition.trim().length() > 0)
+				condition += " and ";
+			condition += "loginname like '%" + StringToZn.toDB(loginname)
+					+ "%'";
 		}
-		if(username != null && username.trim().length() > 0){
+		if (username != null && username.trim().length() > 0) {
 			username = StringToZn.toZn(username);
-			if(condition.trim().length() > 0)
-				condition+=" and ";
-			condition += "username like '%"+StringToZn.toDB(username)+"%'";
+			if (condition.trim().length() > 0)
+				condition += " and ";
+			condition += "username like '%" + StringToZn.toDB(username) + "%'";
 		}
-		if(origanisation != null && origanisation.trim().length() > 0){
+		if (origanisation != null && origanisation.trim().length() > 0) {
 			origanisation = StringToZn.toZn(origanisation);
-			if(condition.trim().length() > 0)
-				condition+=" and ";
-			condition += "organisation = '"+StringToZn.toDB(origanisation)+"'";
+			if (condition.trim().length() > 0)
+				condition += " and ";
+			condition += "organisation = '" + StringToZn.toDB(origanisation)
+					+ "'";
 		}
-		if(department != null && department.trim().length() > 0){
+		if (department != null && department.trim().length() > 0) {
 			department = StringToZn.toZn(department);
-			if(condition.trim().length() > 0)
-				condition+=" and ";
-			condition += "department = '"+StringToZn.toDB(department)+"'";
+			if (condition.trim().length() > 0)
+				condition += " and ";
+			condition += "department = '" + StringToZn.toDB(department) + "'";
 		}
 		UserManage um = new UserManage();
 		int totalcount = um
@@ -148,17 +152,17 @@ public class UserManageAction extends PrivilegeParentAction {
 		request.setAttribute("orgs", orgs);
 		request.setAttribute("depts", depts);
 		RoleManage rm = new RoleManage();
-		ArrayList allroles = rm.getAllRecords("datacenter", "", "");
+		ArrayList allroles = rm.getAllRecords("datacenter", "", " order by rolename");
 		request.setAttribute("allroles", allroles);
 		Record r = new Record();
-		r = RecordCheck.setRecordFieldDesc("dc_user",r);
+		r = RecordCheck.setRecordFieldDesc("dc_user", r);
 		this.getRequest().setAttribute("record", r);
 		ContentControl cc = new ContentControl();
 		ArrayList allcontrols = cc.getAllControls();
 		request.setAttribute("allcontrols", allcontrols);
 		UploadPrivilege up = new UploadPrivilege();
 		request.setAttribute("allupload", up.getAllUploads());
-		//request.setAttribute("userupload", up.getUserUploadsName(loginname));
+		// request.setAttribute("userupload", up.getUserUploadsName(loginname));
 		return "usermanage";
 	}
 
@@ -195,9 +199,10 @@ public class UserManageAction extends PrivilegeParentAction {
 		r.set("operator", operator, Field.FIELD_TYPE_TEXT, false);
 		r.set("memo", memo, Field.FIELD_TYPE_TEXT, false);
 		String error = RecordCheck.checkRecord("dc_user", r, true);
-		if(error != null && error.trim().length() > 0)
+		if (error != null && error.trim().length() > 0)
 			return this.operaterError(error);
-		if(department != null && department.trim().length() > 0 && (organisation == null || organisation.trim().length() <= 0)){
+		if (department != null && department.trim().length() > 0
+				&& (organisation == null || organisation.trim().length() <= 0)) {
 			return this.operaterError("请为部门选择单位！");
 		}
 		UserManage um = new UserManage();
@@ -245,7 +250,8 @@ public class UserManageAction extends PrivilegeParentAction {
 				Record r_control_in_user = null;
 				for (int i = 0; i < usercontrols.length; i++) {
 					addControlCode = usercontrols[i];
-					if (addControlCode != null && addControlCode.trim().length() > 0) {
+					if (addControlCode != null
+							&& addControlCode.trim().length() > 0) {
 						r_control_in_user = new Record();
 						r_control_in_user.set("loginname", loginname);
 						r_control_in_user.set("controlcode", addControlCode);
@@ -258,26 +264,27 @@ public class UserManageAction extends PrivilegeParentAction {
 					}
 				}
 			}
-			String[] uploadspecialparams = request.getParameterValues("uploadspecialparam");
+			String[] uploadspecialparams = request
+					.getParameterValues("uploadspecialparam");
 			if (uploadspecialparams != null && uploadspecialparams.length > 0) {
 				UploadPrivilege up = new UploadPrivilege();
-				if(!up.setPrivilege(conn,loginname, uploadspecialparams)){
+				if (!up.setPrivilege(conn, loginname, uploadspecialparams)) {
 					conn.rollback();
 					return this.operaterError("更新上传权限失败！");
 				}
-					
+
 			}
 			conn.commit();
-			
+
 			this.setReturnAction(request.getContextPath()
 					+ "/sysmanage/userManageAction");
 			Hashtable params = new Hashtable();
 			params.put("methodName", "list");
 			String moduleid = request.getParameter("moduleid");
 			String specialParam = request.getParameter("specialParam");
-			if(moduleid == null)
+			if (moduleid == null)
 				moduleid = "";
-			if(specialParam == null)
+			if (specialParam == null)
 				specialParam = "";
 			params.put("moduleid", moduleid);
 			params.put("specialParam", specialParam);
@@ -315,7 +322,7 @@ public class UserManageAction extends PrivilegeParentAction {
 				+ loginname + "'", "");
 		if (records != null && records.size() > 0) {
 			Record user = (Record) records.get(0);
-			user = RecordCheck.setRecordFieldDesc("dc_user",user);
+			user = RecordCheck.setRecordFieldDesc("dc_user", user);
 			this.getRequest().setAttribute("record", user);
 		} else
 			return this.operaterError("记录已不存在！");
@@ -329,7 +336,7 @@ public class UserManageAction extends PrivilegeParentAction {
 		request.setAttribute("depts", depts);
 
 		RoleManage rm = new RoleManage();
-		ArrayList allroles = rm.getAllRecords("datacenter", "", "");
+		ArrayList allroles = rm.getAllRecords("datacenter", "", " order by rolename");
 		request.setAttribute("allroles", allroles);
 
 		ArrayList userroles = rm.getUserRole("datacenter", loginname);
@@ -376,9 +383,10 @@ public class UserManageAction extends PrivilegeParentAction {
 		r.set("operator", operator, Field.FIELD_TYPE_TEXT, false);
 		r.set("memo", memo, Field.FIELD_TYPE_TEXT, false);
 		String error = RecordCheck.checkRecord("dc_user", r, true);
-		if(error != null && error.trim().length() > 0)
+		if (error != null && error.trim().length() > 0)
 			return this.operaterError(error);
-		if(department != null && department.trim().length() > 0 && (organisation == null || organisation.trim().length() <= 0)){
+		if (department != null && department.trim().length() > 0
+				&& (organisation == null || organisation.trim().length() <= 0)) {
 			return this.operaterError("请为部门选择单位！");
 		}
 		UserManage um = new UserManage();
@@ -402,7 +410,7 @@ public class UserManageAction extends PrivilegeParentAction {
 				return this.operaterError("删除用户原有角色失败！");
 			}
 			sql = "delete from dc_control_in_user where loginname='"
-				+ loginname + "'";
+					+ loginname + "'";
 			res2 = um.executeUpdate(conn, sql);
 			if (res2 < 0) {
 				conn.rollback();
@@ -433,7 +441,8 @@ public class UserManageAction extends PrivilegeParentAction {
 				Record r_control_in_user = null;
 				for (int i = 0; i < usercontrols.length; i++) {
 					addControlCode = usercontrols[i];
-					if (addControlCode != null && addControlCode.trim().length() > 0) {
+					if (addControlCode != null
+							&& addControlCode.trim().length() > 0) {
 						r_control_in_user = new Record();
 						r_control_in_user.set("loginname", loginname);
 						r_control_in_user.set("controlcode", addControlCode);
@@ -446,15 +455,15 @@ public class UserManageAction extends PrivilegeParentAction {
 					}
 				}
 			}
-			String[] uploadspecialparams = request.getParameterValues("uploadspecialparam");
-			if (uploadspecialparams != null && uploadspecialparams.length > 0) {
-				UploadPrivilege up = new UploadPrivilege();
-				if(!up.setPrivilege(conn,loginname, uploadspecialparams)){
-					conn.rollback();
-					return this.operaterError("更新上传权限失败！");
-				}
-					
+			String[] uploadspecialparams = request
+					.getParameterValues("uploadspecialparam");
+
+			UploadPrivilege up = new UploadPrivilege();
+			if (!up.setPrivilege(conn, loginname, uploadspecialparams)) {
+				conn.rollback();
+				return this.operaterError("更新上传权限失败！");
 			}
+
 			conn.commit();
 			this.setReturnAction(request.getContextPath()
 					+ "/sysmanage/userManageAction");
@@ -462,9 +471,9 @@ public class UserManageAction extends PrivilegeParentAction {
 			params.put("methodName", "list");
 			String moduleid = request.getParameter("moduleid");
 			String specialParam = request.getParameter("specialParam");
-			if(moduleid == null)
+			if (moduleid == null)
 				moduleid = "";
-			if(specialParam == null)
+			if (specialParam == null)
 				specialParam = "";
 			params.put("moduleid", moduleid);
 			params.put("specialParam", specialParam);
@@ -497,8 +506,8 @@ public class UserManageAction extends PrivilegeParentAction {
 			return this.operaterError("请至少选择一条记录！");
 		}
 		String sysuser = "admin";
-		for(int i = 0; i < loginnames.length; i++){
-			if(sysuser.equals(loginnames[i]))
+		for (int i = 0; i < loginnames.length; i++) {
+			if (sysuser.equals(loginnames[i]))
 				return this.operaterError("admin用户不能被删除！");
 		}
 		UserManage um = new UserManage();
@@ -510,8 +519,8 @@ public class UserManageAction extends PrivilegeParentAction {
 					Field.FIELD_TYPE_TEXT, loginnames);
 			int res2 = um.deleteRecords(conn, "dc_role_in_user", "loginname",
 					Field.FIELD_TYPE_TEXT, loginnames);
-			int res3 = um.deleteRecords(conn, "dc_control_in_user", "loginname",
-					Field.FIELD_TYPE_TEXT, loginnames);
+			int res3 = um.deleteRecords(conn, "dc_control_in_user",
+					"loginname", Field.FIELD_TYPE_TEXT, loginnames);
 			if (res > 0 && res2 >= 0 && res3 >= 0) {
 				conn.commit();
 				this.setReturnAction(request.getContextPath()
@@ -520,9 +529,9 @@ public class UserManageAction extends PrivilegeParentAction {
 				params.put("methodName", "list");
 				String moduleid = request.getParameter("moduleid");
 				String specialParam = request.getParameter("specialParam");
-				if(moduleid == null)
+				if (moduleid == null)
 					moduleid = "";
-				if(specialParam == null)
+				if (specialParam == null)
 					specialParam = "";
 				params.put("moduleid", moduleid);
 				params.put("specialParam", specialParam);
@@ -582,16 +591,19 @@ public class UserManageAction extends PrivilegeParentAction {
 		this.addFieldParameters("inuse", "0", "否");
 
 	}
-	public Field getDetailPKField(){
+
+	public Field getDetailPKField() {
 		Field field = new Field();
 		field.setFieldName("loginname");
 		field.setFieldType(Field.FIELD_TYPE_TEXT);
 		return field;
 	}
-	public String getDetailPoolName(){
+
+	public String getDetailPoolName() {
 		return "datacenter";
 	}
-	public TableManage getDetailClass(){
+
+	public TableManage getDetailClass() {
 		UserManage um = new UserManage();
 		return um;
 	}

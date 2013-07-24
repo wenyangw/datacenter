@@ -26,6 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="<%=request.getContextPath() %>/js/common.js"> </script>
 <%
 String tableName = (String)request.getAttribute("tablename");
+String moduleid = (String)request.getAttribute("moduleid");
 %>
   </head>
   
@@ -106,7 +107,8 @@ String tableName = (String)request.getAttribute("tablename");
 <table class="bottomtable" width="100%">
 	<tr>
 		<td align="right">
-			<input type="button" value="返回" onclick="javascript:history.go(-1)">
+<!-- 			<input type="button" value="返回" onclick="javascript:history.go(-1)"> -->
+			<input type="button" value="返回" onclick="document.location='<%=request.getContextPath()%>/upload/uploadManageAction.action?methodName=list&moduleid=<%=moduleid%>'">
 		</td>
 		<td align="right">
 			<%

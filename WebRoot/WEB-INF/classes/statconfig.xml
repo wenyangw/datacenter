@@ -11,7 +11,7 @@
 			conditionsql=" and starttime &gt;= '/b_starttime/'" conditionsql2=" and starttime &lt;= '/e_starttime/ 23:59:59' " isshow="1" listfield="">
 		</querycontrol>
 	</stat>
-	<stat cnname="测试统计" methodname="sqlStat" specialparam="teststat1" poolname="datacenter"
+	<!-- <stat cnname="测试统计" methodname="sqlStat" specialparam="teststat1" poolname="datacenter"
 		sqlstr="select paramtype,count(paramcode) sl from dc_sys_param where 1=1 /paramtype/ group by paramtype"
 		tablename="" hiddenfields="" pkfield="">
 		<querycontrol name="paramtype" label="参数类型" type="select"
@@ -22,16 +22,20 @@
 			<option value="2" text="部门" />
 			<option value="3" text="自定义" />
 		</querycontrol>
-	</stat>
-	<stat cnname="付印单查询" methodname="tableList" specialparam="teststat2" poolname="datacenter"
-		sqlstr="" tablename="dc_fyd" orderby=" order by logno desc"  hiddenfields="id" pkfield="id">
-		<querycontrol name="fydno" label="付印单号" type="text"
-			querytype="1" optionSql="" optionPoolname="datacenter"
-			conditionsql=" and fydno='/fydno/'" conditionsql2="" isshow="1" listfield="fydno">
-		</querycontrol>
+	</stat> -->
+	<stat cnname="付印安排信息" methodname="tableList" specialparam="fyapquery" poolname="datacenter"
+		sqlstr="" tablename="dc_fyap" orderby=" order by logno desc"  hiddenfields="id" pkfield="id">
 		<querycontrol name="bookname" label="书名" type="text"
 			querytype="1" optionSql="" optionPoolname="datacenter"
 			conditionsql=" and bookname like '%/bookname/%'" conditionsql2="" isshow="1" listfield="">
+		</querycontrol>
+		<querycontrol name="bookno" label="书号" type="text"
+			querytype="1" optionSql="" optionPoolname="datacenter"
+			conditionsql=" and bookno like '%/bookno/%'" conditionsql2="" isshow="1" listfield="">
+		</querycontrol>
+		<querycontrol name="updatetime" label="更新时间" type="date"
+			querytype="2" optionSql="" optionPoolname="datacenter"
+			conditionsql=" and updatetime &gt;= '/b_updatetime/'" conditionsql2=" and updatetime &lt;= '/e_updatetime/ 23:59:59' " isshow="1" listfield="updatetime">
 		</querycontrol>
 		<querycontrol name="username" label="操作人" type="select"
 			querytype="1" optionSql="select loginname optionvalue,username optiontext from dc_user" optionPoolname="datacenter"
@@ -104,6 +108,59 @@
 	</stat>
 	<stat cnname="收书信息" methodname="tableList" specialparam="ssxx" poolname="datacenter"
 		sqlstr="" tablename="dc_ssxx" orderby=" order by logno desc"  hiddenfields="id" pkfield="id">
+		<querycontrol name="bookname" label="书名" type="text"
+			querytype="1" optionSql="" optionPoolname="datacenter"
+			conditionsql=" and bookname like '%/bookname/%'" conditionsql2="" isshow="1" listfield="">
+		</querycontrol>
+		<querycontrol name="updatetime" label="更新时间" type="date"
+			querytype="2" optionSql="" optionPoolname="datacenter"
+			conditionsql=" and updatetime &gt;= '/b_updatetime/'" conditionsql2=" and updatetime &lt;= '/e_updatetime/ 23:59:59' " isshow="1" listfield="updatetime">
+		</querycontrol>
+		<querycontrol name="username" label="操作人" type="select"
+			querytype="1" optionSql="select loginname optionvalue,username optiontext from dc_user" optionPoolname="datacenter"
+			conditionsql=" and username='/username/' " conditionsql2="" isshow="1" listfield="username">
+		</querycontrol>
+	</stat>
+	<stat cnname="实际付印生产进度" methodname="tableList" specialparam="sjfy" poolname="datacenter"
+		sqlstr="" tablename="dc_sjfy" orderby=" order by logno desc"  hiddenfields="id" pkfield="id">
+		<querycontrol name="bookname" label="书名" type="text"
+			querytype="1" optionSql="" optionPoolname="datacenter"
+			conditionsql=" and bookname like '%/bookname/%'" conditionsql2="" isshow="1" listfield="">
+		</querycontrol>
+		<querycontrol name="bookno" label="书号" type="text"
+			querytype="1" optionSql="" optionPoolname="datacenter"
+			conditionsql=" and bookno like '%/bookno/%'" conditionsql2="" isshow="1" listfield="">
+		</querycontrol>
+		<querycontrol name="updatetime" label="更新时间" type="date"
+			querytype="2" optionSql="" optionPoolname="datacenter"
+			conditionsql=" and updatetime &gt;= '/b_updatetime/'" conditionsql2=" and updatetime &lt;= '/e_updatetime/ 23:59:59' " isshow="1" listfield="updatetime">
+		</querycontrol>
+		<querycontrol name="username" label="操作人" type="select"
+			querytype="1" optionSql="select loginname optionvalue,username optiontext from dc_user" optionPoolname="datacenter"
+			conditionsql=" and username='/username/' " conditionsql2="" isshow="1" listfield="username">
+		</querycontrol>
+	</stat>
+	<stat cnname="征订目录" methodname="tableList" specialparam="zdml" poolname="datacenter"
+		sqlstr="" tablename="dc_zdml" orderby=" order by logno desc"  hiddenfields="id" pkfield="id">
+		<querycontrol name="bookname" label="书名" type="text"
+			querytype="1" optionSql="" optionPoolname="datacenter"
+			conditionsql=" and bookname like '%/bookname/%'" conditionsql2="" isshow="1" listfield="">
+		</querycontrol>
+		<querycontrol name="bookno" label="书号" type="text"
+			querytype="1" optionSql="" optionPoolname="datacenter"
+			conditionsql=" and bookno like '%/bookno/%'" conditionsql2="" isshow="1" listfield="">
+		</querycontrol>
+		<querycontrol name="updatetime" label="更新时间" type="date"
+			querytype="2" optionSql="" optionPoolname="datacenter"
+			conditionsql=" and updatetime &gt;= '/b_updatetime/'" conditionsql2=" and updatetime &lt;= '/e_updatetime/ 23:59:59' " isshow="1" listfield="updatetime">
+		</querycontrol>
+		<querycontrol name="username" label="操作人" type="select"
+			querytype="1" optionSql="select loginname optionvalue,username optiontext from dc_user" optionPoolname="datacenter"
+			conditionsql=" and username='/username/' " conditionsql2="" isshow="1" listfield="username">
+		</querycontrol>
+	</stat>
+	<stat cnname="全省市县书目品种" methodname="tableList" specialparam="dc_smpz" poolname="datacenter"
+		sqlstr="" tablename="dc_smpz" orderby=" order by logno desc"  hiddenfields="id" pkfield="id">
 		<querycontrol name="bookname" label="书名" type="text"
 			querytype="1" optionSql="" optionPoolname="datacenter"
 			conditionsql=" and bookname like '%/bookname/%'" conditionsql2="" isshow="1" listfield="">

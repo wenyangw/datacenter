@@ -26,16 +26,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="<%=request.getContextPath() %>/js/common.js"> </script>
 
 	<%
-	String tableName = (String)request.getAttribute("tablename");
+	String tablename = (String)request.getAttribute("tablename");
 	String logNo = (String)request.getAttribute("logNo");
+	String moduleid = (String)request.getAttribute("moduleid");
 		
 	//获得数据表的对象
 	TableConfig tc = TableConfig.getInstance();
-	TableDesc td = tc.getTable(tableName);
+	TableDesc td = tc.getTable(tablename);
 	
 	//取得上传表的字段
 	UploadConfig uc = UploadConfig.getInstance();
-	UploadMsg um = uc.getUpload(tableName);
+	UploadMsg um = uc.getUpload(tablename);
 	ArrayList lists = um.getColumnList();
 	
 	
@@ -48,7 +49,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <input type="hidden" name="methodName" id="methodNameId" value="detail">
 <input type="hidden" name="specialparam" id="specialparamId" value="">
 <input type="hidden" name="moduleid" id="moduleidId" value="<%=request.getAttribute("moduleid")==null?"":(String)request.getAttribute("moduleid") %>">
-<input type="hidden" name="tablename" value="<%=tableName %>">
+<input type="hidden" name="tablename" value="<%=tablename %>">
 <input type="hidden" name="logNo" value="<%=logNo %>">
 <div class="listdiv">
 <table width="100%" class="listtable">
@@ -117,7 +118,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <table class="bottomtable" width="100%">
 	<tr>
 		<td align="right">
-			<input type="button" value="返回" onclick="javascript:history.go(-1)">
+<!-- 			<input type="button" value="返回" onclick="javascript:history.go(-1)"> -->
+			<input type="button" value="返回" onclick="document.location='<%=request.getContextPath()%>/upload/uploadManageAction.action?methodName=log&tablename=<%=tablename%>&moduleid=<%=moduleid%>'">
 		</td>
 		<td align="right">
 			<%

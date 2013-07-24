@@ -12,6 +12,7 @@ import org.apache.struts2.ServletActionContext;
 import tms.datacenter.commontools.StringToZn;
 import tms.datacenter.dbmanage.ConnectionManage;
 import tms.datacenter.dbmanage.Record;
+import tms.datacenter.sysmanage.OperateLog;
 import tms.datacenter.sysmanage.RoleManage;
 import tms.datacenter.sysmanage.UserManage;
 
@@ -26,10 +27,12 @@ public class LoginAction extends ActionSupport{
 		if(user != null){
 			HttpSession session = request.getSession(true);
 			session.setAttribute("dcuser", user);
-			return "loginSuccess";
+			OperateLog log = new OperateLog();
+			log.AddLog(loginName, "登录系统", "");
+			return "index";
 		}
 		request.setAttribute("errorMsg","用户名或密码错误，请重新登录！");
-		return "login";
+		return "index";
     }
 	private Record checkUser(String loginName,String loginPsw){
 		ConnectionManage cm = ConnectionManage.getInstance();

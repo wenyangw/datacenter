@@ -24,9 +24,21 @@
     	tms.datacenter.timertask.LoadTaskServlet</servlet-class>
     	<load-on-startup>1</load-on-startup>
     </servlet>
+    <servlet>
+    	<description>
+    	</description>
+    	<display-name>EditorUploadServlet</display-name>
+    	<servlet-name>EditorUploadServlet</servlet-name>
+    	<servlet-class>
+    	tms.datacenter.index.EditorUploadServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
     	<servlet-name>LoadTaskServlet</servlet-name>
     	<url-pattern>/LoadTaskServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+    	<servlet-name>EditorUploadServlet</servlet-name>
+    	<url-pattern>/EditorUploadServlet</url-pattern>
     </servlet-mapping>
     
 
@@ -34,24 +46,24 @@
         <welcome-file>index.html</welcome-file>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
-<!--     <error-page> -->
-<!--     	<error-code>401</error-code> -->
-<!--     	<location>/common/errorpage.jsp</location> -->
-<!-- 	</error-page> -->
-<!-- 	<error-page> -->
-<!--     	<error-code>403</error-code> -->
-<!--     	<location>/common/errorpage.jsp</location> -->
-<!-- 	</error-page> -->
-<!-- 	<error-page> -->
-<!--     	<error-code>404</error-code> -->
-<!--     	<location>/common/errorpage.jsp</location> -->
-<!-- 	</error-page> -->
-<!-- 	<error-page> -->
-<!--     	<error-code>500</error-code> -->
-<!--     	<location>/common/errorpage.jsp</location> -->
-<!-- 	</error-page> -->
-<!-- 	<error-page> -->
-<!--     	<exception-type>java.lang.Exception</exception-type> -->
-<!--     	<location>/common/errorpage.jsp</location> -->
-<!-- 	</error-page> -->
+    <error-page>
+    	<error-code>401</error-code>
+    	<location>/common/errorpage.jsp</location>
+	</error-page>
+	<error-page>
+    	<error-code>403</error-code>
+    	<location>/common/errorpage.jsp</location>
+	</error-page>
+	<error-page>
+    	<error-code>404</error-code>
+    	<location>/common/errorpage.jsp</location>
+	</error-page>
+	<error-page>
+    	<error-code>500</error-code>
+    	<location>/common/errorpage.jsp</location>
+	</error-page>
+	<error-page>
+    	<exception-type>java.lang.Exception</exception-type>
+    	<location>/common/errorpage.jsp</location>
+	</error-page>
 </web-app>

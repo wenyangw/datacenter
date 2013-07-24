@@ -1,5 +1,6 @@
 package tms.datacenter.stat.action;
 
+import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.sql.Connection;
@@ -15,6 +16,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
 import tms.datacenter.commontools.DateUtil;
 import tms.datacenter.commontools.ExportToExcel;
+import tms.datacenter.commontools.ExportToTXT;
 import tms.datacenter.commontools.Pager;
 import tms.datacenter.commontools.QueryConditionControl;
 import tms.datacenter.commontools.StringToZn;
@@ -317,6 +319,25 @@ public class CommonStatAction extends PrivilegeParentAction {
 		else
 			return exportTable();
 	}
+	public String exportToTXT(){
+		HttpServletRequest request = this.getRequest();
+		String specialParam=StringToZn.toZn(request.getParameter("specialParam"));
+		String moduleid=StringToZn.toZn(request.getParameter("moduleid"));
+		if(moduleid == null)
+			moduleid = "";
+		request.setAttribute("moduleid", moduleid);
+		StatConfig sc = new StatConfig();
+		CommonStat cs = sc.getStat(specialParam);
+		if(cs == null)
+			return this.operaterError("没有相应的配置信息");
+		String methodName = cs.getMethodname();
+		addFiledShowName();
+		request.setAttribute("fieldslabels", fieldslabels);
+		if("sqlStat".equals(methodName))
+			return exportStatTxt();
+		else
+			return exportTableTxt();
+	}
 	private String exportStat() {
 		HttpServletRequest request = this.getRequest();
 		String specialParam=StringToZn.toZn(request.getParameter("specialParam"));
@@ -486,11 +507,178 @@ public class CommonStatAction extends PrivilegeParentAction {
 			response.setHeader("Cache-Control","no-cache");
 			response.setDateHeader("Expires", 0);
 			ExportToExcel ex = new ExportToExcel();
-			HSSFWorkbook workbook =  ex.getWorkbook(records, tablename, fieldslabels, hiddenlist);
+			HSSFWorkbook workbook =  ex.getWorkbookList(records, tablename, fieldslabels, hiddenlist);
 			workbook.write(os);
 			os.flush();
 			os.close();
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	private String exportTableTxt() {
+		HttpServletRequest request = this.getRequest();
+		String specialParam=StringToZn.toZn(request.getParameter("specialParam"));
+		StatConfig sc = new StatConfig();
+		CommonStat cs = sc.getStat(specialParam);
+		if(cs == null)
+			return "list";
+		String poolname = cs.getPoolname();
+		String tablename = cs.getTablename();
+		String pkfield = cs.getPkfield();
+		String orderby = cs.getOrderby();
+		String hiddenfields = cs.getHiddenfields();
+		ContentControl c = new ContentControl();
+		String condition = c.getControlSQL(this.getLoginUser(), tablename);
+		ArrayList qccs = cs.getQuerycontrols();
+		if(qccs != null && qccs.size() > 0){
+			QueryConditionControl qcc = null;
+			String queryname = "";
+			String querytype = "";
+			String defaultvalue = "";
+			String defaultvalue2 = "";
+			String conditionstr = "";
+			String conditionstr2 = "";
+			for(int i=0; i < qccs.size(); i++){
+				qcc = (QueryConditionControl)qccs.get(i);
+				if(qcc != null){
+					queryname = qcc.getName();
+					if(queryname != null && queryname.trim().length() > 0){
+						querytype = qcc.getQuerytype();
+						if(QueryConditionControl.QUERY_TYPE_COMMON.equals(querytype)){
+							defaultvalue = StringToZn.toZn(request.getParameter(queryname));
+							conditionstr = qcc.getConditionsql();
+							if(defaultvalue != null && defaultvalue.trim().length() > 0){
+								conditionstr = conditionstr.replaceAll("/"+queryname+"/", defaultvalue);
+								condition+= conditionstr;
+							}
+						}else if(QueryConditionControl.QUERY_TYPE_RANGE.equals(querytype)){
+							defaultvalue = StringToZn.toZn(request.getParameter("b_"+queryname));
+							defaultvalue2 = StringToZn.toZn(request.getParameter("e_"+queryname));
+							conditionstr = qcc.getConditionsql();
+							conditionstr2 = qcc.getConditionsql2();
+							if(defaultvalue != null && defaultvalue.trim().length() > 0){
+								conditionstr = conditionstr.replaceAll("/b_"+queryname+"/", defaultvalue);
+							}else
+								conditionstr = "";
+							if(defaultvalue2 != null && defaultvalue2.trim().length() > 0){
+								conditionstr2 = conditionstr2.replaceAll("/e_"+queryname+"/", defaultvalue);
+							}else
+								conditionstr2 = "";
+							condition+=  conditionstr+conditionstr2;
+						}
+						
+					}
+				}
+			}
+		}
+		
+		if(condition!= null&& condition.trim().length() > 0){
+			if(condition.trim().toLowerCase().startsWith("and"))
+				condition = condition.trim().substring(3);
+		}
+		
+		TableManage tm = new TableManage();
+		tm.setTableName(tablename);
+		
+		ArrayList records = tm.getAllRecords(poolname, condition, orderby);
+		if(hiddenfields==null)
+			hiddenfields = "";
+		String[] hidden = hiddenfields.split(",");
+		ArrayList hiddenlist = new ArrayList();
+		if(hidden != null && hidden.length > 0){
+			for(int i = 0; i < hidden.length; i++){
+				if(hidden[i] != null && hidden[i].trim().length() > 0)
+					hiddenlist.add(hidden[i].toLowerCase());
+			}
+		}
+		HttpServletResponse response = this.getResponse();
+		response.setContentType("text/plain");// 一下两行关键的设置  
+        response.addHeader("Content-Disposition",  
+                "attachment;filename="+specialParam+".txt");// filename指定默认的名字  
+		try {
+			ExportToTXT txt = new ExportToTXT();
+			txt.writeToTxtList(response, records, tablename, fieldslabels, hiddenlist);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	private String exportStatTxt() {
+		HttpServletRequest request = this.getRequest();
+		String specialParam=StringToZn.toZn(request.getParameter("specialParam"));
+		StatConfig sc = new StatConfig();
+		CommonStat cs = sc.getStat(specialParam);
+		if(cs == null)
+			return "list";
+		String hiddenfields = cs.getHiddenfields();
+		if(hiddenfields==null)
+			hiddenfields = "";
+		String[] hidden = hiddenfields.split(",");
+		ArrayList hiddenlist = new ArrayList();
+		if(hidden != null && hidden.length > 0){
+			for(int i = 0; i < hidden.length; i++){
+				if(hidden[i] != null && hidden[i].trim().length() > 0)
+					hiddenlist.add(hidden[i].toLowerCase());
+			}
+		}
+		String statsql = cs.getSqlstr();
+		String poolname = cs.getPoolname();
+		ArrayList qccs = cs.getQuerycontrols();
+		if(qccs != null && qccs.size() > 0){
+			QueryConditionControl qcc = null;
+			String queryname = "";
+			String querytype = "";
+			String defaultvalue = "";
+			String defaultvalue2 = "";
+			String conditionstr = "";
+			String conditionstr2 = "";
+			for(int i=0; i < qccs.size(); i++){
+				qcc = (QueryConditionControl)qccs.get(i);
+				if(qcc != null){
+					queryname = qcc.getName();
+					if(queryname != null && queryname.trim().length() > 0){
+						querytype = qcc.getQuerytype();
+						if(QueryConditionControl.QUERY_TYPE_COMMON.equals(querytype)){
+							defaultvalue = StringToZn.toZn(request.getParameter(queryname));
+							conditionstr = qcc.getConditionsql();
+							if(defaultvalue != null && defaultvalue.trim().length() > 0){
+								conditionstr = conditionstr.replaceAll("/"+queryname+"/", defaultvalue);
+								statsql = statsql.replaceAll("/"+queryname+"/", conditionstr);
+							}else{
+								statsql = statsql.replaceAll("/"+queryname+"/", "");
+							}
+						}else if(QueryConditionControl.QUERY_TYPE_RANGE.equals(querytype)){
+							defaultvalue = StringToZn.toZn(request.getParameter("b_"+queryname));
+							defaultvalue2 = StringToZn.toZn(request.getParameter("e_"+queryname));
+							conditionstr = qcc.getConditionsql();
+							conditionstr2 = qcc.getConditionsql2();
+							if(defaultvalue != null && defaultvalue.trim().length() > 0){
+								conditionstr = conditionstr.replaceAll("/b_"+queryname+"/", defaultvalue);
+							}else
+								conditionstr = "";
+							if(defaultvalue2 != null && defaultvalue2.trim().length() > 0){
+								conditionstr2 = conditionstr2.replaceAll("/e_"+queryname+"/", defaultvalue);
+							}else
+								conditionstr2 = "";
+							statsql = statsql.replaceAll("/"+queryname+"/", conditionstr+conditionstr2);
+						}
+						
+					}
+				}
+			}
+		}
+		ArrayList records = TableManage.executeQuery(poolname, statsql);
+		HttpServletResponse response = this.getResponse();
+		response.setContentType("text/plain");// 一下两行关键的设置  
+        response.addHeader("Content-Disposition",  
+                "attachment;filename="+specialParam+".txt");// filename指定默认的名字  
+		try {
+			ExportToTXT txt = new ExportToTXT();
+			txt.writeToTxt(response, records, "", fieldslabels, hiddenlist);
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
