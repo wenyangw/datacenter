@@ -533,6 +533,8 @@
 			fieldlength="25" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="Total" fieldlabel="册数" fieldtype="3"
 			fieldlength="9" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="Jibie" fieldlabel="季别" fieldtype="1"
+			fieldlength="10" ispk="0" cannull="1" showpos="1"/>
 		<!--<field fieldname="AreaNo" fieldlabel="地区编号" fieldtype="1"
 			fieldlength="25" ispk="0" cannull="1" showpos="1"/>-->
 		<field fieldname="UserName" fieldlabel="操作员姓名" fieldtype="1"

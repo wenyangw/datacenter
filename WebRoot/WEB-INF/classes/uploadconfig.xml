@@ -117,5 +117,6 @@
 		<column number="10" fieldname="ShengNo"/>
 		<column number="11" fieldname="DianNo"/>
 		<column number="12" fieldname="Total"/>
+		<column number="13" fieldname="Jibie"/>
 	</upload>
 </uploads>

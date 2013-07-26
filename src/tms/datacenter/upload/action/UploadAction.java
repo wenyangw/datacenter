@@ -155,24 +155,32 @@ public class UploadAction extends ActionSupport{
 		
 		//将上传内容转换为存储Record的List
 		List<Record> records = new ArrayList<Record>();
+		Record r = null;
+		List rows = null;
+		String str = "";
+		String fieldName = "";
+		String fieldType = "";
+		String fieldValue = "";
+		String error = "";
+		try{
 		for (int i = 0; i < list.size(); i++) {
-			List rows = (List)list.get(i);
+			rows = (List)list.get(i);
 			if (rows.size() == 1){
 				break;
 			}
-			String str = "";
+			str = "";
 			for(Object ss : rows){
 				str += ss.toString();
 			}
 			if (str.trim().length() == 0){
 				break;
 			}
-			Record r = new Record();
+			r = new Record();
 			//for(int j = 0; j < rows.size(); j++){
 			for(int j = 0; j < cols; j++){
-				String fieldName = ((ColumnMsg)uploadFields.get(j)).getFieldname();
-				String fieldType = ((Field)td.getField(fieldName)).getFieldType();
-				String fieldValue = "";
+				fieldName = ((ColumnMsg)uploadFields.get(j)).getFieldname();
+				fieldType = ((Field)td.getField(fieldName)).getFieldType();
+				fieldValue = "";
 				if(rows.size() > j){
 					fieldValue = rows.get(j).toString();
 				}
@@ -188,7 +196,7 @@ public class UploadAction extends ActionSupport{
 			r.set("updatetime", uploadTime, Field.FIELD_TYPE_DATE, false);
 			
 			//对每个Record进行校验
-			String error = RecordCheck.checkRecord(pkfield, r, false,true);
+			error = RecordCheck.checkRecord(pkfield, r, false,true);
 			if(error != null && error.trim().length() > 0){
 				request.setAttribute("errorMsg", "在第" + (i+1) + "行生成数据失败，\n" + error + "\n请仔细核对！");
 				return "error";
@@ -196,7 +204,9 @@ public class UploadAction extends ActionSupport{
 			
 			records.add(r);
 		}
-		
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		
 		//生成上传日志记录
 		Record log = new Record();
@@ -210,7 +220,7 @@ public class UploadAction extends ActionSupport{
 		log.set("locked", "1", Field.FIELD_TYPE_TEXT, false);
 		
 		//上传日志Record校验
-		String error = RecordCheck.checkRecord("dc_uploadlog", log, false, true);
+		error = RecordCheck.checkRecord("dc_uploadlog", log, false, true);
 		if(error != null && error.trim().length() > 0){
 			request.setAttribute("errorMsg", error + "\n上传日志生成失败，请重试！");
 			return "error";
@@ -223,8 +233,8 @@ public class UploadAction extends ActionSupport{
 		try {
 			conn.setAutoCommit(false);
 			//添加上传内容到数据库
-			for(Record r : records){
-				int res = tm.insertRecord(conn, pkfield, r);
+			for(Record r2 : records){
+				int res = tm.insertRecord(conn, pkfield, r2);
 				if (res <= 0) {
 					conn.rollback();
 					request.setAttribute("errorMsg", "上传失败，请重试！");
