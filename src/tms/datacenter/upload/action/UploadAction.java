@@ -77,6 +77,7 @@ public class UploadAction extends ActionSupport{
 //		}else{
 //			tableFields = td.getFieldList();
 //		}
+		
 		//上传文件只能接收excel2003和2007格式以及txt文本文件
 		if(!(uploadContentType.equals(EXCEL2003) || uploadContentType.equals(EXCEL2007) || uploadContentType.equals(TXTFILE))){
 			request.setAttribute("errorMsg", "上传文件格式不对");
@@ -86,6 +87,7 @@ public class UploadAction extends ActionSupport{
 		//读取上传配置文件，得到对应上传项目的字段数
 		UploadConfig uc = UploadConfig.getInstance();
 		UploadMsg um = uc.getUpload(pkfield);
+		
 		
 		//将上传文件转换为List
 		List list = null;
@@ -234,8 +236,13 @@ public class UploadAction extends ActionSupport{
 			conn.setAutoCommit(false);
 			//添加上传内容到数据库
 			for(Record r2 : records){
-				int res = tm.insertRecord(conn, pkfield, r2);
-				if (res <= 0) {
+				int resUpdate = tm.updateRecord(conn, pkfield, r2);
+				int res = 0;
+				if(resUpdate <= 0){
+					System.out.println("Insert++++++");
+					res = tm.insertRecord(conn, pkfield, r2);
+				}
+				if (res < 0) {
 					conn.rollback();
 					request.setAttribute("errorMsg", "上传失败，请重试！");
 					return "error";

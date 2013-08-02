@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uploads>
-	<upload cnname="付印安排信息" specialparam="dc_fyap" table="dc_fyap" txtseparate="\t">
+	<upload cnname="付印安排信息" specialparam="dc_fyap" table="dc_fyap" txtseparate="\t" keywords="">
 		<column number="1" fieldname="BookName"/>
 		<column number="2" fieldname="BookNo"/>
 		<column number="3" fieldname="Price"/>
@@ -19,7 +19,7 @@
 		<column number="16" fieldname="JiNo"/>
 		<column number="17" fieldname="Bz"/>
 	</upload>
-	<upload cnname="付印单" specialparam="dc_fyd" table="dc_fyd" txtseparate="\t">
+	<upload cnname="付印单" specialparam="dc_fyd" table="dc_fyd" txtseparate="\t" keywords="">
 		<column number="1" fieldname="FydNo"/>
 		<column number="2" fieldname="BookName"/>
 		<column number="3" fieldname="Ysc"/>
@@ -34,7 +34,7 @@
 		<column number="12" fieldname="CreateDate"/>
 		<column number="13" fieldname="Bz"/>
 	</upload>
-	<upload cnname="纸张信息" specialparam="dc_zzxx" table="dc_zzxx" txtseparate=",">
+	<upload cnname="纸张信息" specialparam="dc_zzxx" table="dc_zzxx" txtseparate="," keywords="">
 		<column number="1" fieldname="ZzName"/>
 		<column number="2" fieldname="Zzgg"/>
 		<column number="3" fieldname="Zzcd"/>
@@ -45,9 +45,10 @@
 		<column number="8" fieldname="KcTotal"/>
 		<column number="9" fieldname="Ysc"/>
 		<column number="10" fieldname="ThTotal"/>
-		<column number="11" fieldname="Bz"/>
+		<column number="11" fieldname="JiBie"/>
+		<column number="12" fieldname="Bz"/>
 	</upload>
-	<upload cnname="教材包装发印环节信息" specialparam="dc_jcbzfy" table="dc_jcbzfy" txtseparate=",">
+	<upload cnname="教材包装发印环节信息" specialparam="dc_jcbzfy" table="dc_jcbzfy" txtseparate="," keywords="">
 		<column number="1" fieldname="BookName"/>
 		<column number="2" fieldname="BanBie"/>
 		<column number="3" fieldname="Price"/>
@@ -59,7 +60,7 @@
 		<column number="9" fieldname="FhTotal"/>
 		<column number="10" fieldname="JiBie"/>
 	</upload>
-	<upload cnname="教材进货收货信息" specialparam="dc_jcjhsh" table="dc_jcjhsh" txtseparate=",">
+	<upload cnname="教材进货收货信息" specialparam="dc_jcjhsh" table="dc_jcjhsh" txtseparate="," keywords="">
 		<column number="1" fieldname="BookName"/>
 		<column number="2" fieldname="BanBie"/>
 		<column number="3" fieldname="Price"/>
@@ -81,7 +82,7 @@
 		<column number="8" fieldname="CbDate"/>
 		<column number="9" fieldname="Bz"/>
 	</upload>
-	<upload cnname="实际付印生产进度" specialparam="dc_sjfy" table="dc_sjfy" txtseparate="\t">
+	<upload cnname="实际付印生产进度" specialparam="dc_sjfy" table="dc_sjfy" txtseparate="\t" keywords="">
 		<column number="1" fieldname="BookName"/>
 		<column number="2" fieldname="BookNo"/>
 		<column number="3" fieldname="Price"/>
@@ -92,9 +93,10 @@
 		<column number="8" fieldname="Ysc"/>
 		<column number="9" fieldname="YinTotal"/>
 		<column number="10" fieldname="JiBie"/>
-		<column number="11" fieldname="Bz"/>
+		<column number="11" fieldname="FydNo"/>
+		<column number="12" fieldname="Bz"/>
 	</upload>
-	<upload cnname="征订目录" specialparam="dc_zdml" table="dc_zdml" txtseparate="\t">
+	<upload cnname="征订目录" specialparam="dc_zdml" table="dc_zdml" txtseparate="\t" keywords="">
 		<column number="1" fieldname="BookName"/>
 		<column number="2" fieldname="BookNo"/>
 		<column number="3" fieldname="BanBie"/>
@@ -104,19 +106,23 @@
 		<column number="7" fieldname="JiBie"/>
 		<column number="8" fieldname="Bz"/>
 	</upload>
-	<upload cnname="全省市县书目品种" specialparam="dc_smpz" table="dc_smpz" txtseparate="\t">
+	<upload cnname="全省市县书目品种" specialparam="dc_smpz" table="dc_smpz" txtseparate="\t" keywords="">
 		<column number="1" fieldname="MuluNo"/>
 		<column number="2" fieldname="xuhao"/>
 		<column number="3" fieldname="BookName"/>
 		<column number="4" fieldname="BanbieNo"/>
 		<column number="5" fieldname="Price"/>
 		<column number="6" fieldname="GhdwNo"/>
-		<column number="7" fieldname="Leibie"/>
+		<column number="7" fieldname="LeibieNo"/>
 		<column number="8" fieldname="Grade"/>
 		<column number="9" fieldname="KemuNo"/>
 		<column number="10" fieldname="ShengNo"/>
 		<column number="11" fieldname="DianNo"/>
 		<column number="12" fieldname="Total"/>
 		<column number="13" fieldname="Jibie"/>
+		<column number="14" fieldname="YwNo"/>
+		<column number="15" fieldname="LeiBie"/>
+		<column number="16" fieldname="ShengName"/>
+		<column number="17" fieldname="DianName"/>
 	</upload>
 </uploads>

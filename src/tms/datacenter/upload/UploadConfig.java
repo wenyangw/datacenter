@@ -39,10 +39,12 @@ public class UploadConfig {
 				String specialparam = getAttribute(e_upload, "specialparam");
 				String table = getAttribute(e_upload, "table");
 				String txtseparate = getAttribute(e_upload, "txtseparate");
+				String keywords = getAttribute(e_upload, "keywords");
 				upload.setCnname(cnname);
 				upload.setSpecialparam(specialparam);
 				upload.setTable(table);
 				upload.setTxtseparate(txtseparate);
+				//upload.setKeywords(keywords);
 				Iterator columnit = e_upload.elementIterator("column");
 				while (columnit.hasNext()) {
 					column = new ColumnMsg();
