@@ -513,7 +513,7 @@
 			fieldlength="25" ispk="1" cannull="1" showpos="1"/>
 		<field fieldname="xuhao" fieldlabel="序号" fieldtype="1"
 			fieldlength="10" ispk="1" cannull="1" showpos="1"/>
-		<field fieldname="BanbieNo" fieldlabel="版别号" fieldtype="1"
+		<field fieldname="BanbieNo" fieldlabel="版别" fieldtype="1"
 			fieldlength="25" ispk="0" cannull="1" showpos="1"/>
 		<!--<field fieldname="Banbie" fieldlabel="版别" fieldtype="1"
 			fieldlength="25" ispk="0" cannull="1" showpos="1"/>-->
