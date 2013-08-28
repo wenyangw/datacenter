@@ -98,6 +98,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				for(int j = 0;j < lists.size();j++){
 					String fieldName = ((ColumnMsg)lists.get(j)).getFieldname();
 					value = r.get(fieldName);
+					value = value == null ? "" : value;
 				%>
 				<td class="<%=datatdclass %>" align="center"><%=value %></td>
 				<%

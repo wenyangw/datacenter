@@ -625,6 +625,7 @@ public class TableManage {
 									+ StringToZn.toDB(fieldValue) + "',";
 						}
 					} else {
+						condition += " ";
 						if (fieldName == null || fieldName.trim().length() <= 0)
 							return -2;
 						if (Field.FIELD_TYPE_INT.equals(fieldType)||Field.FIELD_TYPE_DOUBLE.equals(fieldType)) {

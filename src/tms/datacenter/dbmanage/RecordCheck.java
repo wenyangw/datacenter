@@ -62,7 +62,7 @@ public class RecordCheck {
 						return fieldlabel+"只能输入数字！";
 					}
 				}
-				if(Field.FIELD_TYPE_DATE.equals(fieldtype) && rfieldvalue != null && rfieldvalue.trim().length() > 0 && !rfieldvalue.matches("^\\d{4}\\-\\d{1,2}\\-\\d{1,2}(\\s\\d{1,2}:\\d{1,2}:\\d{1,2})?$")){
+				if(Field.FIELD_TYPE_DATE.equals(fieldtype) && rfieldvalue != null && rfieldvalue.trim().length() > 0 && !rfieldvalue.matches("^\\d{4}\\-\\d{1,2}\\-\\d{1,2}(\\s{1,2}\\d{1,2}:\\d{1,2}:\\d{1,2})?$")){
 					return fieldlabel+"请输入正确的日期格式如2012-01-01！";
 				}
 				if(Field.FIELD_TYPE_TEXT.equals(fieldtype)){
@@ -137,7 +137,7 @@ public class RecordCheck {
 						return fieldlabel+"只能输入数字！";
 					}
 				}
-				if(Field.FIELD_TYPE_DATE.equals(fieldtype) && rfieldvalue != null && rfieldvalue.trim().length() > 0 && !rfieldvalue.matches("^\\d{4}\\-\\d{1,2}\\-\\d{1,2}(\\s\\d{1,2}:\\d{1,2}:\\d{1,2})?$")){
+				if(Field.FIELD_TYPE_DATE.equals(fieldtype) && rfieldvalue != null && rfieldvalue.trim().length() > 0 && !rfieldvalue.matches("^\\d{4}\\-\\d{1,2}\\-\\d{1,2}(\\s{1,2}\\d{1,2}:\\d{1,2}:\\d{1,2})?$")){
 					return fieldlabel+"请输入正确的日期格式如2012-01-01！";
 				}
 				if(Field.FIELD_TYPE_TEXT.equals(fieldtype)){

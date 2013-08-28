@@ -10,29 +10,35 @@
 		<column number="7" fieldname="FyDate"/>
 		<column number="8" fieldname="JhDate"/>
 		<column number="9" fieldname="FyTotal"/>
-		<column number="10" fieldname="Sxhsd"/>
-		<column number="11" fieldname="Jfgs"/>
-		<column number="12" fieldname="Cbbys"/>
-		<column number="13" fieldname="Yyyx"/>
-		<column number="14" fieldname="Dlcg"/>
-		<column number="15" fieldname="Pxys"/>
-		<column number="16" fieldname="JiNo"/>
-		<column number="17" fieldname="Bz"/>
+		<column number="10" fieldname="Sdzf"/>
+		<column number="11" fieldname="Sdmf"/>
+		<column number="12" fieldname="Yyyx"/>
+		<column number="13" fieldname="Dlzf"/>
+		<column number="14" fieldname="Pxys"/>
+		<column number="15" fieldname="Cbys"/>
+		<column number="16" fieldname="Qt1"/>
+		<column number="17" fieldname="Qt2"/>
+		<column number="18" fieldname="JiNo"/>
+		<column number="19" fieldname="FydNo"/>
+		<column number="20" fieldname="Bz"/>
 	</upload>
 	<upload cnname="付印单" specialparam="dc_fyd" table="dc_fyd" txtseparate="\t" keywords="">
 		<column number="1" fieldname="FydNo"/>
 		<column number="2" fieldname="BookName"/>
 		<column number="3" fieldname="Ysc"/>
 		<column number="4" fieldname="Zzfl"/>
-		<column number="5" fieldname="Zzlb"/>
-		<column number="6" fieldname="Zzgg"/>
-		<column number="7" fieldname="Yf"/>
-		<column number="8" fieldname="Cf"/>
-		<column number="9" fieldname="ZzTotal"/>
-		<column number="10" fieldname="Ysl"/>
-		<column number="11" fieldname="Fyr"/>
-		<column number="12" fieldname="CreateDate"/>
-		<column number="13" fieldname="Bz"/>
+		<column number="5" fieldname="Zc"/>
+		<column number="6" fieldname="Kz"/>
+		<column number="7" fieldname="Zx"/>
+		<column number="8" fieldname="Zzgg"/>
+		<column number="9" fieldname="Yf"/>
+		<column number="10" fieldname="Cs"/>
+		<column number="11" fieldname="ZzTotal"/>
+		<column number="12" fieldname="HjTon"/>
+		<column number="13" fieldname="Ysl"/>
+		<column number="14" fieldname="Fyr"/>
+		<column number="15" fieldname="CreateDate"/>
+		<column number="16" fieldname="Bz"/>
 	</upload>
 	<upload cnname="纸张信息" specialparam="dc_zzxx" table="dc_zzxx" txtseparate="," keywords="">
 		<column number="1" fieldname="ZzName"/>
@@ -100,7 +106,7 @@
 		<column number="1" fieldname="BookName"/>
 		<column number="2" fieldname="BookNo"/>
 		<column number="3" fieldname="BanBie"/>
-		<column number="4" fieldname="BanCi"/>
+		<column number="4" fieldname="BanXing"/>
 		<column number="5" fieldname="Price"/>
 		<column number="6" fieldname="YinSe"/>
 		<column number="7" fieldname="JiBie"/>

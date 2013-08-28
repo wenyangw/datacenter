@@ -212,10 +212,10 @@
 		<field fieldname="id" fieldlabel="编号" fieldtype="3"
 			fieldlength="4" ispk="1" cannull="0" showpos="1"/>
 		<field fieldname="BookName" fieldlabel="书名" fieldtype="1"
-			fieldlength="60" ispk="1" cannull="0" showpos="1"/>
+			fieldlength="100" ispk="1" cannull="0" showpos="1"/>
 		<field fieldname="BookNo" fieldlabel="书号" fieldtype="1"
-			fieldlength="11" ispk="1" cannull="1" showpos="1"/>
-		<field fieldname="Price" fieldlabel="定价" fieldtype="4"
+			fieldlength="30" ispk="1" cannull="1" showpos="1"/>
+		<field fieldname="Price" fieldlabel="单价" fieldtype="4"
 			fieldlength="8" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="BanNo" fieldlabel="版次" fieldtype="1"
 			fieldlength="20" ispk="0" cannull="1" showpos="1"/>
@@ -229,22 +229,28 @@
 			fieldlength="8" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="FyTotal" fieldlabel="付印数量" fieldtype="3"
 			fieldlength="8" ispk="0" cannull="1" showpos="1"/>
-		<field fieldname="Sxhsd" fieldlabel="省新华书店" fieldtype="3"
-			fieldlength="20" ispk="0" cannull="1" showpos="1"/>
-		<field fieldname="Jfgs" fieldlabel="教发公司" fieldtype="3"
+		<field fieldname="Sdzf" fieldlabel="省店自费" fieldtype="3"
 			fieldlength="8" ispk="0" cannull="1" showpos="1"/>
-		<field fieldname="Cbbys" fieldlabel="出版部样书" fieldtype="3"
-			fieldlength="20" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="Sdmf" fieldlabel="省店免费" fieldtype="3"
+			fieldlength="8" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="Yyyx" fieldlabel="教育音像" fieldtype="3"
 			fieldlength="8" ispk="0" cannull="1" showpos="1"/>
-		<field fieldname="Dlcg" fieldlabel="大连采购" fieldtype="3"
-			fieldlength="20" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="Dlzf" fieldlabel="大连政府" fieldtype="3"
+			fieldlength="8" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="Pxys" fieldlabel="培训样书" fieldtype="3"
+			fieldlength="8" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="Cbys" fieldlabel="出版样书" fieldtype="3"
+			fieldlength="8" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="Qt1" fieldlabel="其他1" fieldtype="3"
+			fieldlength="8" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="Qt2" fieldlabel="其他2" fieldtype="3"
 			fieldlength="8" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="JiNo" fieldlabel="季别" fieldtype="1"
 			fieldlength="10" ispk="1" cannull="1" showpos="1"/>
 		<field fieldname="Bz" fieldlabel="备注" fieldtype="1"
-			fieldlength="100" ispk="0" cannull="1" showpos="1"/>
+			fieldlength="15" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="FydNo" fieldlabel="付印单编号" fieldtype="1"
+			fieldlength="15" ispk="1" cannull="1" showpos="1"/>	
 		<field fieldname="UserName" fieldlabel="操作员姓名" fieldtype="1"
 			fieldlength="50" ispk="0" cannull="0" showpos="1"/>
 		<field fieldname="organization" fieldlabel="所在单位" fieldtype="1"
@@ -262,20 +268,26 @@
 		<field fieldname="FydNo" fieldlabel="付印单编号" fieldtype="1"
 			fieldlength="12" ispk="1" cannull="0" showpos="1"/>
 		<field fieldname="BookName" fieldlabel="书名" fieldtype="1"
-			fieldlength="50" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="100" ispk="0" cannull="0" showpos="1"/>
 		<field fieldname="Ysc" fieldlabel="承印厂" fieldtype="1"
 			fieldlength="20" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="Zzfl" fieldlabel="纸张分类" fieldtype="1"
 			fieldlength="6" ispk="1" cannull="1" showpos="1"/>
-		<field fieldname="Zzlb" fieldlabel="纸别" fieldtype="1"
+		<field fieldname="Zc" fieldlabel="纸厂" fieldtype="1"
 			fieldlength="20" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="Kz" fieldlabel="克重" fieldtype="1"
+			fieldlength="20" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="Zx" fieldlabel="纸型" fieldtype="1"
+			fieldlength="20" ispk="0" cannull="1" showpos="1"/>	
 		<field fieldname="Zzgg" fieldlabel="纸张规格" fieldtype="1"
 			fieldlength="20" ispk="0" cannull="1" showpos="1"/>
-		<field fieldname="yf" fieldlabel="印法" fieldtype="1"
+		<field fieldname="Yf" fieldlabel="印法" fieldtype="1"
 			fieldlength="6" ispk="0" cannull="1" showpos="1"/>
-		<field fieldname="Cf" fieldlabel="裁法" fieldtype="1"
+		<field fieldname="Cs" fieldlabel="裁数" fieldtype="1"
 			fieldlength="6" ispk="0" cannull="1" showpos="1"/>
-		<field fieldname="ZzTotal" fieldlabel="纸张数" fieldtype="4"
+		<field fieldname="ZzTotal" fieldlabel="用纸合计" fieldtype="4"
+			fieldlength="8" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="HjTon" fieldlabel="合计吨" fieldtype="4"
 			fieldlength="8" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="Ysl" fieldlabel="印数" fieldtype="3"
 			fieldlength="8" ispk="0" cannull="1" showpos="1"/>
@@ -300,7 +312,7 @@
 		<field fieldname="id" fieldlabel="编号" fieldtype="3"
 			fieldlength="4" ispk="1" cannull="0" showpos="1"/>
 		<field fieldname="BookName" fieldlabel="书名" fieldtype="1"
-			fieldlength="60" ispk="1" cannull="0" showpos="1"/>
+			fieldlength="100" ispk="1" cannull="0" showpos="1"/>
 		<field fieldname="BanBie" fieldlabel="版别" fieldtype="1"
 			fieldlength="10" ispk="1" cannull="1" showpos="1"/>
 		<field fieldname="Price" fieldlabel="单价" fieldtype="4"
@@ -334,7 +346,7 @@
 		<field fieldname="id" fieldlabel="编号" fieldtype="3"
 			fieldlength="4" ispk="1" cannull="0" showpos="1"/>
 		<field fieldname="BookName" fieldlabel="书名" fieldtype="1"
-			fieldlength="60" ispk="1" cannull="0" showpos="1"/>
+			fieldlength="100" ispk="1" cannull="0" showpos="1"/>
 		<field fieldname="BanBie" fieldlabel="版别" fieldtype="1"
 			fieldlength="10" ispk="1" cannull="1" showpos="1"/>
 		<field fieldname="Price" fieldlabel="单价" fieldtype="4"
@@ -366,9 +378,9 @@
 		<field fieldname="id" fieldlabel="编号" fieldtype="3"
 			fieldlength="4" ispk="1" cannull="0" showpos="1"/>
 		<field fieldname="BookName" fieldlabel="书名" fieldtype="1"
-			fieldlength="60" ispk="0" cannull="0" showpos="1"/>
+			fieldlength="100" ispk="0" cannull="0" showpos="1"/>
 		<field fieldname="BookNo" fieldlabel="书号" fieldtype="1"
-			fieldlength="11" ispk="0" cannull="1" showpos="1"/>
+			fieldlength="30" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="Price" fieldlabel="单价" fieldtype="4"
 			fieldlength="12" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="SjfyDate" fieldlabel="实际付印时间" fieldtype="2"
@@ -386,7 +398,7 @@
 		<field fieldname="JiBie" fieldlabel="季别" fieldtype="1"
 			fieldlength="10" ispk="1" cannull="1" showpos="1"/>
 		<field fieldname="FydNo" fieldlabel="付印单编号" fieldtype="1"
-			fieldlength="20" ispk="1" cannull="1" showpos="1"/>
+			fieldlength="15" ispk="1" cannull="1" showpos="1"/>
 		<field fieldname="Bz" fieldlabel="备注" fieldtype="1"
 			fieldlength="100" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="UserName" fieldlabel="操作员姓名" fieldtype="1"
@@ -404,7 +416,7 @@
 		<field fieldname="id" fieldlabel="编号" fieldtype="3"
 			fieldlength="4" ispk="1" cannull="0" showpos="1"/>
 		<field fieldname="BookName" fieldlabel="书名" fieldtype="1"
-			fieldlength="60" ispk="1" cannull="0" showpos="1"/>
+			fieldlength="100" ispk="1" cannull="0" showpos="1"/>
 		<field fieldname="BanBie" fieldlabel="版别" fieldtype="1"
 			fieldlength="10" ispk="1" cannull="1" showpos="1"/>
 		<field fieldname="Price" fieldlabel="单价" fieldtype="4"
@@ -436,12 +448,12 @@
 		<field fieldname="id" fieldlabel="编号" fieldtype="3"
 			fieldlength="4" ispk="1" cannull="0" showpos="1"/>
 		<field fieldname="BookName" fieldlabel="书名" fieldtype="1"
-			fieldlength="60" ispk="1" cannull="0" showpos="1"/>
+			fieldlength="100" ispk="1" cannull="0" showpos="1"/>
 		<field fieldname="BookNo" fieldlabel="书号" fieldtype="1"
-			fieldlength="11" ispk="1" cannull="1" showpos="1"/>
+			fieldlength="30" ispk="1" cannull="1" showpos="1"/>
 		<field fieldname="BanBie" fieldlabel="版别" fieldtype="1"
 			fieldlength="10" ispk="0" cannull="1" showpos="1"/>
-		<field fieldname="BanCi" fieldlabel="版次" fieldtype="1"
+		<field fieldname="BanXing" fieldlabel="版型" fieldtype="1"
 			fieldlength="20" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="Price" fieldlabel="估价" fieldtype="4"
 			fieldlength="12" ispk="0" cannull="1" showpos="1"/>
