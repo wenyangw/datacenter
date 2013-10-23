@@ -69,14 +69,6 @@ public class UploadAction extends ActionSupport{
 		TableConfig tc = TableConfig.getInstance();
 		TableDesc td = tc.getTable(pkfield);
 		
-		//List tableFields = new ArrayList();
-		
-//		if(td == null){
-//			request.setAttribute("errorMsg", "上传配置文件错误，请联系管理员！");
-//			return "error";
-//		}else{
-//			tableFields = td.getFieldList();
-//		}
 		
 		//上传文件只能接收excel2003和2007格式以及txt文本文件
 		if(!(uploadContentType.equals(EXCEL2003) || uploadContentType.equals(EXCEL2007) || uploadContentType.equals(TXTFILE))){
@@ -114,10 +106,6 @@ public class UploadAction extends ActionSupport{
 				return "error";
 			}
 			
-//			for (Object o : (List)list.get(0)){
-//				System.out.println("the list is " + o);
-//				
-//			}
 			for(Iterator<String> itr = ((List)list.get(0)).iterator();itr.hasNext();)  
 	        {
 				String s = itr.next();
@@ -128,6 +116,7 @@ public class UploadAction extends ActionSupport{
 			
 			//取到excel文件的列数
 			cols = ((List)list.get(0)).size();
+			System.out.println("cols:" + cols);
 			//去掉标题行
 			list.remove(0);
 		}
@@ -136,6 +125,7 @@ public class UploadAction extends ActionSupport{
 		
 		List uploadFields = um.getColumnList();
 		//上传项目设置的字段数与上传文件实际的列数应保持一致
+		System.out.println("uploadFilesd:" + uploadFields.size());
 		if(uploadFields.size() != cols){
 			ServletActionContext.getRequest().setAttribute("errorMsg", "上传文件与目标文件列数不符");
 			return "error";

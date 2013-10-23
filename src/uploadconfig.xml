@@ -40,7 +40,7 @@
 		<column number="15" fieldname="CreateDate"/>
 		<column number="16" fieldname="Bz"/>
 	</upload>
-	<upload cnname="纸张信息" specialparam="dc_zzxx" table="dc_zzxx" txtseparate="," keywords="">
+	<upload cnname="教材纸张信息" specialparam="dc_zzxx" table="dc_zzxx" txtseparate="," keywords="">
 		<column number="1" fieldname="ZzName"/>
 		<column number="2" fieldname="Zzgg"/>
 		<column number="3" fieldname="Zzcd"/>
@@ -48,9 +48,23 @@
 		<column number="5" fieldname="JhTotal"/>
 		<column number="6" fieldname="SjdhTotal"/>
 		<column number="7" fieldname="KdTotal"/>
-		<column number="8" fieldname="KcTotal"/>
-		<column number="9" fieldname="Ysc"/>
-		<column number="10" fieldname="ThTotal"/>
+		<column number="8" fieldname="Ysc"/>
+		<column number="9" fieldname="ThTotal"/>
+		<column number="10" fieldname="KcTotal"/>
+		<column number="11" fieldname="JiBie"/>
+		<column number="12" fieldname="Bz"/>
+	</upload>
+	<upload cnname="辽海纸张信息" specialparam="dc_lhzzxx" table="dc_lhzzxx" txtseparate="," keywords="">
+		<column number="1" fieldname="ZzName"/>
+		<column number="2" fieldname="Zzgg"/>
+		<column number="3" fieldname="Zzcd"/>
+		<column number="4" fieldname="Price"/>
+		<column number="5" fieldname="JhTotal"/>
+		<column number="6" fieldname="SjdhTotal"/>
+		<column number="7" fieldname="KdTotal"/>
+		<column number="8" fieldname="Ysc"/>
+		<column number="9" fieldname="ThTotal"/>
+		<column number="10" fieldname="KcTotal"/>
 		<column number="11" fieldname="JiBie"/>
 		<column number="12" fieldname="Bz"/>
 	</upload>
