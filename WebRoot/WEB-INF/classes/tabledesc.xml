@@ -199,6 +199,8 @@
 			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="Department" fieldlabel="部门" fieldtype="1"
 			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="filename" fieldlabel="文件名" fieldtype="1"
+			fieldlength="500" ispk="0" cannull="1" showpos="1"/>
 	</table>
 	<table name="dc_uploadrule" cnname="上传计划" poolname="datacenter">
 		<field fieldname="UploadName" fieldlabel="项目名称" fieldtype="1"

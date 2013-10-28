@@ -14,6 +14,8 @@ import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.struts2.ServletActionContext;
+
 import com.opensymphony.xwork2.ActionSupport;
 
 
@@ -350,6 +352,78 @@ public class UploadManageAction  extends PrivilegeParentAction {
 		
 	}
 	/**
+	 * 删除上传文件
+	 * @return
+	 */
+	public String delUploadFile(){
+		HttpServletRequest request = this.getRequest();
+		String tablename = request.getParameter("tablename");
+		String[] logNos = request.getParameterValues("logNo");
+		
+		if (logNos == null || logNos.length != 1)
+			return this.operaterError("请选择1条记录进行操作！");
+		
+		String logNo = logNos[0];
+		
+		TableManage tm = new TableManage();
+		
+		
+		String moduleid=StringToZn.toZn(request.getParameter("moduleid"));
+		if(moduleid == null)
+			moduleid = "";
+		request.setAttribute("moduleid", moduleid);
+		
+		tm.setTableName("dc_uploadlog");
+		ArrayList resultList = tm.getAllRecords("datacenter", "logNo = '" + logNo + "'", "");
+		Record r = (Record)resultList.get(0);
+		if(r.get("locked").equals("1")){
+			return this.operaterError("上传数据已被锁定，请联系管理员！");
+		}
+		
+		String filename = DateUtil.dateToString(DateUtil.stringToDate(r.get("UploadTime")), "yyyyMM") + "/" + r.get("filename");
+		
+		//进行数据库的操作
+		ConnectionManage cm = ConnectionManage.getInstance();
+		Connection conn = cm.getConnection("datacenter");
+		//TableManage tm = new TableManage();
+		r.set("logId", r.get("logId"), r.getFieldType("logId"),true);
+		r.set("locked", "1");
+		r.set("filename", "");
+		try {
+			conn.setAutoCommit(false);
+			//根据上传日志no删除
+			int resUpdate = tm.updateRecord(conn, "dc_uploadlog", r);
+			
+			if(resUpdate > 0){
+				conn.commit();
+				this.setReturnAction(request.getContextPath()
+						+ "/upload/uploadManageAction");
+				Hashtable params = new Hashtable();
+				params.put("methodName", "log");
+				params.put("tablename", tablename);
+				params.put("moduleid", moduleid);
+				this.setPromptMsg("成功删除上传文件");
+				this.setReturnParams(params);
+				delFile(filename);
+				return "success";
+			}else{
+				conn.rollback();
+				return this.operaterError("删除上传文件失败，请重新操作！");
+			}
+		} catch (SQLException e) {
+			return this.operaterError("操作失败:"+e.getMessage());
+		}finally{
+			try {
+				conn.setAutoCommit(true);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			cm.freeConnection("datacenter", conn);
+		}
+		
+	}
+	
+	/**
 	 * 显示上传记录明细
 	 */
 	public String detail(){
@@ -402,10 +476,6 @@ public class UploadManageAction  extends PrivilegeParentAction {
 		} else{
 			return this.operaterError("上传内容不存在！");
 		}
-		//ArrayList allPrivilege = rm.getAllPrivilege();
-		//Hashtable rolePrivilege = rm.getRolePrivilege("datacenter", rolecode);
-		//request.setAttribute("allPrivilege", allPrivilege);
-		//request.setAttribute("rolePrivilege", rolePrivilege);
 		
 		String moduleid=StringToZn.toZn(request.getParameter("moduleid"));
 		if(moduleid == null)
@@ -567,4 +637,18 @@ public class UploadManageAction  extends PrivilegeParentAction {
 
 		return "compare";
 	}
+	
+	/**
+	 * 删除文件
+	 * @param fileName
+	 * @return
+	 */
+	public boolean delFile(String fileName){
+		String root = ServletActionContext.getServletContext().getRealPath("/uploadfiles");
+        File file=new File(root + "/" + fileName);  
+        if(file.exists()){  
+            return file.delete();  
+        }  
+        return false;  
+    } 
 }

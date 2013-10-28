@@ -2,7 +2,9 @@ package tms.datacenter.upload.action;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.sql.Connection;
@@ -58,14 +60,33 @@ public class UploadAction extends ActionSupport{
 	
 	@Override
 	public String execute() throws Exception {
+		System.out.println("开始：" + new Date());
 		int excelCols = 0;
 		
 		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpSession session = request.getSession();
+		//取得操作员信息
+		Record user = (Record)session.getAttribute("dcuser");
+		String userName = user.get("username");
+		String org = user.get("organisation");
+		String department = user.get("department");
+		
+		
+		
+		//获得当前时间
+		String uploadTime = DateUtil.dateToStringWithTime(DateUtil.getCurrentDateTime());
+		String logNo = user.get("loginname") + getTime();
+		String saveFileName = pkfield + "_" + logNo + "_" + uploadFileName;
 		
 		String moduleid=StringToZn.toZn(request.getParameter("moduleid"));
 		if(moduleid == null)
 			moduleid = "";
 		request.setAttribute("moduleid", moduleid);	
+		
+		System.out.println("开始保存文件：" + new Date());
+		uploadFile(saveFileName);
+		
+		
 		TableConfig tc = TableConfig.getInstance();
 		TableDesc td = tc.getTable(pkfield);
 		
@@ -73,6 +94,7 @@ public class UploadAction extends ActionSupport{
 		//上传文件只能接收excel2003和2007格式以及txt文本文件
 		if(!(uploadContentType.equals(EXCEL2003) || uploadContentType.equals(EXCEL2007) || uploadContentType.equals(TXTFILE))){
 			request.setAttribute("errorMsg", "上传文件格式不对");
+			delFile(saveFileName);
 			return "error";
 		}
 		
@@ -83,10 +105,10 @@ public class UploadAction extends ActionSupport{
 		
 		//将上传文件转换为List
 		List list = null;
-		
 		//上传文件列数
 		int cols = 0;
 		
+		System.out.println("开始处理文件：" + new Date());
 		if(uploadContentType.equals(TXTFILE)){
 			//处理文本文件
 			TxtReader txtReader = new TxtReader(upload);
@@ -103,6 +125,7 @@ public class UploadAction extends ActionSupport{
 			//不包括标题行，应大于等于1行
 			if(list.size() < 2){
 				ServletActionContext.getRequest().setAttribute("errorMsg", "上传文件无内容");
+				delFile(saveFileName);
 				return "error";
 			}
 			
@@ -116,35 +139,25 @@ public class UploadAction extends ActionSupport{
 			
 			//取到excel文件的列数
 			cols = ((List)list.get(0)).size();
-			System.out.println("cols:" + cols);
+			//System.out.println("cols:" + cols);
 			//去掉标题行
 			list.remove(0);
 		}
 		
 		
-		
+		System.out.println("开始校验文件：" + new Date());
 		List uploadFields = um.getColumnList();
 		//上传项目设置的字段数与上传文件实际的列数应保持一致
-		System.out.println("uploadFilesd:" + uploadFields.size());
 		if(uploadFields.size() != cols){
 			ServletActionContext.getRequest().setAttribute("errorMsg", "上传文件与目标文件列数不符");
+			delFile(saveFileName);
 			return "error";
 		}
 		
 		
 		
-		HttpSession session = request.getSession();
-		//取得操作员信息
-		Record user = (Record)session.getAttribute("dcuser");
-		String userName = user.get("username");
-		String org = user.get("organisation");
-		String department = user.get("department");
 		
-		String logNo = user.get("loginname") + getTime();
-		
-		//获得当前时间
-		String uploadTime = DateUtil.dateToStringWithTime(DateUtil.getCurrentDateTime());
-		
+		System.out.println("开始处理Ｒｅｃｏｒｄ：" + new Date());
 		//将上传内容转换为存储Record的List
 		List<Record> records = new ArrayList<Record>();
 		Record r = null;
@@ -191,6 +204,7 @@ public class UploadAction extends ActionSupport{
 			error = RecordCheck.checkRecord(pkfield, r, false,true);
 			if(error != null && error.trim().length() > 0){
 				request.setAttribute("errorMsg", "在第" + (i+1) + "行生成数据失败，\n" + error + "\n请仔细核对！");
+				delFile(saveFileName);
 				return "error";
 			}
 			
@@ -199,7 +213,7 @@ public class UploadAction extends ActionSupport{
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		
+		System.out.println("开始处理上传日志：" + new Date());
 		//生成上传日志记录
 		Record log = new Record();
 //		log.set("logid", "1", Field.FIELD_TYPE_INT, true);
@@ -210,14 +224,17 @@ public class UploadAction extends ActionSupport{
 		log.set("department", department, Field.FIELD_TYPE_TEXT, false);
 		log.set("logno", logNo, Field.FIELD_TYPE_TEXT, false);
 		log.set("locked", "1", Field.FIELD_TYPE_TEXT, false);
+		log.set("filename", saveFileName, Field.FIELD_TYPE_TEXT, false);
 		
 		//上传日志Record校验
 		error = RecordCheck.checkRecord("dc_uploadlog", log, false, true);
 		if(error != null && error.trim().length() > 0){
 			request.setAttribute("errorMsg", error + "\n上传日志生成失败，请重试！");
+			delFile(saveFileName);
 			return "error";
 		}
 		
+		System.out.println("开始数据写入：" + new Date());
 		//进行数据库的操作
 		ConnectionManage cm = ConnectionManage.getInstance();
 		Connection conn = cm.getConnection("datacenter");
@@ -229,20 +246,23 @@ public class UploadAction extends ActionSupport{
 				int resUpdate = tm.updateRecord(conn, pkfield, r2);
 				int res = 0;
 				if(resUpdate <= 0){
-					System.out.println("Insert++++++");
+					//System.out.println("Insert++++++");
 					res = tm.insertRecord(conn, pkfield, r2);
 				}
 				if (res < 0) {
 					conn.rollback();
 					request.setAttribute("errorMsg", "上传失败，请重试！");
+					delFile(saveFileName);
 					return "error";
 				}
 			}
+			System.out.println("开始写入上传日志：" + new Date());
 			//添加上传日志到数据库
 			int resLog = tm.insertRecord(conn, "dc_uploadlog", log);
 			if (resLog <= 0) {
 				conn.rollback();
 				request.setAttribute("errorMsg", "上传日志写入失败，请重试！");
+				delFile(saveFileName);
 				return "error";
 			}
 			
@@ -254,19 +274,18 @@ public class UploadAction extends ActionSupport{
 			params.put("moduleid", moduleid);
 			request.setAttribute("params", params);
 			list = null;
+			System.out.println("结束：" + new Date());
 			return "success";
 		} catch (Exception e) {
 			try {
 				conn.rollback();
 			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		} finally {
 			try {
 				conn.setAutoCommit(true);
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			cm.freeConnection("datacenter", conn);
@@ -274,6 +293,61 @@ public class UploadAction extends ActionSupport{
 
 		return "error";
 	}
+	/**
+	 * 文件上传
+	 * @param logNo
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
+	private void uploadFile(String fileName) throws FileNotFoundException,
+			IOException {
+		if(upload != null){
+			
+				InputStream is = new FileInputStream(upload);
+				
+				if (is != null){
+					String savePath = getUploadPath();
+					
+					File fileDest = new File(savePath, fileName);
+					
+					OutputStream os = new FileOutputStream(fileDest);
+					
+					byte[] buffer = new byte[512];
+					int length = 0;
+					while(-1 != (length = is.read(buffer))){
+						os.write(buffer, 0, length);
+					}
+					os.close();
+				}
+				is.close();
+				
+		}
+	}
+	private String getUploadPath() {
+		//设置上传文件主目录
+		String root = ServletActionContext.getServletContext().getRealPath("/uploadfiles");
+		//设置上传文件子目录，年（４位）＋月（２位）
+		String savePath = root + DateUtil.getCurrentDateString("/yyyyMM");
+		//检测存储目录是否存在
+		File childPath=new File(savePath);
+		if(!childPath.exists()){
+			childPath.mkdirs();
+		}
+		return savePath;
+	}
+	/**
+	 * 删除文件
+	 * @param fileName
+	 * @return
+	 */
+	public boolean delFile(String fileName){
+		String filePath = getUploadPath();
+        File file=new File(filePath + "/" + fileName);  
+        if(file.exists()){  
+            return file.delete();  
+        }  
+        return false;  
+    } 
 	
 	public static String getTime(){
 		SimpleDateFormat format = new SimpleDateFormat("_yyyyMMdd_HHmmss");

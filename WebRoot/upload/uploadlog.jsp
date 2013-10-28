@@ -45,6 +45,7 @@ String moduleid = (String)request.getAttribute("moduleid");
 		<td class="tdhead" align="center">操作员</td>
 		<td class="tdhead" align="center">部门</td>
 		<td class="tdhead" align="center">状态</td>
+		<td class="tdhead" align="center">文件名</td>
 	</tr>
 	<%
 		
@@ -61,6 +62,7 @@ String moduleid = (String)request.getAttribute("moduleid");
 			String orgName = "";
 			String datatdclass = "";
 			String locked = "";
+			String filename = "";
 			//String plink = "";
 			UploadConfig uc = UploadConfig.getInstance();
 			for(int i = 0; i < records.size(); i++){
@@ -73,7 +75,7 @@ String moduleid = (String)request.getAttribute("moduleid");
 				orgName = r.get("organization");
 				logNo = r.get("logNo");
 				locked = r.get("locked");
-				
+				filename = r.get("filename");
 				//plink = request.getContextPath()+"/upload/uploadManageAction?methodName=detail&pkfield="+logNo + "&tablename="+pkfield;
 				if(i%2 == 0){
 					datatdclass = "data1";
@@ -89,10 +91,11 @@ String moduleid = (String)request.getAttribute("moduleid");
 				<td class="<%=datatdclass %>" align="center"><%=orgName %></td>
 				<td class="<%=datatdclass %>" align="center">
 				<%
-					if(locked.equals("1")){
-					%>
+					if("1".equals(locked)){
+				%>
 					已锁定
-					<%}else{%>未锁定<%}%></td>
+				<%}else{%>未锁定<%}%></td>
+				<td class="<%=datatdclass %>" align="center"><%=filename==null ? "" : filename %></td>
 				</tr>
 				<%
 			}
@@ -101,24 +104,18 @@ String moduleid = (String)request.getAttribute("moduleid");
 	
 </table>
 </div>
-<%=request.getAttribute("pager")==null?"":(String)request.getAttribute("pager") %>
-<hr>
-
-<table class="bottomtable" width="100%">
-	<tr>
-		<td align="right">
-<!-- 			<input type="button" value="返回" onclick="javascript:history.go(-1)"> -->
-			<input type="button" value="返回" onclick="document.location='<%=request.getContextPath()%>/upload/uploadManageAction.action?methodName=list&moduleid=<%=moduleid%>'">
-		</td>
-		<td align="right">
+<div style="width:100%">
+		<div class="pagerdiv">&nbsp;
+			<%=request.getAttribute("pager")==null?"":(String)request.getAttribute("pager") %>
+		</div>
+		<div class="buttondiv">
+		<input type="button" value="返回" onclick="document.location='<%=request.getContextPath()%>/upload/uploadManageAction.action?methodName=list&moduleid=<%=moduleid%>'">
 			<%
 				ArrayList uo = (ArrayList)request.getAttribute("uo");
 				out.println(RoleManage.paraUserOperationToButton(uo,"2"));
 			%>
-		</td>
-	</tr>
-</table>
-
+		</div>
+</div>
 
 <!-- 
 <table class="bottomtable" width="100%">

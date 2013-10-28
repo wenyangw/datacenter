@@ -651,7 +651,6 @@ public class TableManage {
 					condition = condition.substring(0, condition.length() - 3);
 				String sql = "update " + tableName + " set " + name_value
 						+ " where " + condition;
-				
 				try {
 					
 					int res = executeUpdate(conn, sql);

@@ -148,7 +148,9 @@
 			<operation name="delete" cnname="删除" specialparam="" id="m02m01m09"
 				privilegevalue="256" showpos="3" needconfirm="0" selectcount="0"/>
 			<operation name="compare" cnname="上传数据比较" specialparam="" id="m02m01m10"
-				privilegevalue="512" showpos="2" needconfirm="0" selectcount="0"/>	
+				privilegevalue="512" showpos="2" needconfirm="0" selectcount="0"/>
+			<operation name="delUploadFile" cnname="删除上传文件" specialparam="" id="m02m01m11"
+				privilegevalue="1024" showpos="2" needconfirm="0" selectcount="0"/>
 		</module>
 		<module name="上传计划" id="m02m02" actionclass="tms.datacenter.upload.action.RuleManageAction">
 			<operation name="list" cnname="列表" specialparam="" id="m02m02m01"
