@@ -47,7 +47,7 @@ if(project != null)
 	</tr>
 	<tr>
 		<td class="data1" align="center" colspan="2">
-			<input type="submit" value="确定" onclick="showloading('数据正在上传，请稍等。。。')">
+			<input type="submit" value="确定" onclick="showloading('数据正在上传，此过程将持续几分钟，请稍等......')">
 			<input type="button" value="返回" onclick="javascript:history.back()">
 		</td>
 	</tr>
