@@ -23,13 +23,14 @@ public class LoginAction extends ActionSupport{
 		HttpServletRequest request = ServletActionContext.getRequest (); 
 		String loginName=StringToZn.toZn(request.getParameter("loginName"));
 		String loginPsw=request.getParameter("loginPsw");
+		String remoteip = request.getRemoteAddr();
 		Record user = checkUser(loginName,loginPsw);
 		if(user != null){
 			HttpSession session = request.getSession(true);
 			session.setAttribute("dcuser", user);
 			OperateLog log = new OperateLog();
-			log.AddLog(loginName, "登录系统", "");
-			return "index";
+			log.AddLog(loginName, "登录系统", "",remoteip);
+			return "loginSuccess";
 		}
 		request.setAttribute("errorMsg","用户名或密码错误，请重新登录！");
 		return "index";

@@ -625,18 +625,17 @@ public class TableManage {
 									+ StringToZn.toDB(fieldValue) + "',";
 						}
 					} else {
-						condition += " ";
 						if (fieldName == null || fieldName.trim().length() <= 0)
 							return -2;
 						if (Field.FIELD_TYPE_INT.equals(fieldType)||Field.FIELD_TYPE_DOUBLE.equals(fieldType)) {
 							if (fieldValue == null
 									|| fieldValue.trim().length() <= 0)
-								condition += fieldName + " is null and";
+								condition += " "+fieldName + " is null and";
 							else
-								condition += fieldName + "=" + fieldValue
+								condition += " "+fieldName + "=" + fieldValue
 										+ " and";
 						} else {
-							condition += fieldName + "='"
+							condition += " "+fieldName + "='"
 									+ StringToZn.toDB(fieldValue) + "' and";
 						}
 						haspk = true;
@@ -651,6 +650,7 @@ public class TableManage {
 					condition = condition.substring(0, condition.length() - 3);
 				String sql = "update " + tableName + " set " + name_value
 						+ " where " + condition;
+				
 				try {
 					
 					int res = executeUpdate(conn, sql);
@@ -713,12 +713,12 @@ public class TableManage {
 						if (Field.FIELD_TYPE_INT.equals(fieldType)||Field.FIELD_TYPE_DOUBLE.equals(fieldType)) {
 							if (fieldValue == null
 									|| fieldValue.trim().length() <= 0)
-								condition += fieldName + " is null and";
+								condition += " "+fieldName + " is null and";
 							else
-								condition += fieldName + "=" + fieldValue
+								condition += " "+fieldName + "=" + fieldValue
 										+ " and";
 						} else {
-							condition += fieldName + "='"
+							condition += " "+fieldName + "='"
 									+ StringToZn.toDB(fieldValue) + "' and";
 						}
 						haspk = true;

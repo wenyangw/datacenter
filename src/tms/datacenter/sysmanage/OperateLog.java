@@ -8,12 +8,13 @@ public class OperateLog extends TableManage {
 	public OperateLog() {
 		setTableName("dc_operatelog");
 	}
-	public void AddLog(String loginname,String operate,String memo){
+	public void AddLog(String loginname,String operate,String memo,String remoteip){
 		String currenttime = DateUtil.dateToStringWithTime(new java.util.Date());
 		Record r = new Record();
 		r.set("loginname", loginname);
 		r.set("operate", operate);
 		r.set("updatetime", currenttime);
+		r.set("remoteip", remoteip);
 		r.set("memo", memo);
 		this.insertRecord("datacenter", "dc_operatelog", r);
 	}

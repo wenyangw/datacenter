@@ -4,11 +4,10 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
-	
+
     <constant name="struts.enable.DynamicMethodInvocation" value="false" />
     <constant name="struts.devMode" value="false" />
     <constant name="struts.i18n.encoding" value="utf-8"></constant>
-    <constant name="struts.multipart.maxSize" value="104857600" />
 	<include file="datacenter.xml"/>
 	<include file="upload.xml"/>
 

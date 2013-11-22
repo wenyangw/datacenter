@@ -591,7 +591,7 @@
 			fieldlength="3" ispk="1" cannull="1" showpos="1"/>
 		<field fieldname="Total" fieldlabel="册数" fieldtype="4"
 			fieldlength="9" ispk="0" cannull="1" showpos="1"/>
-		<field fieldname="Jibie" fieldlabel="季别" fieldtype="1"
+		<field fieldname="JiBie" fieldlabel="季别" fieldtype="1"
 			fieldlength="10" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="YwNo" fieldlabel="业务号" fieldtype="1"
 			fieldlength="14" ispk="1" cannull="1" showpos="1"/>
@@ -603,6 +603,38 @@
 			fieldlength="60" ispk="0" cannull="1" showpos="1"/>
 		<!--<field fieldname="AreaNo" fieldlabel="地区编号" fieldtype="1"
 			fieldlength="25" ispk="0" cannull="1" showpos="1"/>-->
+		<field fieldname="UserName" fieldlabel="操作员姓名" fieldtype="1"
+			fieldlength="50" ispk="0" cannull="0" showpos="1"/>
+		<field fieldname="organization" fieldlabel="所在单位" fieldtype="1"
+			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="department" fieldlabel="部门" fieldtype="1"
+			fieldlength="50" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="LogNo" fieldlabel="批次" fieldtype="1"
+			fieldlength="50" ispk="0" cannull="0" showpos="1"/>
+		<field fieldname="updatetime" fieldlabel="更新时间" fieldtype="2"
+			fieldlength="8" ispk="0" cannull="0" showpos="1"/>
+	</table>
+	<table name="v_smpz" cnname="全省市县书目品种(北配专用)" poolname="datacenter">
+		<field fieldname="id" fieldlabel="编号" fieldtype="3"
+			fieldlength="4" ispk="1" cannull="0" showpos="1"/>
+		<field fieldname="BookName" fieldlabel="书名" fieldtype="1"
+			fieldlength="60" ispk="0" cannull="0" showpos="1"/>
+		<field fieldname="MuluNo" fieldlabel="目录号" fieldtype="1"
+			fieldlength="10" ispk="1" cannull="1" showpos="1"/>
+		<field fieldname="xuhao" fieldlabel="序号" fieldtype="1"
+			fieldlength="4" ispk="1" cannull="1" showpos="1"/>
+		<field fieldname="BanbieNo" fieldlabel="版别" fieldtype="1"
+			fieldlength="10" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="Price" fieldlabel="定价" fieldtype="4"
+			fieldlength="9" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="GhdwNo" fieldlabel="供货单位" fieldtype="1"
+			fieldlength="60" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="Grade" fieldlabel="年级" fieldtype="1"
+			fieldlength="2" ispk="0" cannull="0" showpos="1"/>
+		<field fieldname="KemuNo" fieldlabel="科目号" fieldtype="1"
+			fieldlength="10" ispk="0" cannull="1" showpos="1"/>
+		<field fieldname="JiBie" fieldlabel="季别" fieldtype="1"
+			fieldlength="10" ispk="0" cannull="1" showpos="1"/>
 		<field fieldname="UserName" fieldlabel="操作员姓名" fieldtype="1"
 			fieldlength="50" ispk="0" cannull="0" showpos="1"/>
 		<field fieldname="organization" fieldlabel="所在单位" fieldtype="1"

@@ -145,4 +145,15 @@
 		<column number="16" fieldname="ShengName"/>
 		<column number="17" fieldname="DianName"/>
 	</upload>
+	<upload cnname="全省市县书目品种(北配专用)" specialparam="v_smpz" table="v_smpz" txtseparate="\t" keywords="">
+		<column number="1" fieldname="MuluNo"/>
+		<column number="2" fieldname="xuhao"/>
+		<column number="3" fieldname="BookName"/>
+		<column number="4" fieldname="BanbieNo"/>
+		<column number="5" fieldname="Price"/>
+		<column number="6" fieldname="GhdwNo"/>
+		<column number="7" fieldname="Grade"/>
+		<column number="8" fieldname="KemuNo"/>
+		<column number="9" fieldname="Jibie"/>
+	</upload>
 </uploads>

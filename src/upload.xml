@@ -5,7 +5,7 @@
 
 <struts>
 <!--	<constant name="struts.multipart.saveDir" value="/upload"/>-->
-
+<constant name="struts.multipart.maxSize" value="20971520"/>
     <package name="tms.datacenter.upload.action" namespace = "/upload" extends="struts-default">
     
     	<result-types>  

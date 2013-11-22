@@ -69,7 +69,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  Record record = (Record)resultList.get(j);
 	  UploadMsg um = uc.getUpload(record.get("uploadName"));
 	  %>
-	  <%=record.get("username") + "在 " + record.get("uploadTime") + " 更新了 '" + um.getCnname() + "'"%><br>
+	  <%=record.get("username") + "在 " + record.get("uploadTime") + " 更新了 '" + um.getCnname() + "'"%>
+	  <%if(j !=  resultList.size() -1) {
+		  %>
+		  <hr class="indexuphr">
+		  <%
+	  }%>
 	  <%
   	}
   }else{

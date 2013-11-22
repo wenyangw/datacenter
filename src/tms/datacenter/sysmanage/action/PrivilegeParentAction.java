@@ -34,6 +34,7 @@ public class PrivilegeParentAction extends ActionSupport{
 		String methodName=StringToZn.toZn(request.getParameter("methodName"));
 		String specialParam=StringToZn.toZn(request.getParameter("specialParam"));
 		String moduleid=StringToZn.toZn(request.getParameter("moduleid"));
+		String remoteip = request.getRemoteAddr();
 		if(moduleid == null)
 			moduleid = "";
 		Record dcuser = getLoginUser();
@@ -53,7 +54,7 @@ public class PrivilegeParentAction extends ActionSupport{
 			request.setAttribute("uo", getAllOperations());
 			if(privilegeValue > 1){
 				OperateLog log = new OperateLog();
-				log.AddLog(dcuser.get("loginname"), log_str, "");
+				log.AddLog(dcuser.get("loginname"), log_str, "",remoteip);
 			}
 			return (String)method.invoke(c.newInstance(), null);
 		}
@@ -75,9 +76,12 @@ public class PrivilegeParentAction extends ActionSupport{
 			request.setAttribute("uo", getUserHasOperations(user_privilege));
 			if(privilegeValue > 1){
 				OperateLog log = new OperateLog();
-				log.AddLog(dcuser.get("loginname"), log_str, "");
+				log.AddLog(dcuser.get("loginname"), log_str, "",remoteip);
 			}
-			return (String)method.invoke(c.newInstance(), null);
+			String res = (String)method.invoke(c.newInstance(), null);
+			if(res == null || res.trim().length() <= 0)
+				res = null;
+			return res;
 		}else{
 			//无权限提示
 			return "nopower";

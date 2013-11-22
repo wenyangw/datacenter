@@ -10,7 +10,7 @@
 	BODY.indexbody{
 		color:#303030;
 		font-size:10pt;
-		font-weight:600;
+		font-weight:400;
 		margin-top:0px;
 		margin-bottom:0px;
 		margin-right:0px;
@@ -32,7 +32,7 @@
 		border-collapse:collapse;
 	}
 	TD.indextd{
-		background: #FAFAFA;
+		
 		
 	}
 	TD.columnbar1{
@@ -55,7 +55,7 @@
 	}
 	A:link {
   		color: #303030; text-decoration: none;
-  		text-decoration: underline;
+  		
  	}
  	A:visited {
   		color: #303030; text-decoration: none;
@@ -159,12 +159,16 @@
 		border-bottom: 1px solid #CCCCCC;
 	}
 	div.listdiv{
-		height:400px;
+	    height: 520px;
 		margin-top:0px;
 		margin-bottom:0px;
 		margin-right:0px;
 		margin-left:0px;
 		overflow:auto;
+		border-top:1px solid #e3e3e3;
+		border-bottom:1px solid #e3e3e3;
+		border-left:1px solid #e3e3e3;
+		border-right:1px solid #e3e3e3;
 	}
 	form {
 		margin-top:0px;
@@ -230,6 +234,7 @@
 		line-height:30px;
 		color:white;
 		cursor:pointer;
+		border:0px;
 	}
 	div.indexbar1{
 		float:left;
@@ -240,22 +245,27 @@
 		color:white;
 		background:#FFA54F;
 		cursor:pointer;
+		border:0px;
 	}
 	div.cshow{
 		display:block;
-		border-left:1px solid;
-		border-right:1px solid;
-		border-bottom:1px solid;
+		border-left:1px solid #A4D3EE;
+		border-right:1px solid #A4D3EE;
+		border-bottom:1px solid #A4D3EE;
 		height:294px;
-		width:598px;
+		width:578px;
+		padding-left:10px;
+		padding-right:10px;
 	}
 	div.chidden{
 		display:none;
-		border-left:1px solid;
-		border-right:1px solid;
-		border-bottom:1px solid;
+		border-left:1px solid #A4D3EE;
+		border-right:1px solid #A4D3EE;
+		border-bottom:1px solid #A4D3EE;
 		height:300px;
-		width:598px;
+		width:578px;
+		padding-left:10px;
+		padding-right:10px;
 	}
 	div.querydiv{
 		width:100%;
@@ -282,5 +292,11 @@
 		height:38px;
 		line-height:38px;
 	}
-	
+	hr.indexuphr{
+		border:0px;
+ 		height:0px;
+ 		margin-top:0px;
+ 		margin-bottom:0px;
+		border-top:1px dashed #EE7600;
+	}
 	

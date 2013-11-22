@@ -8,7 +8,7 @@ document.write("<div id='meizzCalendarLayer' style='position: absolute; z-index:
 document.write("<iframe name='meizzCalendarIframe' scrolling='no' frameborder='0' width='100%' height='100%'></iframe></div>");
 var WebCalendar = new WebCalendar();
 
-document.onclick() = function() 
+function document.onclick()
 {
     if(WebCalendar.eventSrc != window.event.srcElement) hiddenCalendar();
 }
@@ -263,7 +263,7 @@ function hiddenSelect(e){
 function getObjectById(id){ if(document.all) return(eval("document.all."+ id)); return(eval(id)); }
 function hiddenCalendar(){getObjectById("meizzCalendarLayer").style.display = "none";};
 function appendZero(n){return(("00"+ n).substr(("00"+ n).length-2));}//日期自动补零程序
-String.prototype.trim() = function(){return this.replace(/(^\s*)|(\s*$)/g,"");}
+function String.prototype.trim(){return this.replace(/(^\s*)|(\s*$)/g,"");}
 function dayMouseOver()
 {
     this.className = "over";

@@ -1,0 +1,664 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0031)https://172.28.10.57/login.html -->
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><META content="IE=7.0000" 
+http-equiv="X-UA-Compatible">
+<TITLE>数据共享平台</TITLE>
+<META content=no-cache http-equiv=Pragma>
+<META content=no-cache http-equiv=Cache-Control>
+<META content=must-revalidate http-equiv=Cache-Control>
+<META content=-1 http-equiv=Expires>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type><LINK 
+rel=stylesheet type=text/css href="images/login.css">
+<META name=GENERATOR content="MSHTML 10.00.9200.16540"></HEAD>
+<BODY onkeypress=onKeydownOper(event); class=body onload=init();>
+<DIV class=background-img>
+<DIV class=primary-zone>
+<DIV class=banner>
+<UL>
+  <LI></LI></UL></DIV>
+<DIV class=login>
+<TABLE cellSpacing=0 cellPadding=1 width=400 align=right border=0>
+  <TBODY>
+  <TR>
+    <TD></TD>
+    <TD height=5 colSpan=2><SPAN class=prompt><STRONG><LABEL 
+      id=err_info></LABEL></STRONG></SPAN>
+      <DIV id=alarm class=prompt 
+      style="DISPLAY: none"><BR></DIV>
+      <DIV id=authInfo class=prompt style="DISPLAY: none"><SPAN id=authUser 
+      style="COLOR: white"></SPAN><BR></DIV></TD></TR>
+  <TR>
+    <TD width=45 align=right>
+      <P class=txt>用户名</P>
+      <P class=txt>密　码</P></TD>
+    <TD width=204>
+      <P id=user_a class=user_on><INPUT onclick=set_focus_flag(); 
+      onfocus=change_user_off(); onblur=change_user_on(); id=user class=user 
+      onkeydown=set_focus_flag(); maxLength=95 name=user> </P>
+      <P id=password_a class=password_on><INPUT onclick=set_focus_flag(); 
+      onfocus="this.value='';change_pw_off();" onblur=change_pw_on(); 
+      id=password class=user onkeydown=set_focus_flag(); maxLength=49 
+      type=password name=password> </P></TD>
+    <TD vAlign=middle width=145 align=left><INPUT onclick=if(KeyDownTime==0){onDo();} onfocus="this.className='buttons_off buttons';" onblur="this.className='buttons_on buttons';" id=button class=buttons type=button value=登录 name=button> 
+    </TD></TR>
+  <TR>
+    <TD></TD>
+    
+    <TD></TD></TR></TBODY></TABLE></DIV></DIV></DIV>
+<SCRIPT type=text/javascript>
+focus_flag = false; //标记是否曾经主动定位到某输入框
+
+function set_focus_flag()
+{
+	focus_flag = true;
+}
+
+function setClass(obj_id,_class)
+{
+	var obj=document.getElementById(obj_id);
+	obj.setAttribute("class",_class);
+	obj.setAttribute("className",_class);
+}
+
+function change_user_off()
+{
+	setClass("user_a", "user_off");
+}
+
+function change_user_on()
+{
+	setClass("user_a", "user_on");
+}
+
+function change_pw_off()
+{
+	setClass("password_a", "password_off");
+}
+
+function change_pw_on()
+{
+	setClass("password_a", "password_on");
+}
+</SCRIPT>
+
+<SCRIPT type=text/javascript>
+var KeyDownTime = 0;
+var version = "AC";
+
+/*
+*	@传入json字符串，返回json对象
+*/
+function json_decode(str){
+	var obj;
+	try{
+		obj = eval('(' + str + ')');
+	}
+	catch(exception){
+		obj = null;
+	}
+	
+	return obj;
+}
+
+/*
+*	@判断传入的参数是否为空，只支持简单的字符类型
+*/
+function isEmpty(v)
+{
+	return (v === null || v === undefined || v === '');
+}
+
+/*
+*	@ will be called on html body load
+*/
+function init()
+{
+	//如果曾经主动定位到某输入框，则不再自动定位到用户名输入框
+	if(!focus_flag)
+	{
+		document.getElementById("user").focus();
+	}
+	if(window.top != window)
+	{
+		window.top.location.href = window.location.href;
+	}
+	
+	document.cookie = 'sangfor_session_hash=0';
+	
+	getVersion();
+	/* Add by yuqiang 2010/09/20 for AC3.5 TCP proxy */
+	var url = window.location.href;
+	
+	/* 通过判断服务器地址是否为127.0.0.1来判断是否为TCP代理 */
+	if(url.indexOf("127.0.0.1") != -1)
+	{
+		dealWithTcpProxy();
+	}
+	/* End add */
+}
+
+/*
+ * @获取TCP代理值 
+ * Add by yuqiang 2010/09/20 for AC3.5 Tcp proxy
+ */
+function dealWithTcpProxy()
+{
+	/* 获取URL参数中的scinfo值 */
+	var args = new Object();	/* 声明一个空对象 */
+	var param = window.location.search.substr(1);
+	var pairs = param.split("&");
+	for(var i=0; i< pairs.length; i++){
+		var pos = pairs[i].indexOf("=");
+		if(pos == -1)
+			continue;
+		var argname = pairs[i].substr(0, pos);
+		var value   = pairs[i].substr(pos + 1);
+		args[argname] = value;
+	}
+	
+	/* 判断是否有参数 */
+	if(isEmpty(args["scinfo"]) ||
+		isEmpty(args["port"]) ||
+		isEmpty(args["auth"]))
+	{
+		updateTips('登录失败,请在远程控制服务中重新点击控制台');
+		return false;	
+	}
+	
+	if(args["auth"] == "1")
+	{//免认证登录,等待过程中，显示提示信息
+		TcpChecking();
+	}
+	
+	var scinfo = decodeURIComponent(args["scinfo"]);
+	str = '{"opr":"tcpproxy","data":{"scinfo":"' + scinfo + '"}}';
+	
+	/* 异步请求login.cgi */
+	asyncReq("POST", "../cgi-bin/login.cgi", str, cb_tcpproxy, tcpproxy_errhandler);
+}
+
+function TcpChecking()
+{
+	updateTips('TCP远程代理登录中,请稍后...');
+	document.getElementById("user").disabled = true;
+	document.getElementById("password").disabled = true;
+	document.getElementById("button").disabled = true;
+}
+
+function TcpChecked()
+{
+	document.getElementById("err_info").innerHTML = "";
+	document.getElementById("user").disabled = false;
+	document.getElementById("password").disabled = false;
+	document.getElementById("button").disabled = false;
+}
+/*
+ * @TCP代理，异步请求回调函数
+ * Add by yuqiang 2010/09/20 for AC3.5 Tcp proxy
+ */
+function cb_tcpproxy(txt)
+{
+	TcpChecked();
+	if(rep_err(txt))
+	{
+		var msg = rep_err_msg(txt);
+		updateTips(msg);
+	}
+	else
+	{
+		var obj = json_decode(txt);
+		if(obj && obj.nTcpProxyState == 2)
+		{			
+			var qs = getQueryString();
+			qs = (qs == '') ? '' : '?' + qs;
+			window.location.href = "index.php" + qs;
+		}
+	}
+}
+
+/* 
+ * @异步请求错误处理函数
+ * Add by yuqiang 2010/09/20 for AC3.5 Tcp proxy
+ */
+function tcpproxy_errhandler()
+{
+	version = "提交 [获取TCP代理信息] 请求失败";
+}
+
+/*
+*	@异步请求成功，判断返回的执行结果是否正确
+*/
+function rep_err(txt)
+{
+	var obj = json_decode(txt);
+	
+	if(obj && obj.success){
+		return false;
+	}
+	else{
+		return true;
+	}
+	
+	/*
+	var es = '"success":';
+	var idx = txt.indexOf(es);
+	if( idx != -1 )
+	{
+		idx += es.length;
+		var ret = txt.substr(idx, 4);
+		if( ret == "true" )
+			return false;
+		else
+			return true;
+	//	alert(ret);
+	}
+	*/
+}
+
+/*
+*	@获取异步请求结果的 msg 字段信息
+*/
+function rep_err_msg(txt)
+{
+	var obj = json_decode(txt);
+	
+	if(obj && obj.msg){
+		var str = obj.msg;
+		if(str.indexOf("Cookie") >= 0 || str.indexOf("cookie") >= 0 )
+			return "请重启浏览器或者清空历史记录";
+		else
+			return obj.msg;
+	}
+	else{
+		return '';
+	}
+	
+	/*
+	var msg = '"msg":';
+	var idx = txt.indexOf(msg);
+	if(idx != -1)
+	{
+		idx += msg.length;
+		var ret = txt.substr(idx);
+		var rlt = ret.substr(0, ret.length-2);	// delete }"
+		return rlt;
+	}
+
+	return "";
+	*/
+}
+
+
+/*
+*	@	 版本信息异步请求的回调函数
+
+*	@	txt	异步请求的返回结果
+
+*/
+function cb_version(txt)
+{
+	if( rep_err(txt) )
+	{
+		version = "异步获取提交成功，但是获取版本信息失败";
+	}
+	else
+	{
+		var obj = json_decode(txt);
+		
+		if(obj && (obj.text || obj.text=='')){
+			version = obj.text;
+			
+			//登录页面异常
+			if(obj.authInfoErr){
+				alert('登录页面异常');
+			}
+			
+			// Comment out by zhangzhang, at 2010/08/09.
+			// 3.0r1中要将防串货信息移至框架内 (是否要将login.cgi中version操作返回的公司名去掉？)
+			//如果是“非授权用户”
+
+			//if(obj.authInfoCode == -1){
+			//	document.getElementById('alarm').style.display = '';
+			//}
+			//授权用户
+			//else if(obj.authInfoCode == 1){
+			//	document.getElementById('authUser').innerHTML = '授权用户：' + obj.authInfoStr;
+			//	document.getElementById('authInfo').style.display = '';
+			//}
+		}
+		
+		/*
+		var d = '"text":';
+		var idx = txt.indexOf(d);
+		if(idx != -1)
+		{
+			idx += d.length;
+			idx += 1;		// delete "
+			var ret = txt.substr(idx);
+			var rlt = ret.substr(0, ret.length - 3);	// delete "}
+			version = rlt;
+		}
+		*/
+	}
+}
+
+function ver_errhandler()
+{
+	version = "提交 [获取版本信息] 请求失败";
+}
+
+/*
+*	获取版本信息
+*/
+function getVersion()
+{ 
+	var str = '{"opr":"version"}';
+	asyncReq("POST", "../cgi-bin/login.cgi", str, cb_version, ver_errhandler );
+}
+
+
+
+
+//在TT下，按一次Enter键会响应两次
+function onKeydownOper(e)
+{
+	var kn ;
+	if(window.event)
+		kn = e.keyCode;
+	else if( e.which )
+		kn = e.which;
+
+	if (kn == 13)
+	{
+		KeyDownTime ++;
+		if (KeyDownTime > 1)
+		{
+			return;
+		}
+
+		KeyDownTime = 0;
+		onDo();
+	}
+}
+
+/*
+ * 更新提示
+ */
+function updateTips(msg)
+{
+	var l = document.getElementById("err_info");
+	l.innerHTML = '提示： ' + msg;
+}
+
+/*
+*   @    获得url参数
+*   @txt    url参数
+*   @author lenky
+*/
+function getQueryString()
+{
+	var href = window.location.href,
+        ps = href.indexOf('?');
+	if (ps != -1) {
+		return href.substring(ps + 1);
+	} else {
+		return '';
+	}
+}
+
+/*
+*	@	 用户登陆异步请求的回调函数
+
+*	@txt	异步请求的返回结果
+
+*/
+function cb_login(txt)
+{
+	if( rep_err(txt) )
+	{
+		var msg = rep_err_msg(txt);
+		updateTips(msg);
+	}
+	else
+	{
+		var qs = getQueryString();
+		qs = (qs == '') ? '' : '?' + qs;
+		window.location.href = "index.php" + qs;
+	}
+}
+
+/*
+*   @ encodeString
+*   @ author lenky 其实该段代码来之Ext.util.JSON，\(^o^)/~
+*   @ fixed bug21306 20100502
+*/
+function encodeString(s){
+	var m = {
+        "\b": '\\b',
+        "\t": '\\t',
+        "\n": '\\n',
+        "\f": '\\f',
+        "\r": '\\r',
+        '"' : '\\"',
+        "\\": '\\\\'
+    };
+    if (/["\\\x00-\x1f]/.test(s)) {
+        return '"' + s.replace(/([\x00-\x1f\\"])/g, function(a, b) {
+            var c = m[b];
+            if(c){
+                return c;
+            }
+            c = b.charCodeAt();
+            return "\\u00" +
+                Math.floor(c / 16).toString(16) +
+                (c % 16).toString(16);
+        }) + '"';
+    }
+    return '"' + s + '"';
+}
+//end added
+
+/*
+*	@ submit data
+*/
+function onDo()
+{
+	try{
+		var pu = document.getElementById("user");
+		var pp = document.getElementById("password");
+		
+		/* Add by yuqiang 2010/09/30 for AC3.5 TCP proxy */
+		var args = new Object();	/* 声明一个空对象 */
+		var url  = window.document.location.href;
+
+		/* 是否为TCP代理 */
+		if(url.indexOf("127.0.0.1") != -1)
+		{/* TCP代理 */
+			var param = window.location.search.substr(1);
+			var pairs = param.split("&");
+			for(var i=0; i< pairs.length; i++){
+				var pos = pairs[i].indexOf("=");
+				if(pos == -1)
+					continue;
+				var argname = pairs[i].substr(0, pos);
+				var value   = pairs[i].substr(pos + 1);
+				args[argname] = value;
+			}
+
+			/* 判断是否有参数 */
+			if(isEmpty(args["scinfo"]) ||
+				isEmpty(args["port"]) ||
+				isEmpty(args["auth"]))
+			{
+				updateTips('登录失败,请在远程控制服务中重新点击控制台');
+				return false;	
+			}
+		}
+		/* End add */
+	
+        //fixed bug21306 20100502
+		var str = ' {"opr":"login", "data":{"user": ';
+		str += encodeString(pu.value);
+		str += ' , "pwd": ';
+		str += encodeString(pp.value);
+		/* Add by yuqiang 2010/09/21 for AC3.5 TCP proxy */
+		if(!isEmpty(args['scinfo']))
+		{
+			var scinfo = decodeURIComponent(args["scinfo"]);
+			str += ' , "scinfo":"' + scinfo + '"';
+		}
+		/* End add */
+		str += '}} ';
+		//end fixed
+		
+		updateTips('正在登录，请稍候...')
+		asyncReq("POST", "../cgi-bin/login.cgi", str, cb_login);
+	}
+	catch(e){
+		alert("ActiveX不能正常运行\n-请检查控件是否已经下载,版本是否正确\n-请检查Internet安全级别的设置,将级别设置为中级以下\n-更改配置后请刷新页面");
+	}
+}
+
+
+/*
+*	@ open a window, display version
+*/
+function onVer()
+{
+	winObj=window.open("","winObj","left=300,top=200,width=320,height=340;");
+	var objcontent="<html><head><meta http-equiv=Content-Type content=text/html; charset=UTF-8><title>版本信息</title>";
+	objcontent+="<link href=html/STYLE.CSS rel=stylesheet type=text/css></head>";
+	objcontent+="<body class='body3'><form><table><tr><td class=errorinfo>";	
+	objcontent+=	version;//form1.ver.value;
+	objcontent+="</td></tr></table></form></body></html>";
+	winObj.document.open();
+	winObj.document.write(objcontent);	
+	winObj.document.close();
+}
+
+
+/*
+*	@ async request
+*
+*/
+	var activex = ['MSXML2.XMLHTTP.3.0',
+	     			         'MSXML2.XMLHTTP',
+							 'Microsoft.XMLHTTP'];
+
+
+	function releaseObject(o) {
+            o.conn = null;
+            o = null;
+    }
+
+	
+	/*
+	*	@method
+	*	@uri
+	*	@postdata		param, maybe null
+	*	@cb					callback, maybe null. it was used to analyse responsetext
+	*	@errhandler		callback, maybe null. 
+	*/
+	function asyncReq(method, uri, postdata, cb, errhandler){
+		var o = getConnectionObject() || null;
+
+		if(o){
+			o.conn.onreadystatechange = function handleReadyState(){
+
+				if( o.conn.readyState != 4 )
+					return;
+
+				var httpStatus, responseObject;
+				
+				try{
+					if( o.conn.status !== undefined && o.conn.status != 0 ){
+						httpStatus = o.conn.status;
+					}else{
+						httpStatus = 13030;
+					}
+				}catch(e){
+					httpStatus = 13030;
+				}
+
+				if( httpStatus >= 200 && httpStatus < 300 ){
+					var rlt = o.conn.responseText;
+					if(cb)
+						cb(rlt);
+				}else{
+					if(errhandler)
+						errhandler();
+				}
+
+				releaseObject(o);
+			}
+
+			o.conn.open(method, uri, true);
+			o.conn.send(postdata || null);
+		}
+
+		return o;
+	}
+
+	/*
+	*	@ get XMLHttpRequest
+	*
+	*/
+	function getConnectionObject(){
+		var o;
+		 
+		 try{
+			  o = createXhrObject();
+		 }catch(e){
+		 }finally{
+			 return o;
+		 }
+	}
+
+	function createXhrObject(){
+		var http;
+		try{
+			http = new XMLHttpRequest();
+		}catch(e){
+			for( var i=0; i<activex.length; ++i ){
+				try{
+					http = new ActiveXObject(activex[i]);
+					break;
+				}catch(e){}
+			}
+		}finally{
+			return {conn : http};
+		}
+	}
+
+// async finished
+
+
+
+</SCRIPT>
+<!--
+<div style="display:none"> 
+<OBJECT classid="clsid:A84B7610-6469-4639-913D-A066BBF8B031"
+id=active
+width=0
+height=0
+codebase="../html/acnowin.cab#Version=1,0,0,0">
+</OBJECT>
+--><!--[if IE 6]>
+<script type="text/javascript">
+	var js_version = ScriptEngineBuildVersion();
+	if (js_version < 8834) {
+		/*Load jQuery if not already loaded*/ 
+		if(typeof jQuery == 'undefined'){ 
+			document.write("<script type=\"text/javascript\" src=\"js/jquery.min.js\"></" + "script>"); 
+			var __noconflict = true; 
+		}
+		var IE6UPDATE_OPTIONS = {
+			icons_path: "/images/ie6update/",
+			url: "http://support.microsoft.com/kb/942840/",
+			message: "您的IE6需要安装补丁，以便获得更好的用户体验。请点击下载更新...（如果无法下载补丁包，建议您直接将浏览器升级到IE7或IE7以上版本）",
+			preload: false
+		}
+		document.write("<script type=\"text/javascript\"   src=\"js/ie6update.js\"></" + "script>");
+	} 
+</script>
+<![endif]--></BODY></HTML>

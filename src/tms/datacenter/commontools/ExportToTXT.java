@@ -87,6 +87,11 @@ public static void writeToTxtList(HttpServletResponse response, ArrayList record
         ArrayList filterfield =  ExportToExcel.getFilterField();
         UploadConfig uc = UploadConfig.getInstance();
         UploadMsg um = uc.getUpload(tablename);
+        if(um.getTxtseparate() != null && um.getTxtseparate().length() > 0){
+        	tab = um.getTxtseparate();
+        	if("\\t".equalsIgnoreCase(tab))
+        		tab = "\t";
+        }
         ArrayList cloumns = um.getColumnList();
         if(cloumns == null)
         	cloumns = new ArrayList();
@@ -115,16 +120,18 @@ public static void writeToTxtList(HttpServletResponse response, ArrayList record
     							continue;
     						fieldvalue = field.getFieldValue();
     						if(!hiddenfiels.contains(fieldname.toLowerCase())){
+    							if(fieldvalue == null)
+    								fieldvalue = "";
     							write.append(fieldvalue + tab);
     						}
     					}
-    					write.append(enter);
+    					if(i != records.size() -1)
+    						write.append(enter);
     				}
     			}
     		}  
             buff.write(write.toString().getBytes("GBK"));  
             buff.flush();  
-            buff.close();  
         } catch (Exception e) {  
             e.printStackTrace();  
         } finally {  

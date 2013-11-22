@@ -19,6 +19,7 @@
 <input type="hidden" name="methodName" id="methodNameId" value="list">
 <input type="hidden" name="moduleid" id="moduleidId" value="<%=request.getAttribute("moduleid")==null?"":(String)request.getAttribute("moduleid") %>">
 <input type="hidden" name="specialParam" id="specialparamId" value="<%=request.getAttribute("specialparam")==null?"":(String)request.getAttribute("specialparam") %>">
+<div class="querydiv">
 <%
 	ArrayList querys = (ArrayList)request.getAttribute("querys");
 	if(querys != null && querys.size() > 0){
@@ -31,6 +32,7 @@
 	}
 	out.println("<input type=\"button\" value=\"查询\" onclick=\"commonOperateSimple('list')\">");
 %>
+</div>
 <div class="listdiv">
 <table width="98%" class="listtable">
 	
@@ -91,18 +93,17 @@
 	%>
 </table>
 </div>
-<%=request.getAttribute("pager")==null?"":(String)request.getAttribute("pager") %>
-<hr>
-<table class="bottomtable" width="100%">
-	<tr>
-		<td align="right">
+<div style="width:100%">
+		<div class="pagerdiv">&nbsp;
+			<%=request.getAttribute("pager")==null?"":(String)request.getAttribute("pager") %>
+		</div>
+		<div class="buttondiv">
 			<%
 				ArrayList uo = (ArrayList)request.getAttribute("uo");
 				out.println(RoleManage.paraUserOperationToButton(uo,Operation.SHOW_POS_LIST));
 			%>
-		</td>
-	</tr>
-</table>
+		</div>
+</div>
 </form>
 </body>
 </html>

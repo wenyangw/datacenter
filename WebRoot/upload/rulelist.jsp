@@ -90,18 +90,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 </table>
 </div>
-<%=request.getAttribute("pager")==null?"":(String)request.getAttribute("pager") %>
-<hr>
-<table class="bottomtable" width="100%">
-	<tr>
-		<td align="right">
+<div style="width:100%">
+		<div class="pagerdiv">&nbsp;
+			<%=request.getAttribute("pager")==null?"":(String)request.getAttribute("pager") %>
+		</div>
+		<div class="buttondiv">
 			<%
 				ArrayList uo = (ArrayList)request.getAttribute("uo");
 				out.println(RoleManage.paraUserOperationToButton(uo,Operation.SHOW_POS_LIST));
 			%>
-		</td>
-	</tr>
-</table>
+		</div>
+</div>
 </form>
   </body>
 </html>

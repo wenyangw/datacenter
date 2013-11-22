@@ -41,8 +41,8 @@ document.onmousedown = norightclick;  // for all others
 </head>
 <body>
 <div style="text-align:center">
-<jsp:include page="/index/top.jsp"/>
-<table width="1024" border="0" bgcolor="white">
+<table width="100%" border="0" bgcolor="white">
+
 <%
 	String noticeid = request.getParameter("noticeid");
 	Notice notice  = new Notice();
@@ -70,13 +70,16 @@ document.onmousedown = norightclick;  // for all others
 			else
 				titletemp = title;
 			%>
+			<tr><td height="40" align="left">
+				<a href="#" onclick="javascript:history.back();" style="color:blue">集团公告</a>&gt;&gt;<%=title %>
+			</td></tr>
 			<tr><td align="center" height="60"><font size="5"><%=title %></font></td></tr>
 			
 			<%if(pdffile != null && pdffile.trim().length() > 0){
 				%>
 				<tr><td align="center">
 				<div style="margin-top:-75px;margin-left:auto;margin-right:auto">
-				<object classid="clsid:CA8A9780-280D-11CF-A24D-444553540000" id="Pdf1" width="1000" height="506">
+				<object classid="clsid:CA8A9780-280D-11CF-A24D-444553540000" id="Pdf1" width="90%" height="506">
 				<param name="_Version" value="327680">
 				<param name="_ExtentX" value="19315">
 				<param name="_ExtentY" value="16034">
@@ -89,7 +92,6 @@ document.onmousedown = norightclick;  // for all others
 			<tr><td align="left">
 			<font size="3"><%=content %></font></td></tr>
 			<tr><td height="40"></td></tr>
-			
 			<tr><td align="right"><font size="3"><%=publisher %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><%=updatetime %></font></td></tr>
 			<%
 			}

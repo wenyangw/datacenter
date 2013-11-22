@@ -49,6 +49,7 @@ public class StatConfig {
 			String sqlstr = "";
 			String tablename="";
 			String hiddenfields = "";
+			String exporthidden = "";
 			String pkfield = "";
 			String methodname="";
 			String orderby = "";
@@ -63,6 +64,7 @@ public class StatConfig {
 				sqlstr = getAttribute(cs_e, "sqlstr");
 				tablename = getAttribute(cs_e, "tablename");
 				hiddenfields = getAttribute(cs_e, "hiddenfields");
+				exporthidden = getAttribute(cs_e, "exporthidden");
 				pkfield = getAttribute(cs_e, "pkfield");
 				methodname = getAttribute(cs_e, "methodname");
 				orderby = getAttribute(cs_e, "orderby");
@@ -71,6 +73,7 @@ public class StatConfig {
 				cs.setSpecialparam(specialparam);
 				cs.setSqlstr(sqlstr);
 				cs.setHiddenfields(hiddenfields);
+				cs.setExporthidden(exporthidden);
 				cs.setMethodname(methodname);
 				cs.setPkfield(pkfield);
 				cs.setTablename(tablename);

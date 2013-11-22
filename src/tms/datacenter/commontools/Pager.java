@@ -182,8 +182,8 @@ public class Pager {
 			String script_first = "document.forms[0].methodName.value='"+this.getListMethodName()+"';document.forms[0].page.value=1;document.forms[0].submit();";
 			String script_pre = "document.forms[0].methodName.value='"+this.getListMethodName()+"';document.forms[0].page.value="+this.getPrePage()+";document.forms[0].submit();";
 			if (getCurrentPage() != 1) {
-				page_str.append("<span style=\"cursor:pointer\" onclick=\""+script_first+"\"><font color=\"blue\">Ê×Ò³</font></span>");
-				page_str.append("&nbsp;<span style=\"cursor:pointer\" onclick=\""+script_pre+"\"><font color=\"blue\">ÉÏÒ³</font></span>");
+				page_str.append("<span style=\"cursor:pointer\" onclick=\""+script_first+"\"><font color=\"#005590\">Ê×Ò³</font></span>");
+				page_str.append("&nbsp;<span style=\"cursor:pointer\" onclick=\""+script_pre+"\"><font color=\"#005590\">ÉÏÒ³</font></span>");
 			} else {
 				page_str.append("Ê×Ò³");
 				page_str.append("&nbsp;ÉÏÒ³");
@@ -193,8 +193,8 @@ public class Pager {
 			page_str
 					.append("&nbsp;" + getCurrentPage() + "/" + getTotalpages());
 			if (getCurrentPage() != this.getLastPage()) {
-				page_str.append("&nbsp;<span style=\"cursor:pointer\" onclick=\""+script_next+"\"><font color=\"blue\">ÏÂÒ³</font></span>");
-				page_str.append("&nbsp;<span style=\"cursor:pointer\" onclick=\""+script_last+"\"><font color=\"blue\">Î²Ò³</font></span>");
+				page_str.append("&nbsp;<span style=\"cursor:pointer\" onclick=\""+script_next+"\"><font color=\"#005590\">ÏÂÒ³</font></span>");
+				page_str.append("&nbsp;<span style=\"cursor:pointer\" onclick=\""+script_last+"\"><font color=\"#005590\">Î²Ò³</font></span>");
 			} else {
 				page_str.append("&nbsp;ÏÂÒ³");
 				page_str.append("&nbsp;Î²Ò³");

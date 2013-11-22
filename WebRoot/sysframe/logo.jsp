@@ -36,43 +36,46 @@
 		day=now.getDay();  
 		week=arr_week[day];
 		if(now.getHours() >= 18 || now.getHours() < 6)
-			daypart = "，晚上";
+			daypart = "<font color=\"white\">，晚上";
 		else if(now.getHours() >= 6 && now.getHours() < 12)
-			daypart = "，上午";
+			daypart = "<font color=\"white\">，上午";
 		else
-			daypart = "，下午";
-		s = daypart+"好，现在的时间是<font color=blue>"+year+"年"+month+"月"+date+"日 "+hour+":"+minute+":"+second+"&nbsp;"+week+"</font>，欢迎您使用本系统！";
+			daypart = "<font color=\"white\">，下午";
+		s = daypart+"好，现在的时间是</font><font color=\"#e2cc00\">"+year+"年"+month+"月"+date+"日 "+hour+":"+minute+":"+second+"&nbsp;"+week+"</font><font color=\"white\">，欢迎您使用本系统！</font>";
 		var timespan = document.getElementById("timespan");
 		timespan.innerHTML=s;
 	}
 	function showTime(){
 		setInterval("getNowTime()",1000);
 	}
+	function toWelcome(){
+		parent.main.location="<%=request.getContextPath() %>/index/loginmain.jsp";
+		parent.menu.location="<%=request.getContextPath() %>/sysmanage/menuAction";
+	}
+	function showUpdatePsw(){
+		window.showModelessDialog("<%=request.getContextPath()%>/sysmanage/usermanage/updatePassword.jsp","","dialogWidth:300px;dialogHeight:200px;scroll:no;status:no");
+	}
 </script>
 </head>
-<body onload="getNowTime();showTime();">
+<body onLoad="getNowTime();showTime();" style="padding:0px;margin-left:0px;margin-right:0px;">
 <%
 String str_user = "";
 Record user = (Record)session.getAttribute("dcuser");
 if(user != null){
-	str_user+="<font color=\"red\"><b>"+user.get("username")+"</b></font> ";
+	str_user+="<font color=\"#e2cc00\"><b>"+user.get("username")+"</b></font> ";
 }
 %>
-<table width="100%" height="76" class="toptable">
-	<tr>
-		<td height="52" width="5%" class="toptd" valign="MIDDLE" align="left">
-			<img style="height:40px;margin-top:5px;" src="<%=request.getContextPath() %>/images/s.gif">
-		</td>
-		<td height="52" class="toptd" valign="MIDDLE" align="left">
-			<font size="6" color="white">北方联合出版传媒数据共享平台</font>
-		</td>
-	</tr>
-	<tr>
-		<td height="20" class="toptd2" width="40%" colspan="2" valign="top" align="left">
-			&nbsp;&nbsp;<%=str_user %><span id="timespan"></span>&nbsp;&nbsp;
-		<a href="#" onclick="logout()">退出系统</a>&nbsp;&nbsp;&nbsp;<a href="<%=request.getContextPath() %>/index.jsp" target="_top">首页</a>
-		</td>
-	</tr>
-</table>
+
+
+<div style="width:100%;margin-left:0px;height:55px">
+	<div style="float:left;width:35%;height:55px;background-image:url(../images/top_bj.jpg)">
+			<img src="<%=request.getContextPath()%>/images/top_logobj.jpg" border="0" height="55">
+		</div>
+		<div style="width:65%;float:left;text-align:right;height:55px;background-image:url(../images/top_bj.jpg)">
+		<%=str_user %><span id="timespan"></span>
+			<font color="white">[&nbsp;<a href="#" style="color:white" onClick="showUpdatePsw()">修改密码</a>&nbsp;][&nbsp;<a href="#" style="color:white" onClick="logout()">退出系统</a>&nbsp;]&nbsp;&nbsp;&nbsp;[&nbsp;<a href="#" style="color:white" onClick="toWelcome();">欢迎页</a>&nbsp;]</font>
+			
+		</div>
+</div>
 </body>
 </html>

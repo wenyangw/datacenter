@@ -110,8 +110,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</tr>
 </table>
 </div>
-<%=request.getAttribute("pager")==null?"":(String)request.getAttribute("pager") %>
-<hr>
+<div style="width:100%">
+		<div class="pagerdiv">&nbsp;
+			<%=request.getAttribute("pager")==null?"":(String)request.getAttribute("pager") %>
+		</div>
+		<div class="buttondiv">
+			&nbsp;
+		</div>
+</div>
 
 </form>
   </body>

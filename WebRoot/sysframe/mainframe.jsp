@@ -10,11 +10,12 @@
 <link href="<%=request.getContextPath() %>/css/common.css" rel="stylesheet" type="text/css" />
 <title>欢迎使用数据共享系统</title>
 </head>
-<frameset rows="75,*" >
-<frame name="logo" frameborder=0 scrolling="no" src="<%=request.getContextPath() %>/sysframe/logo.jsp">
-<frameset  cols="170,*">
-	<frame name="menu" frameborder=0 src="<%=request.getContextPath() %>/sysmanage/menuAction">
-	<frame name="main" frameborder=0 src="<%=request.getContextPath() %>/sysframe/main.jsp">
+<frameset rows="55,*" framespacing="0">
+<frame name="logo" frameborder=0 style="border-left:0px solid #7B68EE;border-right:0px solid #7B68EE" scrolling="no" src="<%=request.getContextPath() %>/sysframe/logo.jsp">
+<frameset  cols="172,4,*" framespacing="0">
+	<frame name="menu" frameborder=0 style="border-left:1px solid #9CB8CC;border-right:1px solid #9CB8CC" src="<%=request.getContextPath() %>/sysmanage/menuAction">
+	<frame name="blank" frameborder=0 src="<%=request.getContextPath() %>/sysframe/blank.jsp">
+	<frame name="main" frameborder=0 src="<%=request.getContextPath() %>/index/loginmain.jsp">
 </frameset>
 </frameset>
 </html>

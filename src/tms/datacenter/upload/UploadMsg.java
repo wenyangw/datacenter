@@ -8,7 +8,14 @@ public class UploadMsg {
 	private String cnname="";
 	private String specialparam = "";
 	private String txtseparate = "";
+	private String keywords = "";
 	
+	public String getKeywords() {
+		return keywords;
+	}
+	public void setKeywords(String keywords) {
+		this.keywords = keywords;
+	}
 	private String table = "";
 	private ArrayList columnList = new ArrayList();
 	private Hashtable columnHash = new Hashtable();

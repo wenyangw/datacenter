@@ -10,7 +10,7 @@ public class Notice  extends TableManage {
 	}
 	public static String getError(String message) {
 		JSONObject obj = new JSONObject();
-		obj.put("error", "1");
+		obj.put("error", new Integer(1));
 		obj.put("message", message);
 		return obj.toJSONString();
 	}

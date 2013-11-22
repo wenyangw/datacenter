@@ -1,0 +1,90 @@
+.body {
+	BACKGROUND: url(../images/login/Login_bj.png) #1a51a8 repeat-x 50% top; FONT: 12px Verdana, Geneva, sans-serif; MARGIN: 0px
+}
+DL {
+	LIST-STYLE-TYPE: none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px
+}
+DT {
+	LIST-STYLE-TYPE: none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px
+}
+DD {
+	LIST-STYLE-TYPE: none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px
+}
+UL {
+	LIST-STYLE-TYPE: none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px
+}
+LI {
+	LIST-STYLE-TYPE: none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px
+}
+TR TD {
+	FONT-SIZE: 12px
+}
+HTML {
+	OVERFLOW-Y: hidden
+}
+P {
+	PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; MARGIN: 0px; PADDING-RIGHT: 2px
+}
+A:link {
+	COLOR: #a9bddd; TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #a9bddd; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #f90; TEXT-DECORATION: underline
+}
+A:active {
+	COLOR: #f90; TEXT-DECORATION: underline
+}
+.background-img {
+	HEIGHT: 900px; BACKGROUND: url(../images/login/Login95.jpg) no-repeat left center; WIDTH: 100%
+}
+.primary-zone {
+	HEIGHT: 650px; BACKGROUND: url(../images/login/theEarth.png) no-repeat left 50%; MIN-WIDTH: 780px; POSITION: absolute; MARGIN-TOP: -244px; TOP: 50%; WIDTH: 100%; _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/login/theEarth.png', sizingMethod='crop'); _background: none
+}
+.banner {
+	BACKGROUND: url(../images/login/banner_bj.jpg) repeat-x; MARGIN-TOP: 165px
+}
+.banner UL {
+	LIST-STYLE-TYPE: none; HEIGHT: 128px; BACKGROUND: url(../images/login/sangfor_Logo.jpg) no-repeat left 50%
+}
+.banner LI {
+	HEIGHT: 128px; BACKGROUND: url(../images/login/product_logo.png) no-repeat right 50%; FLOAT: right; MARGIN: 0px 150px 0px 0px; WIDTH: 200px; _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/login/product_logo.png', sizingMethod='crop'); _background: none; _margin: 0px 75px 0px 0px
+}
+.login {
+	FONT-SIZE: 14px; HEIGHT: 130px; COLOR: #fff; PADDING-BOTTOM: 5px; TEXT-ALIGN: left; PADDING-TOP: 5px; PADDING-LEFT: 0px; CLEAR: both; PADDING-RIGHT: 0px
+}
+.prompt {
+	COLOR: #fc0; TEXT-ALIGN: left; DISPLAY: block; LINE-HEIGHT: 16px
+}
+.txt {
+	FONT-SIZE: 14px; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px
+}
+.user {
+	BORDER-LEFT-WIDTH: 0px; HEIGHT: 20px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM-WIDTH: 0px; LINE-HEIGHT: 20px; BORDER-TOP-WIDTH: 0px; WIDTH: 175px
+}
+.user_on {
+	HEIGHT: 22px; BACKGROUND: url(../images/login/input_bj.gif) no-repeat center 0px; PADDING-LEFT: 24px; WIDTH: 182px
+}
+.user_off {
+	HEIGHT: 22px; BACKGROUND: url(../images/login/input_bj.gif) no-repeat center -56px; PADDING-LEFT: 24px; WIDTH: 182px
+}
+.password_on {
+	HEIGHT: 22px; BACKGROUND: url(../images/login/input_bj.gif) no-repeat center -28px; PADDING-LEFT: 24px; MARGIN-TOP: 3px; WIDTH: 182px
+}
+.password_off {
+	HEIGHT: 22px; BACKGROUND: url(../images/login/input_bj.gif) no-repeat center -84px; PADDING-LEFT: 24px; MARGIN-TOP: 3px; WIDTH: 182px
+}
+.buttons {
+	BORDER-LEFT-WIDTH: 0px; CURSOR: pointer; FONT-SIZE: 14px; HEIGHT: 59px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND: url(../images/login/button.png) #507cb8 no-repeat 0px 0px; BORDER-BOTTOM-WIDTH: 0px; FONT-WEIGHT: bold; COLOR: #000; BORDER-TOP-WIDTH: 0px; WIDTH: 62px
+}
+.buttons_on {
+	BACKGROUND: url(../images/login/button.png) #507cb8 no-repeat 0px 0px
+}
+.buttons_off {
+	BACKGROUND: url(../images/login/button.png) #507cb8 no-repeat 0px -59px
+}
+.buttons:hover {
+	BACKGROUND: url(../images/login/button.png) #507cb8 no-repeat 0px -59px
+}

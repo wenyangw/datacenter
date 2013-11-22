@@ -51,7 +51,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		if(nextUpload != null){
 			int days = DateUtil.daysBetween(DateUtil.getCurrentDateString(DateUtil.ISO_EXPANDED_DATE_FORMAT), nextUpload);
 			if(days < 0){
-				reminds += um.getCnname() + " 应该在 " + nextUpload + " 上传！\n";
+				reminds += um.getCnname() + " 应该在 " + nextUpload + " 上传！";
+				out.println("<hr class=\"indexuphr\">");
 			}
 		}
 	}

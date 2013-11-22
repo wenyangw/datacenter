@@ -127,7 +127,8 @@
 				privilegevalue="4" showpos="1" needconfirm="0" selectcount="1"/>
 		</module>
 	</topmodule>
-	<topmodule name="教材信息上传" id="m02">
+	
+	<topmodule name="信息上传" id="m02">
 		<module name="上传管理" id="m02m01" actionclass="tms.datacenter.upload.action.UploadManageAction">
 			<operation name="list" cnname="列表" specialparam="" id="m02m01m01"
 				privilegevalue="1" showpos="0" needconfirm="0" selectcount="0"/>
@@ -196,14 +197,21 @@
 			<operation name="exportToTXT" cnname="导出TXT" specialparam="fydquery" id="m03m03m03"
 				privilegevalue="4" showpos="1" needconfirm="0" selectcount="0"/>
 		</module>
-		<module name="纸张信息" id="m03m04" actionclass="tms.datacenter.stat.action.CommonStatAction">
+		<module name="教材纸张信息" id="m03m04" actionclass="tms.datacenter.stat.action.CommonStatAction">
 			<operation name="list" cnname="纸张信息列表" specialparam="zzxx" id="m03m04m01"
 				privilegevalue="1" showpos="0" needconfirm="0" selectcount="0"/>
 			<operation name="exportToExcel" cnname="导出EXCEL" specialparam="zzxx" id="m03m04m02"
 				privilegevalue="2" showpos="1" needconfirm="0" selectcount="0"/>
 			<operation name="exportToTXT" cnname="导出TXT" specialparam="zzxx" id="m03m04m03"
 				privilegevalue="4" showpos="1" needconfirm="0" selectcount="0"/>
-				
+				</module>
+		<module name="辽海纸张信息" id="m03m12" actionclass="tms.datacenter.stat.action.CommonStatAction">
+			<operation name="list" cnname="纸张信息列表" specialparam="lhzzxx" id="m03m12m01"
+				privilegevalue="1" showpos="0" needconfirm="0" selectcount="0"/>
+			<operation name="exportToExcel" cnname="导出EXCEL" specialparam="lhzzxx" id="m03m12m02"
+				privilegevalue="2" showpos="1" needconfirm="0" selectcount="0"/>
+			<operation name="exportToTXT" cnname="导出TXT" specialparam="lhzzxx" id="m03m12m03"
+				privilegevalue="4" showpos="1" needconfirm="0" selectcount="0"/>		
 		</module>
 		<module name="教材包装发印环节" id="m03m05" actionclass="tms.datacenter.stat.action.CommonStatAction">
 			<operation name="list" cnname="教材包装发印环节列表" specialparam="fyhj" id="m03m05m01"
@@ -259,6 +267,14 @@
 			<operation name="exportToExcel" cnname="导出EXCEL" specialparam="dc_smpz" id="m03m11m02"
 				privilegevalue="2" showpos="1" needconfirm="0" selectcount="0"/>
 			<operation name="exportToTXT" cnname="导出TXT" specialparam="dc_smpz" id="m03m11m03"
+				privilegevalue="4" showpos="1" needconfirm="0" selectcount="0"/>
+		</module>
+		<module name="全省市县书目品种(北配专用)" id="m03m13" actionclass="tms.datacenter.stat.action.CommonStatAction">
+			<operation name="list" cnname="全省市县书目品种(北配专用)" specialparam="v_smpz" id="m03m13m01"
+				privilegevalue="1" showpos="0" needconfirm="0" selectcount="0"/>
+			<operation name="exportToExcel" cnname="导出EXCEL" specialparam="v_smpz" id="m03m13m02"
+				privilegevalue="2" showpos="1" needconfirm="0" selectcount="0"/>
+			<operation name="exportToTXT" cnname="导出TXT" specialparam="v_smpz" id="m03m13m03"
 				privilegevalue="4" showpos="1" needconfirm="0" selectcount="0"/>
 		</module>
 	</topmodule>

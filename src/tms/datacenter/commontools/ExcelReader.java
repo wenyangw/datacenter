@@ -147,7 +147,7 @@ public class ExcelReader {
 						    // 是否为int型
 						    	str = Integer.toString((int) d);
 						    }else { 
-						    	//System.out.println("double.....");
+						    	System.out.println("double.....");
 						    	// 是否为double型
 						    	str = Double.toString(cell.getNumericCellValue());
 						    }
@@ -179,15 +179,13 @@ public class ExcelReader {
 		if(read.isExcel()){
 			//read = new ExcelReader(fileName);
 			List lists = read.getExcelContents();
-			System.out.println("size = " + lists.size());
-//			for(Object o : lists){
-//				List list = (List)o;
-//				System.out.print(String.valueOf(i++) + "\t");
-//				for(Object oo : list){
-//					System.out.print(String.valueOf(oo) + "\t");
-//				}
-//				System.out.print("\n");
-//			}
+			for(Object o : lists){
+				List list = (List)o;
+				for(Object oo : list){
+					System.out.print(String.valueOf(oo) + "\t");
+				}
+				System.out.print("\n");
+			}
 		}else{
 			System.out.println("文件格式不对！");
 		}

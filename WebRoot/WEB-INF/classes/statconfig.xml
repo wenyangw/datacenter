@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <stats>
 	<stat cnname="同步日志" methodname="tableList" specialparam="synlog" poolname="datacenter"
-		sqlstr="" tablename="dc_synlog" orderby="order by logid desc"  hiddenfields="memo" pkfield="logid">
+		sqlstr="" tablename="dc_synlog" orderby="order by logid desc"  hiddenfields="memo" exporthidden="" pkfield="logid">
 		<querycontrol name="synname" label="同步名称" type="text"
 			querytype="1" optionSql="" optionPoolname="datacenter"
 			conditionsql=" and synname like '%/synname/%'" conditionsql2="" isshow="1" listfield="">
@@ -24,7 +24,7 @@
 		</querycontrol>
 	</stat> -->
 	<stat cnname="付印安排信息" methodname="tableList" specialparam="fyapquery" poolname="datacenter"
-		sqlstr="" tablename="dc_fyap" orderby=" order by logno desc"  hiddenfields="id" pkfield="id">
+		sqlstr="" tablename="dc_fyap" orderby=" order by logno desc"  hiddenfields="id" exporthidden="" pkfield="id">
 		<querycontrol name="bookname" label="书名" type="text"
 			querytype="1" optionSql="" optionPoolname="datacenter"
 			conditionsql=" and bookname like '%/bookname/%'" conditionsql2="" isshow="1" listfield="">
@@ -32,6 +32,10 @@
 		<querycontrol name="bookno" label="书号" type="text"
 			querytype="1" optionSql="" optionPoolname="datacenter"
 			conditionsql=" and bookno like '%/bookno/%'" conditionsql2="" isshow="1" listfield="">
+		</querycontrol>
+		<querycontrol name="JiNo" label="季别" type="text"
+			querytype="1" optionSql="" optionPoolname="datacenter"
+			conditionsql=" and JiNo like '%/JiNo/%'" conditionsql2="" isshow="1" listfield="">
 		</querycontrol>
 		<querycontrol name="updatetime" label="更新时间" type="date"
 			querytype="2" optionSql="" optionPoolname="datacenter"
@@ -43,7 +47,7 @@
 		</querycontrol>
 	</stat>
 	<stat cnname="付印单查询" methodname="tableList" specialparam="fydquery" poolname="datacenter"
-		sqlstr="" tablename="dc_fyd" orderby=" order by logno desc"  hiddenfields="id" pkfield="id">
+		sqlstr="" tablename="dc_fyd" orderby=" order by logno desc"  hiddenfields="id" exporthidden="" pkfield="id">
 		<querycontrol name="fydno" label="付印单号" type="text"
 			querytype="1" optionSql="" optionPoolname="datacenter"
 			conditionsql=" and fydno='/fydno/'" conditionsql2="" isshow="1" listfield="fydno">
@@ -61,11 +65,50 @@
 			conditionsql=" and username='/username/' " conditionsql2="" isshow="1" listfield="username">
 		</querycontrol>
 	</stat>
-	<stat cnname="纸张信息" methodname="tableList" specialparam="zzxx" poolname="datacenter"
-		sqlstr="" tablename="dc_zzxx" orderby=" order by logno desc"  hiddenfields="id" pkfield="id">
-		<querycontrol name="bookname" label="书名" type="text"
+	<stat cnname="教材纸张信息" methodname="tableList" specialparam="zzxx" poolname="datacenter"
+		sqlstr="" tablename="dc_zzxx" orderby=" order by logno desc"  hiddenfields="id" exporthidden="" pkfield="id">
+		<querycontrol name="zzname" label="品种" type="text"
 			querytype="1" optionSql="" optionPoolname="datacenter"
-			conditionsql=" and bookname like '%/bookname/%'" conditionsql2="" isshow="1" listfield="">
+			conditionsql=" and zzname like '%/zzname/%'" conditionsql2="" isshow="1" listfield="">
+		</querycontrol>
+		<querycontrol name="zzcd" label="产地" type="text"
+			querytype="1" optionSql="" optionPoolname="datacenter"
+			conditionsql=" and zzcd like '%/zzcd/%'" conditionsql2="" isshow="1" listfield="">
+		</querycontrol>
+		<querycontrol name="ysc" label="承印厂" type="text"
+			querytype="1" optionSql="" optionPoolname="datacenter"
+			conditionsql=" and ysc like '%/ysc/%'" conditionsql2="" isshow="1" listfield="">
+		</querycontrol>
+		<querycontrol name="JiBie" label="季别" type="text"
+			querytype="1" optionSql="" optionPoolname="datacenter"
+			conditionsql=" and JiBie like '%/JiBie/%'" conditionsql2="" isshow="1" listfield="">
+		</querycontrol>
+		<querycontrol name="updatetime" label="更新时间" type="date"
+			querytype="2" optionSql="" optionPoolname="datacenter"
+			conditionsql=" and updatetime &gt;= '/b_updatetime/'" conditionsql2=" and updatetime &lt;= '/e_updatetime/ 23:59:59' " isshow="1" listfield="updatetime">
+		</querycontrol>
+		<querycontrol name="username" label="操作人" type="select"
+			querytype="1" optionSql="select loginname optionvalue,username optiontext from dc_user" optionPoolname="datacenter"
+			conditionsql=" and username='/username/' " conditionsql2="" isshow="1" listfield="username">
+		</querycontrol>
+	</stat>
+	<stat cnname="辽海纸张信息" methodname="tableList" specialparam="lhzzxx" poolname="datacenter"
+		sqlstr="" tablename="dc_lhzzxx" orderby=" order by logno desc"  hiddenfields="id" exporthidden="" pkfield="id">
+		<querycontrol name="zzname" label="品种" type="text"
+			querytype="1" optionSql="" optionPoolname="datacenter"
+			conditionsql=" and zzname like '%/zzname/%'" conditionsql2="" isshow="1" listfield="">
+		</querycontrol>
+		<querycontrol name="zzcd" label="产地" type="text"
+			querytype="1" optionSql="" optionPoolname="datacenter"
+			conditionsql=" and zzcd like '%/zzcd/%'" conditionsql2="" isshow="1" listfield="">
+		</querycontrol>
+		<querycontrol name="ysc" label="承印厂" type="text"
+			querytype="1" optionSql="" optionPoolname="datacenter"
+			conditionsql=" and ysc like '%/ysc/%'" conditionsql2="" isshow="1" listfield="">
+		</querycontrol>
+		<querycontrol name="JiBie" label="季别" type="text"
+			querytype="1" optionSql="" optionPoolname="datacenter"
+			conditionsql=" and JiBie like '%/JiBie/%'" conditionsql2="" isshow="1" listfield="">
 		</querycontrol>
 		<querycontrol name="updatetime" label="更新时间" type="date"
 			querytype="2" optionSql="" optionPoolname="datacenter"
@@ -77,10 +120,14 @@
 		</querycontrol>
 	</stat>
 	<stat cnname="教材包装发印环节信息" methodname="tableList" specialparam="fyhj" poolname="datacenter"
-		sqlstr="" tablename="dc_jcbzfy" orderby=" order by logno desc"  hiddenfields="id" pkfield="id">
+		sqlstr="" tablename="dc_jcbzfy" orderby=" order by logno desc"  hiddenfields="id" exporthidden="" pkfield="id">
 		<querycontrol name="bookname" label="书名" type="text"
 			querytype="1" optionSql="" optionPoolname="datacenter"
 			conditionsql=" and bookname like '%/bookname/%'" conditionsql2="" isshow="1" listfield="">
+		</querycontrol>
+		<querycontrol name="JiBie" label="季别" type="text"
+			querytype="1" optionSql="" optionPoolname="datacenter"
+			conditionsql=" and JiBie like '%/JiBie/%'" conditionsql2="" isshow="1" listfield="">
 		</querycontrol>
 		<querycontrol name="updatetime" label="更新时间" type="date"
 			querytype="2" optionSql="" optionPoolname="datacenter"
@@ -92,10 +139,14 @@
 		</querycontrol>
 	</stat>
 	<stat cnname="教材进货收货信息" methodname="tableList" specialparam="jcjhsh" poolname="datacenter"
-		sqlstr="" tablename="dc_jcjhsh" orderby=" order by logno desc"  hiddenfields="id" pkfield="id">
+		sqlstr="" tablename="dc_jcjhsh" orderby=" order by logno desc"  hiddenfields="id" exporthidden="" pkfield="id">
 		<querycontrol name="bookname" label="书名" type="text"
 			querytype="1" optionSql="" optionPoolname="datacenter"
 			conditionsql=" and bookname like '%/bookname/%'" conditionsql2="" isshow="1" listfield="">
+		</querycontrol>
+		<querycontrol name="JiBie" label="季别" type="text"
+			querytype="1" optionSql="" optionPoolname="datacenter"
+			conditionsql=" and JiBie like '%/JiBie/%'" conditionsql2="" isshow="1" listfield="">
 		</querycontrol>
 		<querycontrol name="updatetime" label="更新时间" type="date"
 			querytype="2" optionSql="" optionPoolname="datacenter"
@@ -107,7 +158,7 @@
 		</querycontrol>
 	</stat>
 	<stat cnname="收书信息" methodname="tableList" specialparam="ssxx" poolname="datacenter"
-		sqlstr="" tablename="dc_ssxx" orderby=" order by logno desc"  hiddenfields="id" pkfield="id">
+		sqlstr="" tablename="dc_ssxx" orderby=" order by logno desc"  hiddenfields="id" exporthidden="" pkfield="id">
 		<querycontrol name="bookname" label="书名" type="text"
 			querytype="1" optionSql="" optionPoolname="datacenter"
 			conditionsql=" and bookname like '%/bookname/%'" conditionsql2="" isshow="1" listfield="">
@@ -122,7 +173,7 @@
 		</querycontrol>
 	</stat>
 	<stat cnname="实际付印生产进度" methodname="tableList" specialparam="sjfy" poolname="datacenter"
-		sqlstr="" tablename="dc_sjfy" orderby=" order by logno desc"  hiddenfields="id" pkfield="id">
+		sqlstr="" tablename="dc_sjfy" orderby=" order by logno desc"  hiddenfields="id" exporthidden="" pkfield="id">
 		<querycontrol name="bookname" label="书名" type="text"
 			querytype="1" optionSql="" optionPoolname="datacenter"
 			conditionsql=" and bookname like '%/bookname/%'" conditionsql2="" isshow="1" listfield="">
@@ -130,6 +181,10 @@
 		<querycontrol name="bookno" label="书号" type="text"
 			querytype="1" optionSql="" optionPoolname="datacenter"
 			conditionsql=" and bookno like '%/bookno/%'" conditionsql2="" isshow="1" listfield="">
+		</querycontrol>
+		<querycontrol name="JiBie" label="季别" type="text"
+			querytype="1" optionSql="" optionPoolname="datacenter"
+			conditionsql=" and JiBie like '%/JiBie/%'" conditionsql2="" isshow="1" listfield="">
 		</querycontrol>
 		<querycontrol name="updatetime" label="更新时间" type="date"
 			querytype="2" optionSql="" optionPoolname="datacenter"
@@ -141,7 +196,7 @@
 		</querycontrol>
 	</stat>
 	<stat cnname="征订目录" methodname="tableList" specialparam="zdml" poolname="datacenter"
-		sqlstr="" tablename="dc_zdml" orderby=" order by logno desc"  hiddenfields="id" pkfield="id">
+		sqlstr="" tablename="dc_zdml" orderby=" order by logno desc"  hiddenfields="id" exporthidden="" pkfield="id">
 		<querycontrol name="bookname" label="书名" type="text"
 			querytype="1" optionSql="" optionPoolname="datacenter"
 			conditionsql=" and bookname like '%/bookname/%'" conditionsql2="" isshow="1" listfield="">
@@ -149,6 +204,10 @@
 		<querycontrol name="bookno" label="书号" type="text"
 			querytype="1" optionSql="" optionPoolname="datacenter"
 			conditionsql=" and bookno like '%/bookno/%'" conditionsql2="" isshow="1" listfield="">
+		</querycontrol>
+		<querycontrol name="JiBie" label="季别" type="text"
+			querytype="1" optionSql="" optionPoolname="datacenter"
+			conditionsql=" and JiBie like '%/JiBie/%'" conditionsql2="" isshow="1" listfield="">
 		</querycontrol>
 		<querycontrol name="updatetime" label="更新时间" type="date"
 			querytype="2" optionSql="" optionPoolname="datacenter"
@@ -160,10 +219,22 @@
 		</querycontrol>
 	</stat>
 	<stat cnname="全省市县书目品种" methodname="tableList" specialparam="dc_smpz" poolname="datacenter"
-		sqlstr="" tablename="dc_smpz" orderby=" order by logno desc"  hiddenfields="id" pkfield="id">
+		sqlstr="" tablename="dc_smpz" orderby=" order by logno desc"  hiddenfields="id,LeibieNo,ShengNo,DianNo" exporthidden="id,LeiBie,ShengName,DianName,jibie,ywno" pkfield="id">
 		<querycontrol name="bookname" label="书名" type="text"
 			querytype="1" optionSql="" optionPoolname="datacenter"
 			conditionsql=" and bookname like '%/bookname/%'" conditionsql2="" isshow="1" listfield="">
+		</querycontrol>
+		<querycontrol name="JiBie" label="季别" type="text"
+			querytype="1" optionSql="" optionPoolname="datacenter"
+			conditionsql=" and JiBie like '%/JiBie/%'" conditionsql2="" isshow="1" listfield="">
+		</querycontrol>
+		<querycontrol name="BanbieNo" label="版别" type="text"
+			querytype="1" optionSql="" optionPoolname="datacenter"
+			conditionsql=" and BanbieNo like '%/BanbieNo/%'" conditionsql2="" isshow="1" listfield="">
+		</querycontrol>
+		<querycontrol name="GhdwNo" label="供货单位" type="text"
+			querytype="1" optionSql="" optionPoolname="datacenter"
+			conditionsql=" and GhdwNo like '%/GhdwNo/%'" conditionsql2="" isshow="1" listfield="">
 		</querycontrol>
 		<querycontrol name="updatetime" label="更新时间" type="date"
 			querytype="2" optionSql="" optionPoolname="datacenter"
@@ -172,6 +243,71 @@
 		<querycontrol name="username" label="操作人" type="select"
 			querytype="1" optionSql="select loginname optionvalue,username optiontext from dc_user" optionPoolname="datacenter"
 			conditionsql=" and username='/username/' " conditionsql2="" isshow="1" listfield="username">
+		</querycontrol>
+	</stat>
+	<stat cnname="全省市县书目品种(北配专用)" methodname="tableList" specialparam="v_smpz" poolname="datacenter"
+		sqlstr="" tablename="v_smpz" orderby=" order by logno desc"  hiddenfields="id" exporthidden="id,jibie" pkfield="id">
+		<querycontrol name="bookname" label="书名" type="text"
+			querytype="1" optionSql="" optionPoolname="datacenter"
+			conditionsql=" and bookname like '%/bookname/%'" conditionsql2="" isshow="1" listfield="">
+		</querycontrol>
+		<querycontrol name="JiBie" label="季别" type="text"
+			querytype="1" optionSql="" optionPoolname="datacenter"
+			conditionsql=" and JiBie like '%/JiBie/%'" conditionsql2="" isshow="1" listfield="">
+		</querycontrol>
+		<querycontrol name="BanbieNo" label="版别" type="text"
+			querytype="1" optionSql="" optionPoolname="datacenter"
+			conditionsql=" and BanbieNo like '%/BanbieNo/%'" conditionsql2="" isshow="1" listfield="">
+		</querycontrol>
+		<querycontrol name="GhdwNo" label="供货单位" type="text"
+			querytype="1" optionSql="" optionPoolname="datacenter"
+			conditionsql=" and GhdwNo like '%/GhdwNo/%'" conditionsql2="" isshow="1" listfield="">
+		</querycontrol>
+		<querycontrol name="updatetime" label="更新时间" type="date"
+			querytype="2" optionSql="" optionPoolname="datacenter"
+			conditionsql=" and updatetime &gt;= '/b_updatetime/'" conditionsql2=" and updatetime &lt;= '/e_updatetime/ 23:59:59' " isshow="1" listfield="updatetime">
+		</querycontrol>
+		<querycontrol name="username" label="操作人" type="select"
+			querytype="1" optionSql="select loginname optionvalue,username optiontext from dc_user" optionPoolname="datacenter"
+			conditionsql=" and username='/username/' " conditionsql2="" isshow="1" listfield="username">
+		</querycontrol>
+	</stat>
+	<stat cnname="资产负债表" methodname="tableList" specialparam="dc_zcfz" poolname="datacenter"
+		sqlstr="" tablename="dc_zcfz" orderby=" order by logno desc"  hiddenfields="id" exporthidden="id" pkfield="id">
+		<querycontrol name="GSMC" label="公司名称" type="text"
+			querytype="1" optionSql="" optionPoolname="datacenter"
+			conditionsql=" and GSMC like '%/GSMC/%'" conditionsql2="" isshow="1" listfield="">
+		</querycontrol>
+		<querycontrol name="GSDM" label="公司代码" type="text"
+			querytype="1" optionSql="" optionPoolname="datacenter"
+			conditionsql=" and GSDM &gt;= '/GSDM/'" conditionsql2="" isshow="1" listfield="">
+		</querycontrol>
+		<querycontrol name="YEAR" label="年度" type="text"
+			querytype="1" optionSql="" optionPoolname="datacenter"
+			conditionsql=" and YEAR &gt;= '/YEAR/'" conditionsql2="" isshow="1" listfield="">
+		</querycontrol>
+		<querycontrol name="MONT" label="月份" type="text"
+			querytype="1" optionSql="" optionPoolname="datacenter"
+			conditionsql=" and MONT &gt;= '/MONT/'" conditionsql2="" isshow="1" listfield="">
+		</querycontrol>
+	</stat>
+	<stat cnname="损益表" methodname="tableList" specialparam="dc_sy" poolname="datacenter"
+		sqlstr="" tablename="dc_sy" orderby=" order by logno desc"  hiddenfields="id" exporthidden="id" pkfield="id">
+		<querycontrol name="GSMC" label="公司名称" type="text"
+			querytype="1" optionSql="" optionPoolname="datacenter"
+			conditionsql=" and GSMC like '%/GSMC/%'" conditionsql2="" isshow="1" listfield="">
+		</querycontrol>
+		<querycontrol name="GSDM" label="公司代码" type="text"
+			querytype="1" optionSql="" optionPoolname="datacenter"
+			conditionsql=" and GSDM &gt;= '/GSDM/'" conditionsql2="" isshow="1" listfield="">
+		</querycontrol>
+		<querycontrol name="YEAR" label="年度" type="text"
+			querytype="1" optionSql="" optionPoolname="datacenter"
+			conditionsql=" and YEAR &gt;= '/YEAR/'" conditionsql2="" isshow="1" listfield="">
+		</querycontrol>
+		<querycontrol name="MONT" label="月份" type="text"
+			querytype="1" optionSql="" optionPoolname="datacenter"
+			conditionsql=" and MONT &gt;= '/MONT/'" conditionsql2="" isshow="1" listfield="">
 		</querycontrol>
 	</stat>
 </stats>

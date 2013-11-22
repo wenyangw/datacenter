@@ -13,6 +13,8 @@ public class CommonStat {
 	private String sqlstr;
 	private String tablename;
 	private String hiddenfields;
+	private String exporthidden;
+	
 	private String pkfield;
 	private String methodname;
 	private String orderby;
@@ -41,6 +43,12 @@ public class CommonStat {
 	}
 	public void setHiddenfields(String hiddenfields) {
 		this.hiddenfields = hiddenfields;
+	}
+	public String getExporthidden() {
+		return exporthidden;
+	}
+	public void setExporthidden(String exporthidden) {
+		this.exporthidden = exporthidden;
 	}
 	public String getPkfield() {
 		return pkfield;

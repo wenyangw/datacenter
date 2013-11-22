@@ -7,35 +7,38 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>图片轮转</title>
 <style>
+	div.addpdiv{
+		position:relative;
+	}
 	div.addiv{
-		width:750px;height:300px;overflow:false;
-		margin-left:5px;
-		margin-right:5px;
-		margin-top:5px;
-		
+		width:394px;height:324px;overflow:false;
+		position:absolute;
+		top:0px;
+		left:0px;
 	}
 	div.adbardiv{
-		width:740px;background:yellow;
-		margin-left:5px;
-		margin-right:5px;
-		margin-bottom:5px;
-		border-left:1px solid black;
-		border-right:1px solid black;
-		border-bottom:1px solid black;
+		width:390px;
+		border-left:0px solid #A4D3EE;
+		border-right:0px solid #A4D3EE;
+		border-bottom:0px solid #A4D3EE;
+		position:absolute;
+		top:297px;
+		left:0px;
+		padding-right:2px;
 	}
 	img.adimg{
-		width:740px;
-		height:300px;
-		border-width:1px;
+		width:394px;
+		height:324px;
+		border-width:0px;
 	}
 	ul.adul{
-		list-style:none;padding:2px;margin:0px;width:698px;float:right;
+		list-style:none;padding:2px;margin:0px;width:346px;float:right;
 	}
 	li.adli1{
 		background:gray;width:20px;text-align:center;float:right;cursor:pointer;
 	}
 	li.adli2{
-		background:white;width:20px;text-align:center;float:right;cursor:pointer;
+		background:red;width:20px;text-align:center;float:right;cursor:pointer;color:white
 	}
 </style>
 <%ArrayList al = (ArrayList)request.getAttribute("ads"); %>
@@ -45,19 +48,22 @@
 	Record r = null;
 	String picpath = "";
 	String link = "";
+	String title = "";
 	if(al != null && al.size() > 0){
 		for(int i = 0; i < al.size(); i++){
 			r = (Record)al.get(i);
 			picpath = r.get("picpath");
 			link = r.get("link");
+			title = r.get("title");
+			
 			if(link != null && link.trim().length() > 0){
 				if(!link.toLowerCase().startsWith("http"))
 					link = request.getContextPath()+link;
 			%>
-				imgarr[<%=i%>]="<a href=\"<%=link%>\" target=\"_blank\"><img class=\"adimg\"   src=\"<%=request.getContextPath()+picpath %>\"></a>";
+				imgarr[<%=i%>]="<a href=\"<%=link%>\" target=\"_blank\"><img class=\"adimg\" alt=\"<%=title%>\"   src=\"<%=request.getContextPath()+picpath %>\"></a><br>";
 			<%}else{
 				%>
-				imgarr[<%=i%>]="<img class=\"adimg\" src=\"<%=request.getContextPath()+picpath %>\">";
+				imgarr[<%=i%>]="<img class=\"adimg\" alt=\"<%=title%>\" src=\"<%=request.getContextPath()+picpath %>\">";
 				<%
 			}
 		}
@@ -113,10 +119,12 @@
 	}
 </script>
 </head>
-<body bgcolor="#AEEEEE">
+<body>
+<div>
 <div id="addiv" class="addiv">
 </div>
 <div id="bardiv" class="adbardiv">
+</div>
 </div>
 <script type="text/javascript">
 init();play();

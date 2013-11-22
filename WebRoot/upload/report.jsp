@@ -1,3 +1,4 @@
+<%@page import="tms.datacenter.upload.UploadMsg"%>
 <%@ page language="java" import="java.util.*" pageEncoding="gbk"%>
 <%@ page import="java.util.ArrayList,tms.datacenter.dbmanage.*"%>
 <%@ page import="tms.datacenter.sysmanage.*"%>
@@ -20,6 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
+	
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
@@ -70,18 +72,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</td>
 </table>
 </div>
-<%=request.getAttribute("pager")==null?"":(String)request.getAttribute("pager") %>
-<hr>
-<table class="bottomtable" width="100%">
-	<tr>
-		<td align="right">
+<div style="width:100%">
+		<div class="pagerdiv">&nbsp;
+			<%=request.getAttribute("pager")==null?"":(String)request.getAttribute("pager") %>
+		</div>
+		<div class="buttondiv">
 			<%
 				ArrayList uo = (ArrayList)request.getAttribute("uo");
 				out.println(RoleManage.paraUserOperationToButton(uo,Operation.SHOW_POS_LIST));
 			%>
-		</td>
-	</tr>
-</table>
+		</div>
+</div>
 </form>
   </body>
 </html>

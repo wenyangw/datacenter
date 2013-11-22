@@ -19,6 +19,7 @@
 <input type="hidden" name="methodName" id="methodNameId" value="list">
 <input type="hidden" name="specialParam" id="specialparamId" value="">
 <input type="hidden" name="moduleid" id="moduleidId" value="m01m08">
+<div class="querydiv">
 <%
 	ArrayList querys = (ArrayList)request.getAttribute("querys");
 	if(querys != null && querys.size() > 0){
@@ -31,12 +32,14 @@
 	}
 	out.println("<input type=\"button\" value=\"查询\" onclick=\"commonOperateSimple('list')\">");
 %>
+</div>
 <div class="listdiv">
 <table width="100%" class="listtable">
 	<tr>
 		<td class="tdhead" align="center">全选<input type="checkbox" name="selectAll" value="1" onclick="checkAll(this,'pkfield')"></td>
 		<td class="tdhead" align="center">用户</td>
 		<td class="tdhead" align="center">操作</td>
+		<td class="tdhead" align="center">IP地址</td>
 		<td class="tdhead" align="center">时间</td>
 	</tr>
 	<%
@@ -48,6 +51,7 @@
 			String logid = "";
 			String operate = "";
 			String updatetime = "";
+			String remoteip = "";
 			String memo = "";
 			String datatdclass = "";
 			for(int i = 0; i < records.size(); i++){
@@ -56,6 +60,7 @@
 				logid = r.get("logid");
 				operate = r.get("operate");
 				updatetime = r.get("updatetime");
+				remoteip = r.get("remoteip");
 				memo = r.get("memo");
 				if(i%2 == 0){
 					datatdclass = "data1";
@@ -67,6 +72,7 @@
 				<td class="<%=datatdclass %>" height="20" align="center"><input type="checkbox" name="pkfield" value="<%=logid %>"></td>
 				<td class="<%=datatdclass %>" align="center"><%=Record.getShowValue(fieldLabels,"loginname",loginname) %></td>
 				<td class="<%=datatdclass %>" align="center"><%=operate %></td>
+				<td class="<%=datatdclass %>" align="center"><%=remoteip %></td>
 				<td class="<%=datatdclass %>" align="center"><%=updatetime %></td>
 				</tr>
 				<%
@@ -75,18 +81,17 @@
 	%>
 </table>
 </div>
-<%=request.getAttribute("pager")==null?"":(String)request.getAttribute("pager") %>
-<hr>
-<table class="bottomtable" width="100%">
-	<tr>
-		<td align="right">
+<div style="width:100%">
+		<div class="pagerdiv">&nbsp;
+			<%=request.getAttribute("pager")==null?"":(String)request.getAttribute("pager") %>
+		</div>
+		<div class="buttondiv">
 			<%
 				ArrayList uo = (ArrayList)request.getAttribute("uo");
 				out.println(RoleManage.paraUserOperationToButton(uo,Operation.SHOW_POS_LIST));
 			%>
-		</td>
-	</tr>
-</table>
+		</div>
+</div>
 </form>
 </body>
 </html>

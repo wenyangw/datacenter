@@ -38,8 +38,6 @@ public class TxtReader {
 		return lines;
 	}
 	
-	
-	
 	public List getTxtContents(String separate){
 		List lines = getLines();
 		List contents = new ArrayList();

@@ -44,7 +44,7 @@ public class UploadConfig {
 				upload.setSpecialparam(specialparam);
 				upload.setTable(table);
 				upload.setTxtseparate(txtseparate);
-				//upload.setKeywords(keywords);
+				upload.setKeywords(keywords);
 				Iterator columnit = e_upload.elementIterator("column");
 				while (columnit.hasNext()) {
 					column = new ColumnMsg();

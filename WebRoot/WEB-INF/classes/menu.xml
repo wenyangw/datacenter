@@ -1,5 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <menu>
+	<parentmenu name="教材信息查询" id="m03">
+		<sonmenu name="付印安排信息" id="m03m08"
+			actionclass="tms.datacenter.stat.action.CommonStatAction"
+			privilege="1" link="/stat/commonStatAction?methodName=list&amp;specialParam=fyapquery&amp;moduleid=m03m08" />
+		<sonmenu name="付印单信息" id="m03m03"
+			actionclass="tms.datacenter.stat.action.CommonStatAction"
+			privilege="1" link="/stat/commonStatAction?methodName=list&amp;specialParam=fydquery&amp;moduleid=m03m03" />
+		<sonmenu name="教材纸张信息" id="m03m04"
+			actionclass="tms.datacenter.stat.action.CommonStatAction"
+			privilege="1" link="/stat/commonStatAction?methodName=list&amp;specialParam=zzxx&amp;moduleid=m03m04" />
+			<sonmenu name="辽海纸张信息" id="m03m12"
+			actionclass="tms.datacenter.stat.action.CommonStatAction"
+			privilege="1" link="/stat/commonStatAction?methodName=list&amp;specialParam=lhzzxx&amp;moduleid=m03m12" />
+		<sonmenu name="教材包装发印环节" id="m03m05"
+			actionclass="tms.datacenter.stat.action.CommonStatAction"
+			privilege="1" link="/stat/commonStatAction?methodName=list&amp;specialParam=fyhj&amp;moduleid=m03m05" />
+		<sonmenu name="教材进货收货信息" id="m03m06"
+			actionclass="tms.datacenter.stat.action.CommonStatAction"
+			privilege="1" link="/stat/commonStatAction?methodName=list&amp;specialParam=jcjhsh&amp;moduleid=m03m06" />
+		<sonmenu name="收书信息" id="m03m07"
+			actionclass="tms.datacenter.stat.action.CommonStatAction"
+			privilege="1" link="/stat/commonStatAction?methodName=list&amp;specialParam=ssxx&amp;moduleid=m03m07" />
+		<sonmenu name="实际付印生产进度" id="m03m09"
+			actionclass="tms.datacenter.stat.action.CommonStatAction"
+			privilege="1" link="/stat/commonStatAction?methodName=list&amp;specialParam=sjfy&amp;moduleid=m03m09" />
+		<sonmenu name="征订目录信息" id="m03m10"
+			actionclass="tms.datacenter.stat.action.CommonStatAction"
+			privilege="1" link="/stat/commonStatAction?methodName=list&amp;specialParam=zdml&amp;moduleid=m03m10" />
+		<sonmenu name="全省市县书目品种" id="m03m11"
+			actionclass="tms.datacenter.stat.action.CommonStatAction"
+			privilege="1" link="/stat/commonStatAction?methodName=list&amp;specialParam=dc_smpz&amp;moduleid=m03m11" />
+		<sonmenu name="全省市县书目品种(北配专用)" id="m03m13"
+			actionclass="tms.datacenter.stat.action.CommonStatAction"
+			privilege="1" link="/stat/commonStatAction?methodName=list&amp;specialParam=v_smpz&amp;moduleid=m03m13" />
+	</parentmenu>
+	<parentmenu name="教材信息上传" id="m02">
+		<sonmenu name="上传管理" id="m02m01"
+			actionclass="tms.datacenter.upload.action.UploadManageAction"
+			privilege="1" link="/upload/uploadManageAction?methodName=list&amp;moduleid=m02m01" />
+		<sonmenu name="上传计划" id="m02m02"
+			actionclass="tms.datacenter.upload.action.RuleManageAction"
+			privilege="1" link="/upload/ruleManageAction?methodName=list&amp;moduleid=m02m02" />
+		<sonmenu name="数据同步日志" id="m02m03"
+			actionclass="tms.datacenter.stat.action.CommonStatAction"
+			privilege="1" link="/stat/commonStatAction?methodName=list&amp;specialParam=synlog&amp;moduleid=m02m03" />
+		<sonmenu name="报表图表演示" id="m02m04"
+			actionclass="tms.datacenter.upload.action.ReportAction"
+			privilege="1" link="/upload/reportAction?methodName=list&amp;moduleid=m02m04" />
+	</parentmenu>
+	
 	<parentmenu name="系统管理" id="m01">
 		<sonmenu name="参数管理" id="m01m02"
 			actionclass="tms.datacenter.sysmanage.action.SysParamAction"
@@ -26,50 +76,12 @@
 			actionclass="tms.datacenter.sysmanage.action.OperateLogAction"
 			privilege="1" link="/sysmanage/operateLogAction?methodName=list&amp;moduleid=m01m08" />
 	</parentmenu>
-	<parentmenu name="教材信息上传" id="m02">
-		<sonmenu name="上传管理" id="m02m01"
-			actionclass="tms.datacenter.upload.action.UploadManageAction"
-			privilege="1" link="/upload/uploadManageAction?methodName=list&amp;moduleid=m02m01" />
-		<sonmenu name="上传计划" id="m02m02"
-			actionclass="tms.datacenter.upload.action.RuleManageAction"
-			privilege="1" link="/upload/ruleManageAction?methodName=list&amp;moduleid=m02m02" />
-		<sonmenu name="数据同步日志" id="m02m03"
-			actionclass="tms.datacenter.stat.action.CommonStatAction"
-			privilege="1" link="/stat/commonStatAction?methodName=list&amp;specialParam=synlog&amp;moduleid=m02m03" />
-		<sonmenu name="报表图表演示" id="m02m04"
-			actionclass="tms.datacenter.upload.action.ReportAction"
-			privilege="1" link="/upload/reportAction?methodName=list&amp;moduleid=m02m04" />
-	</parentmenu>
-	<parentmenu name="教材信息查询" id="m03">
-		<sonmenu name="测试" id="m03m01"
-			actionclass="tms.datacenter.stat.action.CommonStatAction"
-			privilege="1" link="/stat/commonStatAction?methodName=list&amp;specialParam=teststat1&amp;moduleid=m03m01" />
-		<sonmenu name="付印安排信息" id="m03m08"
-			actionclass="tms.datacenter.stat.action.CommonStatAction"
-			privilege="1" link="/stat/commonStatAction?methodName=list&amp;specialParam=fyapquery&amp;moduleid=m03m08" />
-		<sonmenu name="付印单信息" id="m03m03"
-			actionclass="tms.datacenter.stat.action.CommonStatAction"
-			privilege="1" link="/stat/commonStatAction?methodName=list&amp;specialParam=fydquery&amp;moduleid=m03m03" />
-		<sonmenu name="纸张信息" id="m03m04"
-			actionclass="tms.datacenter.stat.action.CommonStatAction"
-			privilege="1" link="/stat/commonStatAction?methodName=list&amp;specialParam=zzxx&amp;moduleid=m03m04" />
-		<sonmenu name="教材包装发印环节" id="m03m05"
-			actionclass="tms.datacenter.stat.action.CommonStatAction"
-			privilege="1" link="/stat/commonStatAction?methodName=list&amp;specialParam=fyhj&amp;moduleid=m03m05" />
-		<sonmenu name="教材进货收货信息" id="m03m06"
-			actionclass="tms.datacenter.stat.action.CommonStatAction"
-			privilege="1" link="/stat/commonStatAction?methodName=list&amp;specialParam=jcjhsh&amp;moduleid=m03m06" />
-		<sonmenu name="收书信息" id="m03m07"
-			actionclass="tms.datacenter.stat.action.CommonStatAction"
-			privilege="1" link="/stat/commonStatAction?methodName=list&amp;specialParam=ssxx&amp;moduleid=m03m07" />
-		<sonmenu name="实际付印生产进度" id="m03m09"
-			actionclass="tms.datacenter.stat.action.CommonStatAction"
-			privilege="1" link="/stat/commonStatAction?methodName=list&amp;specialParam=sjfy&amp;moduleid=m03m09" />
-		<sonmenu name="征订目录信息" id="m03m10"
-			actionclass="tms.datacenter.stat.action.CommonStatAction"
-			privilege="1" link="/stat/commonStatAction?methodName=list&amp;specialParam=zdml&amp;moduleid=m03m10" />
-		<sonmenu name="全省市县书目品种" id="m03m11"
-			actionclass="tms.datacenter.stat.action.CommonStatAction"
-			privilege="1" link="/stat/commonStatAction?methodName=list&amp;specialParam=dc_smpz&amp;moduleid=m03m11" />
-	</parentmenu>
+	<!-- <parentmenu name="财务数据共享" id="m04">
+		<sonmenu name="资产负债表" id="m04m01"
+			actionclass="tms.datacenter.sysmanage.action.SysParamAction"
+			privilege="1" link="/stat/commonStatAction?methodName=list&amp;specialParam=dc_zcfz&amp;moduleid=m04m01" />
+		<sonmenu name="损益表" id="m04m02"
+			actionclass="tms.datacenter.sysmanage.action.RoleManageAction"
+			privilege="1" link="/stat/commonStatAction?methodName=list&amp;specialParam=dc_sy&amp;moduleid=m04m02" />
+	</parentmenu> -->
 </menu>

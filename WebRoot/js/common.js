@@ -1,4 +1,3 @@
-
 function checkAll(checkAllControl,checkBoxName){
 	var checkboxes = document.getElementsByName(checkBoxName);
 	if(checkboxes){
@@ -73,7 +72,6 @@ function commonOperate(method,specialparam,cnname,needconfirm,selectcount){
 		methodcontrol.value=method;
 	if(special)
 		special.value=specialparam;
-	
 	methodcontrol.form.submit();
 }
 function generateSql(){
@@ -148,4 +146,27 @@ function reinitIframe(frameid){
 	alert(height);
 	iframe.height =  height;
 	}catch (ex){}
+}
+function changeShow(id){
+	
+	var total = document.getElementById("indexccount");
+	var countc = 0;
+	
+	if(total)
+		countc = total.value;
+	
+	for(i = 1; i <= countc; i++){
+		var cbar = document.getElementById("c"+i);
+		if(cbar)
+			cbar.className = "indexbar0";
+		var ccont = document.getElementById("cc"+i);
+		if(ccont)
+			ccont.className = "chidden";
+	}
+	document.getElementById("c100").className="indexbar0";
+	document.getElementById("c101").className="indexbar0";
+	document.getElementById("cc100").className="chidden";
+	document.getElementById("cc101").className="chidden";
+	document.getElementById("c"+id).className="indexbar1";
+	document.getElementById("cc"+id).className="cshow";
 }

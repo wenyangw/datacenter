@@ -345,7 +345,7 @@ public class CommonStatAction extends PrivilegeParentAction {
 		CommonStat cs = sc.getStat(specialParam);
 		if(cs == null)
 			return "list";
-		String hiddenfields = cs.getHiddenfields();
+		String hiddenfields = cs.getExporthidden();
 		if(hiddenfields==null)
 			hiddenfields = "";
 		String[] hidden = hiddenfields.split(",");
@@ -433,7 +433,7 @@ public class CommonStatAction extends PrivilegeParentAction {
 		String tablename = cs.getTablename();
 		String pkfield = cs.getPkfield();
 		String orderby = cs.getOrderby();
-		String hiddenfields = cs.getHiddenfields();
+		String hiddenfields = cs.getExporthidden();
 		ContentControl c = new ContentControl();
 		String condition = c.getControlSQL(this.getLoginUser(), tablename);
 		ArrayList qccs = cs.getQuerycontrols();
@@ -528,7 +528,7 @@ public class CommonStatAction extends PrivilegeParentAction {
 		String tablename = cs.getTablename();
 		String pkfield = cs.getPkfield();
 		String orderby = cs.getOrderby();
-		String hiddenfields = cs.getHiddenfields();
+		String hiddenfields = cs.getExporthidden();
 		ContentControl c = new ContentControl();
 		String condition = c.getControlSQL(this.getLoginUser(), tablename);
 		ArrayList qccs = cs.getQuerycontrols();
@@ -613,7 +613,7 @@ public class CommonStatAction extends PrivilegeParentAction {
 		CommonStat cs = sc.getStat(specialParam);
 		if(cs == null)
 			return "list";
-		String hiddenfields = cs.getHiddenfields();
+		String hiddenfields = cs.getExporthidden();
 		if(hiddenfields==null)
 			hiddenfields = "";
 		String[] hidden = hiddenfields.split(",");
